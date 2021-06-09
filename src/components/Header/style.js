@@ -7,6 +7,7 @@ export const HeaderDiv = styled.div`
     justify-content: center;
     align-items: center;
     position: fixed;
+    width: 100%;
     img {
         height: 60px;
     }

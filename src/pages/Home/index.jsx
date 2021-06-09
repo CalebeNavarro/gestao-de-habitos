@@ -7,7 +7,7 @@ const Home = () => {
         <h1>Welcome to Life Management</h1>
        
         <img src={logo} ></img>
-       
+
          <div>
         <Link to="/signup" >Sign  Up</Link>
         <Link to="/login" >Log In</Link>

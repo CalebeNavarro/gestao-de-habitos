@@ -2,6 +2,8 @@ import { HeaderDiv, MenuDiv, MenuButton } from "./style";
 import Logo from "../../assets/Logo.png";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { HiOutlineMenu } from "react-icons/hi";
+import { IconContext } from "react-icons";
 
 const Header = ({page}) => {
 
@@ -17,7 +19,11 @@ const Header = ({page}) => {
         <HeaderDiv>
             <div>
                 <img src={Logo} alt="logo" />
-                <MenuButton onClick={() => setMenuOpened(!menuOpened)}> a </MenuButton>
+                <IconContext.Provider value={{ color: "6C63FF", size: "40px" }}>
+                    <MenuButton onClick={() => setMenuOpened(!menuOpened)}>
+                        <HiOutlineMenu />
+                    </MenuButton>
+                </IconContext.Provider>
             </div>
             <MenuDiv menuOpened={menuOpened} page={page}>
                 <button onClick={() => redirectTo("/subscribedgroups")}>Subscribed Groups</button>

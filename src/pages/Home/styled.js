@@ -20,17 +20,20 @@ div{
 
 }
     h1{
-        /* font-size: 50px; */
+        margin: 1rem auto;
+        font-size: 40px;
     }
 
     img{
      height:   286px;
+     margin:1rem auto;
     }
 
 a{
 color: var(--color-primary);
     font-weight: bold;
     font-size: 30px;
+    margin-left: 1rem;
 }
 
 a:hover{
@@ -39,7 +42,8 @@ a:hover{
 }
 
  a+a{
-    /* margin-left: 1rem; */
+    margin-left :0 ;
+    margin-right: 1rem;
     
  }
 
@@ -49,7 +53,7 @@ a:hover{
      }
     img{
         /* width:; */
-        height: 420px ;
+        height: 380px ;
     } 
  }
 

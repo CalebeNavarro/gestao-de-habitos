@@ -7,7 +7,7 @@ function App() {
     <>
       <ToastContainer />
       <GlobalStyle />
-      <Routes/>
+      <Routes />
     </>
   );
 }

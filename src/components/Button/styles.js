@@ -17,7 +17,7 @@ export const Container = styled.button`
 
   @media (min-width: 768px) {
     width: ${props => props.widthDesktop + 'px'};
-    height: 110px;
+    height: 90px;
     font-size: 30px;
   }
 `;

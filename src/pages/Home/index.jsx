@@ -6,7 +6,7 @@ const Home = () => {
     return <StyledHome>
         <h1>Welcome to Life Management</h1>
        
-        <img src={logo} ></img>
+        <img src={logo} alt='Person Floating' ></img>
 
          <div>
         <Link to="/signup" >Sign  Up</Link>

@@ -1,4 +1,4 @@
-import { HeaderDiv, MenuDiv, MenuButton } from "./style";
+import { HeaderDiv, MenuDiv, MenuButton, LogoImg } from "./style";
 import Logo from "../../assets/Logo.png";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -18,7 +18,7 @@ const Header = ({page}) => {
     return (
         <HeaderDiv>
             <div>
-                <img src={Logo} alt="logo" />
+                <LogoImg src={Logo} alt="logo" onClick={() => redirectTo("/dashboard")}/>
                 <IconContext.Provider value={{ color: "6C63FF", size: "40px" }}>
                     <MenuButton onClick={() => setMenuOpened(!menuOpened)}>
                         <HiOutlineMenu />
@@ -27,7 +27,7 @@ const Header = ({page}) => {
             </div>
             <MenuDiv menuOpened={menuOpened} page={page}>
                 <button onClick={() => redirectTo("/subscribedgroups")}>Subscribed Groups</button>
-                <button onClick={() => redirectTo("/searchgroups")}>Search Groups</button>
+                <button onClick={() => redirectTo("/groups")}>Search Groups</button>
                 <button onClick={() => redirectTo("/creategroup")}>Create Group</button>
                 <button onClick={() => redirectTo("/")}>Log out</button>
             </MenuDiv>

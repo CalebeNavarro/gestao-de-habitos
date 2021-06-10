@@ -14,8 +14,9 @@ const Home = ({authenticated}) => {
 
     return <StyledHome>
         <h1>Welcome to Life Management</h1>
-       
-        <img src={logo} alt='Person Floating' ></img>
+        <figure>
+          <img src={logo} alt='Person Floating' ></img>
+        </figure>
 
          <div>
         <Link to="/signup" >Sign  Up</Link>

@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   padding: 8px 0px;
-  width: ${props => props.widthMobile + 'px'};
-  height: 40px;
-  font-size: 13px;
+  width: ${(props) => props.widthMobile + "px"};
+  height: 42px;
+  font-size: 22px;
 
   color: var(--white);
   background-color: var(--black);
-  border-radius: 15px; 
+  border-radius: 15px;
   border: 1px solid var(--black);
 
   :hover {
@@ -16,8 +16,8 @@ export const Container = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: ${props => props.widthDesktop + 'px'};
-    height: 90px;
-    font-size: 30px;
+    width: ${(props) => props.widthDesktop + "px"};
+    height: 45px;
+    font-size: 28px;
   }
 `;

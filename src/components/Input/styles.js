@@ -5,9 +5,10 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 7px;
   font-size: 1.2rem;
- 
-  label {
 
+  label {
+    font-size: 24px;
+    font-family: "PT Serif", serif;
   }
 
   span {

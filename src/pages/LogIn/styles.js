@@ -33,18 +33,18 @@ export const FormContainer = styled.form`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 
   h1 {
     text-align: center;
-    font-size: 36px;
-    margin-top: 60px;
+    font-size: 3rem;
+    margin-bottom: 2rem;
   }
   .inputs-container {
     display: flex;
     width: 100%;
     align-items: center;
     flex-direction: column;
-    margin: 50px auto 30px;
     .div-button {
       margin-top: 20px;
     }
@@ -61,7 +61,6 @@ export const FormContainer = styled.form`
     width: 50%;
 
     h1 {
-      margin-top: 200px;
       font-size: 80px;
     }
   }

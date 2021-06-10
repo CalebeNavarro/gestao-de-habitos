@@ -114,7 +114,7 @@ export const GoalsListDiv = styled.div`
     width: 80vw;
     min-height: 300px;
     max-height: 500px;
-    overflow: scroll;
+    overflow: auto;
 
     @media screen and (min-width: 768px){
         display: flex;

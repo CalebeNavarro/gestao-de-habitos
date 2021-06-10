@@ -3,14 +3,16 @@ import background from "../../assets/BackgroundPopUp.png";
 
 export const ModalDiv = styled.div`
     position: fixed;
-    top: 15%;
-    left: auto;
-    right: auto;
+    top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     width: 80%;
     height: 80%;
     padding: 2rem;
     background-color: var(--white);
-    z-index: 1;
+    z-index: 100;
 
     @media screen and (min-width: 768px){
         display: ${(props) => props.isOpened ? "flex" : "none"};
@@ -18,8 +20,8 @@ export const ModalDiv = styled.div`
         align-items: center;
         background-image: url(${background});
         background-size: 100% 100%;
-        width: 676px; 
-        height: 524px;
+        width: 75vw; 
+        height: 45vw;
     }
 `
 
@@ -32,6 +34,9 @@ export const CloseDiv = styled.div`
     width: 30px;
     height: 30px;
     font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
         cursor: pointer;

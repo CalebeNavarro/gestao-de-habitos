@@ -1,12 +1,10 @@
 import { Link, Redirect } from "react-router-dom"
 import StyledHome from "./styled"
 import logo from "../../assets/img_logo.png"
-import {AuthenticateContext, AuthenticateProvider} from "../../providers/authentication"
-import {useContext} from "react"
 
 
-const Home = () => {
-    const {authenticated} = useContext(AuthenticateContext)
+const Home = ({authenticated}) => {
+    
     
 
 

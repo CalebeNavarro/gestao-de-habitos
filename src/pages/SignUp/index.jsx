@@ -5,16 +5,12 @@ import {useForm} from "react-hook-form"
 import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import api from "../../services/api"
-import jwt_decode from "jwt-decode"
-import { useContext } from "react"
-import { UserContext } from "../../providers/user/index"
-import { useHistory, Link } from "react-router-dom"
+import { useHistory, Link, Redirect } from "react-router-dom"
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai"
 import Button from "../../components/Button"
 import {toast} from 'react-toastify'
 
-const SignUp = () => {
-    const { getUser } = useContext(UserContext)
+const SignUp = ({authenticated}) => {
     const history = useHistory()
 
     const schema = yup.object().shape({
@@ -37,6 +33,10 @@ const SignUp = () => {
             toast.success('account created')
              return history.push("/login")
         }).catch((err) => toast.error("Error creating account try another email"))
+    }
+
+    if(authenticated){
+        return <Redirect to="/dashboard"/>
     }
 
     return (

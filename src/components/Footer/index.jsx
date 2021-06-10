@@ -8,12 +8,12 @@ const Footer = ({type, img, children, button }) => {
       <Container
         display="true"
       >
-      <Text>
-        <p>
-          {children}
-        </p>
-        {button}
-      </Text>
+        <Text>
+          <p>
+            {children}
+          </p>
+          {button}
+        </Text>
     </Container>
     ) : (
       <Container

@@ -9,6 +9,7 @@ export const HeaderDiv = styled.header`
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1000;
     img {
         height: 60px;
     }
@@ -18,6 +19,7 @@ export const HeaderDiv = styled.header`
         flex-direction: row;
         justify-content: none;
         align-items: none;
+        z-index: 1;
         img {
             position: absolute;
             top: 0;

@@ -46,8 +46,9 @@ const SignUp = () => {
             <img src={SignUpInImage} alt="" />
         </div>
         <FormContainer onSubmit={handleSubmit(onSubmitFunction)}>
+        <div className="inputs-container">
             <h1>Sign Up</h1>
-            <div className="inputs-container">
+            
             <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.name?.message} icon={AiOutlineUser}></Input>
 
             <Input register={register} type="email" name='email' label="Email"  placeholder="Your best email" error={errors.email?.message} icon={AiOutlineUser}></Input>
@@ -59,9 +60,10 @@ const SignUp = () => {
             
             <div className="div-button">
             <Button>Sign Up</Button>
-            </div>
+            
         </div>
-        <p>Already have an account? <Link to="/signup">Log In</Link></p>
+        <p>Already have an account? <Link to="/login">Log In</Link></p>
+        </div>
         </FormContainer>
         </SignUpInContainer>
         

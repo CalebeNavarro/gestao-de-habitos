@@ -106,11 +106,15 @@ export const GoalsNameDiv = styled.div`
 export const GoalsListDiv = styled.div`
     display: ${(props) => props.goalsDivOpened ? "flex" : "none" };
     flex-direction: column;
+    align-items: center;
     background-color: var(--white);
     border: 2px solid black;
     border-top: none;
+    max-width: 700px;
     width: 80vw;
     min-height: 300px;
+    max-height: 500px;
+    overflow: scroll;
 
     @media screen and (min-width: 768px){
         display: flex;
@@ -118,7 +122,6 @@ export const GoalsListDiv = styled.div`
         max-width: 700px;
         width: 43vw;
         height: 50vh;
-        align-items: center;
     }
 `
 

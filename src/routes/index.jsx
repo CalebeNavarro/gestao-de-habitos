@@ -27,13 +27,13 @@ const Routes = () => {
       <Route path="/subscribedgroups">
         <SubscribedGroups />
       </Route>
-      <Route path="/searchgroups">
-        <SearchGroups />
-      </Route>
       <Route path="/creategroup">
         <CreateGroup />
       </Route>
-      <Route path="/specificgroup">
+      <Route path="/groups">
+        <SearchGroups />
+      </Route>
+      <Route path="/groups/:id">
         <SpecificGroup />
       </Route>
       <Route>

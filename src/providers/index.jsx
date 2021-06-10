@@ -1,5 +1,6 @@
 import { UserProvider } from "./user"
 import { SubGroupsProvider } from './SubGroups'
+import { GroupsProvider } from './Groups';
 import { AuthenticateProvider } from './authentication'
 
 const Providers = ({children}) => {
@@ -7,7 +8,9 @@ const Providers = ({children}) => {
         <AuthenticateProvider>
         <SubGroupsProvider>
         <UserProvider>
+        <GroupsProvider>
             {children}
+        </GroupsProvider>
         </UserProvider>
         </SubGroupsProvider>
         </AuthenticateProvider>

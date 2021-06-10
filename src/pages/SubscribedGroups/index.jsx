@@ -18,8 +18,7 @@ const SubscribedGroups = () => {
     if(id !== -1) {
         return <Redirect
         to={{
-          pathname: "/login",
-        //   search: "?utm=your+face",
+          pathname: `/groups/${id}`,
           state: { referrer: "/subscribedgroups" },
           id: id
         }}

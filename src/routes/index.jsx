@@ -8,36 +8,47 @@ import SearchGroups from "../pages/SearchGroups";
 import CreateGroup from "../pages/CreateGroup";
 import SpecificGroup from "../pages/SpecificGroup";
 import NotFound from "../pages/NotFound";
+import { useState, useEffect } from "react"
 
 const Routes = () => {
+
+  const [authenticated, setAuthenticated] = useState(false)
+
+  useEffect(()=>{
+    const token = JSON.parse(localStorage.getItem("@habits:token"))
+    if (token) {
+      return setAuthenticated(true)
+    }
+  },[authenticated])
+
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home authenticated={authenticated}/>
       </Route>
       <Route path="/signup">
-        <SignUp />
+        <SignUp authenticated={authenticated}/>
       </Route>
       <Route path="/login">
-        <LogIn />
+        <LogIn authenticated={authenticated} setAuthenticated={setAuthenticated}/>
       </Route>
       <Route path="/dashboard">
-        <Dashboard />
+        <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated}/>
       </Route>
       <Route path="/subscribedgroups">
-        <SubscribedGroups />
+        <SubscribedGroups authenticated={authenticated}/>
       </Route>
       <Route path="/creategroup">
-        <CreateGroup />
+        <CreateGroup authenticated={authenticated}/>
       </Route>
       <Route exact path="/groups">
-        <SearchGroups />
+        <SearchGroups authenticated={authenticated}/>
       </Route>
       <Route path="/groups/:id">
-        <SpecificGroup />
+        <SpecificGroup authenticated={authenticated}/>
       </Route>
       <Route>
-        <NotFound />
+        <NotFound/>
       </Route>
     </Switch>
   );

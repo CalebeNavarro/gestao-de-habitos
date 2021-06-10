@@ -8,16 +8,17 @@ import api from "../../services/api"
 import jwt_decode from "jwt-decode"
 import { useContext } from "react"
 import { UserContext } from "../../providers/user/index"
-import { useHistory, Link } from "react-router-dom"
+import { useHistory, Link, Redirect } from "react-router-dom"
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai"
 import Button from "../../components/Button"
 import {toast} from 'react-toastify'
 
 
 
-const LogIn = () => {
+const LogIn = ({authenticated, setAuthenticated}) => {
 
     const { getUser } = useContext(UserContext)
+    
     const history = useHistory()
 
     const schema = yup.object().shape({
@@ -38,9 +39,14 @@ const LogIn = () => {
             const userId = decoded.user_id
              getUser(token, userId)
              localStorage.setItem("@habits:token", JSON.stringify(token))
+             setAuthenticated(true)
              return history.push("/dashboard")
         }).catch((err) => toast.error("Email ou senha inválidos"))
     }
+
+    if(authenticated){
+        return <Redirect to="/dashboard"/>
+      }
 
     return (
     <>

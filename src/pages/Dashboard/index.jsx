@@ -11,11 +11,20 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import image from "../../assets/undraw_To_do_re_jaef.png";
 import { AiOutlineToTop } from "react-icons/ai";
+import {useContext} from "react"
+import { Redirect } from "react-router";
 
-const Dashboard = () => {
+const Dashboard = ({authenticated,setAuthenticated}) => {
+
+  
+
+  if(!authenticated){
+    return <Redirect to="/"/>
+  }
+
   return (
     <>
-      <Header />
+      <Header setAuthenticated={setAuthenticated}/>
       <Container>
         <Welcome>
           <h1>Welcome, username</h1>

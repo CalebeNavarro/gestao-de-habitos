@@ -25,6 +25,14 @@ export const HeaderDiv = styled.header`
         }
     }
 `
+
+export const LogoImg = styled.img`
+    
+    @media screen and (min-width: 768px) {
+        cursor: pointer;
+    }
+`
+
 export const MenuDiv = styled.div`
     display: ${(props) => props.menuOpened ? "flex" : "none"};
     flex-direction: column;

@@ -1,13 +1,12 @@
 import { Container, ContainerInput } from './styles';
 
-export default function Input({ error = "", register, name, label, icon : Icon , ...rest }) {
-  
+const Input = ({ error = "", register, name, label, icon: Icon, ...rest }) => {
   return (
     <Container>
       <label>{label}</label>
 
       <ContainerInput>
-        <Icon />
+        {Icon && <Icon size={25}/>}
         <input 
           {...register(name)}
           {...rest}
@@ -18,3 +17,4 @@ export default function Input({ error = "", register, name, label, icon : Icon ,
     </Container> 
   )
 }
+export default Input

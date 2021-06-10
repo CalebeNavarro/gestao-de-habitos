@@ -22,18 +22,18 @@ export const Container = styled.div`
 
 export const ContainerInput = styled.div`
   padding: 10px;
-  background-color: var(--secondary);
+  background-color: var(--background-gray);
   border: 1px solid var(--black);
   border-radius: 12px;
   box-shadow: 1px 1px var(--black);
 
   input {
-    background-color: var(--secondary);
+    background-color: var(--background-gray);
     border: none;
     font-size: 1.2rem;
 
     ::placeholder {
-      color: var(--primary);
+      color: var(--color-placeholder);
     }
   }
 

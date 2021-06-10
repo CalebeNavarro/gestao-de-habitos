@@ -49,7 +49,7 @@ const LogIn = () => {
         <div className="inputs-container">
             <h1>Log In</h1>
             
-            <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.name?.message} icon={AiOutlineUser}></Input>
+            <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.username?.message} icon={AiOutlineUser}></Input>
         
             <Input register={register} type="password" name='password' label="Password"  placeholder="Safe password" error={errors.password?.message} icon={AiOutlineLock}></Input>
             <div className="div-button">

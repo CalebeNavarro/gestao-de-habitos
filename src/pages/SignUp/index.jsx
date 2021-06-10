@@ -49,7 +49,7 @@ const SignUp = () => {
         <div className="inputs-container">
             <h1>Sign Up</h1>
             
-            <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.name?.message} icon={AiOutlineUser}></Input>
+            <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.username?.message} icon={AiOutlineUser}></Input>
 
             <Input register={register} type="email" name='email' label="Email"  placeholder="Your best email" error={errors.email?.message} icon={AiOutlineUser}></Input>
 

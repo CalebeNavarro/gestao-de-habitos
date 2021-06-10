@@ -1,6 +1,11 @@
+import { SubGroupsProvider } from './SubGroups'
+
 const Providers = ({children}) => {
-    return (
-        <>{children}</>
+    return (<>
+        <SubGroupsProvider>
+            {children}
+        </SubGroupsProvider>
+    </>
     )
 }
 

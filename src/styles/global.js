@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
         --background-gray: #E5E5E5;
         --white: #f5f5f5;
         --black: #0C0D0B;
+        --color-placeholder:#4e5555;
         --font-home: "Baloo Tamma 2", "cursive";
     }
 
@@ -40,6 +41,6 @@ const GlobalStyle = createGlobalStyle`
         cursor: pointer;
         border: none;
     }
-`
+`;
 
 export default GlobalStyle;

@@ -37,6 +37,7 @@ const LogIn = () => {
             const decoded = jwt_decode(token)
             const userId = decoded.user_id
              getUser(token, userId)
+             localStorage.setItem("@habits:token", JSON.stringify(token))
              return history.push("/dashboard")
         }).catch((err) => toast.error("Email ou senha inválidos"))
     }
@@ -47,9 +48,9 @@ const LogIn = () => {
         <FormContainer onSubmit={handleSubmit(onSubmitFunction)}>
             <h1>Log In</h1>
             <div className="inputs-container">
-            <Input register={register} name='username' label="Name"  placeholder="Username" error={errors.name?.message} icon={AiOutlineUser}></Input>
+            <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.name?.message} icon={AiOutlineUser}></Input>
         
-            <Input register={register} name='password' label="Password"  placeholder="Safe password" error={errors.password?.message} icon={AiOutlineLock}></Input>
+            <Input register={register} type="password" name='password' label="Password"  placeholder="Safe password" error={errors.password?.message} icon={AiOutlineLock}></Input>
             <div className="div-button">
             <Button>Log In</Button>
             </div>

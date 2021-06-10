@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderDiv = styled.div`
+export const HeaderDiv = styled.header`
     background-color: var(--color-primary);
     display: flex;
     flex-direction: column;
@@ -18,7 +18,6 @@ export const HeaderDiv = styled.div`
         flex-direction: row;
         justify-content: none;
         align-items: none;
-        padding-left: 320px;
         img {
             position: absolute;
             top: 0;
@@ -43,9 +42,10 @@ export const MenuDiv = styled.div`
     @media screen and (min-width: 768px) {
         display: flex;
         flex-direction: row;
+        justify-content: center;
 
         & :first-child {
-            width: 320px;
+            width: 17%;
             background-color: ${(props) => {
                 if(props.page === "subscribedgroups"){
                     return "var(--white)"
@@ -91,13 +91,16 @@ export const MenuDiv = styled.div`
         }
 
         & :last-child {
+            position: absolute;
+            top: 0;
+            right: 0;
             margin-left: 140px;
             width: 180px;
         }
 
         button {
             border-top: none;
-            width: 270px;
+            width: 15%;
             font-size: 24px;
             height: 60px;
         }

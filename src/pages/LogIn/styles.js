@@ -48,6 +48,9 @@ export const FormContainer = styled.form`
     .div-button {
       margin-top: 20px;
     }
+    span {
+      color: red;
+    }
   }
 
   p {

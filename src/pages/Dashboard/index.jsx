@@ -10,6 +10,7 @@ import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import image from "../../assets/undraw_To_do_re_jaef.png";
+import { AiOutlineToTop } from "react-icons/ai";
 
 const Dashboard = () => {
   return (
@@ -26,7 +27,9 @@ const Dashboard = () => {
             </p>
             <Button>Create habit</Button>
             <Top>
-              <a href="#top">^</a>
+              <a href="#top">
+                <AiOutlineToTop />
+              </a>
             </Top>
           </DesktopNone>
         </Welcome>

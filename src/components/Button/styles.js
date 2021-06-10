@@ -20,4 +20,8 @@ export const Container = styled.button`
     height: 45px;
     font-size: 28px;
   }
+
+  @media (max-width: 350px) {
+    width: 200px;
+  }
 `;

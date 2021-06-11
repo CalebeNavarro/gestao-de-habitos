@@ -156,6 +156,10 @@ export const SpaceDiv = styled.div`
 `
 export const ModalDiv = styled.div`
     font-size: 24px;
+
+    h3 {
+        margin-bottom: 50px;    
+    }
    @media screen and (min-width: 768px){
        font-size:36px;
    }

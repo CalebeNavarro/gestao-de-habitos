@@ -11,14 +11,30 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import image from "../../assets/undraw_To_do_re_jaef.png";
 import { AiOutlineToTop } from "react-icons/ai";
-import {useContext} from "react"
 import { Redirect } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import api from '../../services/api';
 import { AuthenticateContext } from "../../providers/Authenticate";
 
 const Dashboard = () => {
-
+  const [ habits, setHabits ] = useState([]);
   const {authenticated} = useContext(AuthenticateContext)
-
+  
+  useEffect(() => {
+    teste()
+  }, [])
+  
+  const teste = () => {
+    const token = JSON.parse(localStorage.getItem("@habits:token"))
+    api.get("/habits/personal/", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+     .then(response => setHabits(response.data))
+     .catch(err => console.log(err))
+  }
+  
   if(!authenticated){
     return <Redirect to="/"/>
   }
@@ -45,17 +61,13 @@ const Dashboard = () => {
         </Welcome>
 
         <HabitCards>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
-          <CardHabit></CardHabit>
+          {habits.map(habit =>
+            <CardHabit key={habit.id} 
+              habit={habit}
+            />
+          )}
         </HabitCards>
+
         <Footer button={<Button>Create Habit</Button>} img={image}>
           Sua saúdo é importa, siga seus habitos frequen temente, seja paciente
           e tente criar habitos semanais, então crie seu hábito somente para

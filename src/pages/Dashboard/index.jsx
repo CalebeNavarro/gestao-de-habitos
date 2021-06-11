@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
       <Container>
         <Welcome>
           <h1>Welcome, username</h1>

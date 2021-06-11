@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const LogInContainer = styled.div`
   display: flex;
@@ -27,6 +27,16 @@ export const LogInContainer = styled.div`
     }
   }
 `;
+const appearFromLeft = keyframes`
+from{
+  opacity: 0;
+  transform: translateX(-50px);
+}
+to {
+  opacity: 1;
+  transform: translateX(0px);
+}
+`;
 
 export const FormContainer = styled.form`
   width: 100vw;
@@ -34,6 +44,7 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: ${appearFromLeft} 1s;
 
   h1 {
     text-align: center;

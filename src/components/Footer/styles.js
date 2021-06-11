@@ -4,6 +4,9 @@ export const Container = styled.div`
   display: ${props => props.display === "false"? 'none' : 'block'};
   width: 90%;
   margin: 20px auto;
+  position: ${props => props.fixDiv ? 'absolute' : 'static'};
+  bottom: 0px;
+
 
   @media (min-width: 768px) {
     display: ${props => props.display === "true" ? 'none' : 'flex'};

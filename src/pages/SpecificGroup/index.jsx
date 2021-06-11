@@ -28,10 +28,7 @@ import CardGoal from "../../components/CardGoal";
 import CardActivitie from "../../components/CardActivitie";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivityForm from "../../components/CreateActivityForm";
-<<<<<<< HEAD
-=======
 import { AuthenticateContext } from "../../providers/Authenticate";
->>>>>>> 43583a42e5eaa1acd9af5760607e3cd4d2ee9f60
 
 const SpecificGroup = () => {
 

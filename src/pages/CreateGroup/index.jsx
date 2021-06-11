@@ -55,7 +55,7 @@ const CreateGroup = () => {
     return (
        
          <Container> 
-        <Header/>
+        <Header page="creategroup" />
 
         <h1>Create new group</h1>
         <StyledForm onSubmit={handleSubmit(onSubmitFunction)} >

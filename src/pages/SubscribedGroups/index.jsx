@@ -27,7 +27,7 @@ const SubscribedGroups = () => {
 
     return (
         <Container>
-            <Header />
+            <Header page="subscribedgroups"/>
 
 
             <h2>Subscribed Groups</h2>

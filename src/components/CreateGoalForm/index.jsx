@@ -47,7 +47,7 @@ const CreateGoalForm = ({id}) => {
         <GoalForm onSubmit={handleSubmit(submitForm)}>
             <Input 
                 register={register}  
-                title="title" 
+                name="title" 
                 label="Title"  
                 placeholder="Title"  
                 error={errors.title?.message}

@@ -1,10 +1,11 @@
+
 import {
   Container,
   HabitCards,
   Welcome,
   DesktopNone,
   Top,
-} from "../Dashboard/styles";
+} from "../Dashboard/styles";  
 import CardHabit from "../../components/CardHabit";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
@@ -16,9 +17,42 @@ import { useContext, useEffect, useState } from "react";
 import api from '../../services/api';
 import { AuthenticateContext } from "../../providers/Authenticate";
 
+import Modal from "../../components/Modal"
+
+
 const Dashboard = () => {
   const [ habits, setHabits ] = useState([]);
   const {authenticated} = useContext(AuthenticateContext)
+ //=== 
+  const [goalsDivOpened, setGoalsDivOpened] = useState(false);
+  const [habitDivOpened, setHabitDivOpened] = useState(false);
+  const [isOpened, setIsOpened] = useState(true);
+  const [goalsModalOpened, setGoalsModalOpened] = useState(false);
+  const [habitModalOpened, setHabitModalOpened] = useState(false);
+
+  const [groupInfo, setGroupInfo] = useState([]);
+
+    useEffect(() => {
+        if (goalsModalOpened === true){
+            setIsOpened(true);
+        } else if (habitModalOpened === true) {
+            setIsOpened(true);
+        };
+        if(isOpened === false){
+            setGoalsModalOpened(false);
+            setHabitModalOpened(false);
+        }
+
+    }, [goalsModalOpened,habitModalOpened,isOpened]);
+
+    // useEffect(() => {
+    //     api.get(`/groups/${id}/`)
+    //     .then((group) => setGroupInfo(group.data))
+    // }, [id])
+
+    const { goals, habit } = groupInfo;
+//===
+
   
   useEffect(() => {
     teste()
@@ -51,7 +85,10 @@ const Dashboard = () => {
               paciente e tente criar habitos semanais, então crie seu hábito
               somente para você.
             </p>
-            <Button>Create habit</Button>
+            <Button 
+            func={() => setHabitModalOpened(true)}>
+              Create habit
+              </Button>
             <Top>
               <a href="#top">
                 <AiOutlineToTop />
@@ -68,7 +105,15 @@ const Dashboard = () => {
           )}
         </HabitCards>
 
-        <Footer button={<Button>Create Habit</Button>} img={image}>
+        {habitModalOpened && 
+          <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
+           
+            <h3>Create new habit</h3>
+          
+          </Modal> 
+        }
+
+        <Footer button={<Button func={() => setHabitModalOpened(true)}>Create Habit</Button>} img={image}>
           Sua saúdo é importa, siga seus habitos frequen temente, seja paciente
           e tente criar habitos semanais, então crie seu hábito somente para
           você.

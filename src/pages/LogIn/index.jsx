@@ -12,12 +12,14 @@ import { useHistory, Link, Redirect } from "react-router-dom"
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai"
 import Button from "../../components/Button"
 import {toast} from 'react-toastify'
+import { AuthenticateContext } from "../../providers/Authenticate"
 
 
 
-const LogIn = ({authenticated, setAuthenticated}) => {
+const LogIn = () => {
 
     const { getUser } = useContext(UserContext)
+    const { authenticated, setAuthenticated } = useContext(AuthenticateContext)
     
     const history = useHistory()
 

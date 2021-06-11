@@ -13,10 +13,11 @@ import image from "../../assets/undraw_To_do_re_jaef.png";
 import { AiOutlineToTop } from "react-icons/ai";
 import {useContext} from "react"
 import { Redirect } from "react-router";
+import { AuthenticateContext } from "../../providers/Authenticate";
 
-const Dashboard = ({authenticated,setAuthenticated}) => {
+const Dashboard = () => {
 
-  
+  const {authenticated} = useContext(AuthenticateContext)
 
   if(!authenticated){
     return <Redirect to="/"/>
@@ -24,7 +25,7 @@ const Dashboard = ({authenticated,setAuthenticated}) => {
 
   return (
     <>
-      <Header setAuthenticated={setAuthenticated}/>
+      <Header/>
       <Container>
         <Welcome>
           <h1>Welcome, username</h1>

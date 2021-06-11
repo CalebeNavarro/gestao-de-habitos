@@ -9,9 +9,13 @@ import { useHistory, Link, Redirect } from "react-router-dom"
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai"
 import Button from "../../components/Button"
 import {toast} from 'react-toastify'
+import { useContext } from "react"
+import { AuthenticateContext } from "../../providers/Authenticate"
 
-const SignUp = ({authenticated}) => {
+const SignUp = () => {
     const history = useHistory()
+
+    const {authenticated} = useContext(AuthenticateContext)
 
     const schema = yup.object().shape({
         username: yup.string().required('Required field!'),

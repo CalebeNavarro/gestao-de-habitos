@@ -4,13 +4,14 @@ import { useState, useContext } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IconContext } from "react-icons";
+import { AuthenticateContext } from "../../providers/Authenticate";
 
 
-const Header = ({page, setAuthenticated}) => {
+const Header = ({page}) => {
 
     const [menuOpened, setMenuOpened] = useState(false);
 
-    
+    const {authenticated, setAuthenticated} = useContext(AuthenticateContext)
 
     const history = useHistory();
 
@@ -21,6 +22,9 @@ const Header = ({page, setAuthenticated}) => {
     const logOut = () => {
         localStorage.clear()
         setAuthenticated(false)
+    }
+
+    if(!authenticated){
         return <Redirect to="/"/>
     }
 

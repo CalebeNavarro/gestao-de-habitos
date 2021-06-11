@@ -12,40 +12,31 @@ import { useState, useEffect } from "react"
 
 const Routes = () => {
 
-  const [authenticated, setAuthenticated] = useState(false)
-
-  useEffect(()=>{
-    const token = JSON.parse(localStorage.getItem("@habits:token"))
-    if (token) {
-      return setAuthenticated(true)
-    }
-  },[authenticated])
-
   return (
     <Switch>
       <Route exact path="/">
-        <Home authenticated={authenticated}/>
+        <Home/>
       </Route>
       <Route path="/signup">
-        <SignUp authenticated={authenticated}/>
+        <SignUp/>
       </Route>
       <Route path="/login">
-        <LogIn authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+        <LogIn/>
       </Route>
       <Route path="/dashboard">
-        <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+        <Dashboard/>
       </Route>
       <Route path="/subscribedgroups">
-        <SubscribedGroups authenticated={authenticated}/>
+        <SubscribedGroups/>
       </Route>
       <Route path="/creategroup">
-        <CreateGroup authenticated={authenticated}/>
+        <CreateGroup/>
       </Route>
       <Route exact path="/groups">
-        <SearchGroups authenticated={authenticated}/>
+        <SearchGroups/>
       </Route>
       <Route path="/groups/:id">
-        <SpecificGroup authenticated={authenticated}/>
+        <SpecificGroup/>
       </Route>
       <Route>
         <NotFound/>

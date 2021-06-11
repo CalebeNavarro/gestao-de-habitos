@@ -14,6 +14,7 @@ const Providers = ({children}) => {
         </UserProvider>
         </SubGroupsProvider>
         </AuthenticateProvider>
+        
 )
 }
 

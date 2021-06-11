@@ -8,7 +8,6 @@ import SearchGroups from "../pages/SearchGroups";
 import CreateGroup from "../pages/CreateGroup";
 import SpecificGroup from "../pages/SpecificGroup";
 import NotFound from "../pages/NotFound";
-import { useState, useEffect } from "react"
 
 const Routes = () => {
 

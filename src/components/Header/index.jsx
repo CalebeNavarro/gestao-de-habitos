@@ -7,6 +7,7 @@ import { IconContext } from "react-icons";
 import { AuthenticateContext } from "../../providers/Authenticate";
 
 
+
 const Header = ({page}) => {
 
     const [menuOpened, setMenuOpened] = useState(false);

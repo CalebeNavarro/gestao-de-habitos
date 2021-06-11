@@ -27,6 +27,7 @@ import api from "../../services/api";
 import CardGoal from "../../components/CardGoal";
 import CardActivitie from "../../components/CardActivitie";
 import CreateGoalForm from "../../components/CreateGoalForm";
+import CreateActivityForm from "../../components/CreateActivityForm";
 
 const SpecificGroup = () => {
 
@@ -120,7 +121,8 @@ const SpecificGroup = () => {
                     }
                     {activitiesModalOpened 
                     &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
-                            <form>activities</form>
+                            <h3>Create new Activitie</h3>
+                            <CreateActivityForm id={id} />
                         </Modal>
                     }
                 </ModalDiv>

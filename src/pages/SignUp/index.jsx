@@ -28,8 +28,6 @@ const SignUp = () => {
         resolver: yupResolver(schema)
     })
 
-
-
     const onSubmitFunction = ({username, email, password}) =>{
         const user = {username, email,  password}
         

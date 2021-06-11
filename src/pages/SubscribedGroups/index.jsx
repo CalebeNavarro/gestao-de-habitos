@@ -63,6 +63,7 @@ const SubscribedGroups = () => {
 
             <Footer 
                 img={Img}
+                fixDiv={true}
             >
                 Os grupos sao importantes na inserção no convívio social e auxiliara voce a ver atividades e metas em comum.
             </Footer>

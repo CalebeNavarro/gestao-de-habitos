@@ -11,6 +11,12 @@ export const Container = styled.div`
     margin-top: 82px;
     margin-bottom: 20px;
   }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 50px;
+    }
+  }
 `;
 
 

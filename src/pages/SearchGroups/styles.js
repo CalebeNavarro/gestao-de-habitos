@@ -8,6 +8,12 @@ export const Container = styled.div`
     text-align: center;
     margin-bottom: 15px;
   }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: 50px;
+    }
+  }
 `;
 
 export const ContainerCards = styled.div`

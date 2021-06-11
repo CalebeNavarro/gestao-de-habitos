@@ -38,7 +38,10 @@ const CreateActivityForm = ({id}) => {
             // setCreated(true)
             // setIsOpened(false)
         })
-        .catch(error => setError(true))
+        .catch(error => {
+            setError(true)
+            console.log(error)
+        })
     }
 
     return (
@@ -60,8 +63,8 @@ const CreateActivityForm = ({id}) => {
                 icon={AiOutlineFieldTime}
             />
             <Button type="submit"> Create activitie</Button>
-            {/* {error && <p>Error creating this goal</p>}
-            {created && <p>Goal created</p>} */}
+            {error && <p>Error creating this goal</p>}
+            {/* {created && <p>Goal created</p>} */}
         </ActivityForm>
     )
 }

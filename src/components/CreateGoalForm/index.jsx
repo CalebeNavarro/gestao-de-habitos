@@ -11,7 +11,7 @@ import { AiFillControl, AiFillSchedule } from "react-icons/ai";
 
 const CreateGoalForm = ({id}) => {
 
-    const [token, setToken]=useState(
+    const [token]=useState(
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
     )
 
@@ -40,7 +40,10 @@ const CreateGoalForm = ({id}) => {
             // setCreated(true)
             // setIsOpened(false)
         })
-        .catch(error => setError(true))
+        .catch(error => {
+            setError(true)
+            console.log(error)
+        })
     }
 
     return (
@@ -70,8 +73,8 @@ const CreateGoalForm = ({id}) => {
                 icon={AiFillSchedule}
             />
             <Button type="submit"> Create goal</Button>
-            {/* {error && <p>Error creating this goal</p>}
-            {created && <p>Goal created</p>} */}
+            {error && <p>Error creating this goal</p>}
+            {/* {created && <p>Goal created</p>} */}
         </GoalForm>
     )
 }

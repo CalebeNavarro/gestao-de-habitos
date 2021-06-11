@@ -12,9 +12,6 @@ const Header = ({page}) => {
 
     const [menuOpened, setMenuOpened] = useState(false);
 
-    const {authenticated, setAuthenticated} = useContext(AuthenticateContext)
-
-
     const history = useHistory();
 
     const redirectTo = (link) => {
@@ -23,11 +20,8 @@ const Header = ({page}) => {
 
     const logOut = () => {
         localStorage.clear()
-        setAuthenticated(false)
+        return <Redirect to="/" />
     }
-   
-
-    
 
     return (
         <HeaderDiv>

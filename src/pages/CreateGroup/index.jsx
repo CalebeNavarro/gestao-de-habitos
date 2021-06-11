@@ -18,9 +18,9 @@ import { useContext, useState } from "react"
 import { AuthenticateContext } from "../../providers/Authenticate"
 
 const CreateGroup = () => {
-    const {authenticated} = useContext(AuthenticateContext)
+    const {isLoged} = useContext(AuthenticateContext)
 
-    const [token, setToken]=useState(
+    const [token]=useState(
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
     )
 
@@ -53,8 +53,9 @@ const CreateGroup = () => {
             toast.error("Erro ao criar o grupo! ")
         })
     }
-    if(!authenticated){
-        return <Redirect to="/"/>
+
+    if (isLoged() === false){
+        return <Redirect to="/"/>;
       }
 
     return (

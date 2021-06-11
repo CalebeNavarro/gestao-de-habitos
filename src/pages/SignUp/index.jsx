@@ -15,7 +15,7 @@ import { AuthenticateContext } from "../../providers/Authenticate"
 const SignUp = () => {
     const history = useHistory()
 
-    const {authenticated} = useContext(AuthenticateContext)
+    const {isLoged} = useContext(AuthenticateContext);
 
     const schema = yup.object().shape({
         username: yup.string().required('Required field!'),
@@ -37,7 +37,7 @@ const SignUp = () => {
         }).catch((err) => toast.error("Error creating account try another email"))
     }
 
-    if(authenticated){
+    if(isLoged() === true){
         return <Redirect to="/dashboard"/>
     }
 

@@ -22,8 +22,8 @@ import Modal from "../../components/Modal"
 
 const Dashboard = () => {
   const [ habits, setHabits ] = useState([]);
-  const {authenticated} = useContext(AuthenticateContext)
- //=== 
+  const {isLoged} = useContext(AuthenticateContext)
+
   const [goalsDivOpened, setGoalsDivOpened] = useState(false);
   const [habitDivOpened, setHabitDivOpened] = useState(false);
   const [isOpened, setIsOpened] = useState(true);
@@ -68,9 +68,9 @@ const Dashboard = () => {
      .then(response => setHabits(response.data))
      .catch(err => console.log(err))
   }
-  
-  if(!authenticated){
-    return <Redirect to="/"/>
+
+  if (isLoged() === false){
+    return <Redirect to="/"/>;
   }
 
   return (

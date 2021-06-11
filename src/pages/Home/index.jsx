@@ -7,12 +7,11 @@ import { AuthenticateContext } from "../../providers/Authenticate"
 
 const Home = () => {
     
-    const {authenticated} = useContext(AuthenticateContext)
+    const {isLoged} = useContext(AuthenticateContext)
 
-
-  if(authenticated){
-    return <Redirect to="/dashboard"/>
-  }
+    if(isLoged() === true){
+      return <Redirect to="/dashboard"/>
+    }
 
     return <StyledHome>
         <h1>Welcome to Life Management</h1>

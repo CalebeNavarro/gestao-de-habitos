@@ -14,7 +14,7 @@ const SubscribedGroups = () => {
     const [ id, setId ] = useState(-1);
     const [ groups, setGroups ] = useState([]);
 
-    const {authenticated} = useContext(AuthenticateContext)
+    const {isLoged} = useContext(AuthenticateContext)
     
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("@habits:token")) || ''
@@ -43,9 +43,9 @@ const SubscribedGroups = () => {
         /> 
     }
 
-    if(!authenticated){
-        return <Redirect to="/"/>
-      }
+    if (isLoged() === false){
+        return <Redirect to="/"/>;
+    }
 
     return (
         <Container>

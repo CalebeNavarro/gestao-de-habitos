@@ -11,9 +11,11 @@ import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
 
 const SearchGroups = () => {
-  const {authenticated} = useContext(AuthenticateContext)
+
+  const {isLoged} = useContext(AuthenticateContext)
+
   const { groups, handleNext, handlePrev } = useGroups();
-  const [id, setId] = useState(-1);
+  const [ id, setId ] = useState(-1);
 
   const handleCard = (id) => {
     setId(id);
@@ -32,8 +34,8 @@ const SearchGroups = () => {
     );
   }
 
-  if(!authenticated){
-    return <Redirect to="/"/>
+  if (isLoged() === false){
+    return <Redirect to="/"/>;
   }
 
   return (

@@ -19,7 +19,7 @@ import { AuthenticateContext } from "../../providers/Authenticate"
 const LogIn = () => {
 
     const { getUser } = useContext(UserContext)
-    const { authenticated, setAuthenticated } = useContext(AuthenticateContext)
+    const {isLoged} = useContext(AuthenticateContext)
     
     const history = useHistory()
 
@@ -32,8 +32,6 @@ const LogIn = () => {
         resolver: yupResolver(schema)
     })
 
-
-
     const onSubmitFunction = data =>{
         api.post("/sessions/", data).then((response) => {
             const token = response.data.access
@@ -41,14 +39,13 @@ const LogIn = () => {
             const userId = decoded.user_id
              getUser(token, userId)
              localStorage.setItem("@habits:token", JSON.stringify(token))
-             setAuthenticated(true)
              return history.push("/dashboard")
         }).catch((err) => toast.error("Email ou senha inválidos"))
     }
 
-    if(authenticated){
+    if(isLoged() === true){
         return <Redirect to="/dashboard"/>
-      }
+    }
 
     return (
     <>

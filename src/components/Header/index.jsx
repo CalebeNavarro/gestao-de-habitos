@@ -14,6 +14,7 @@ const Header = ({page}) => {
 
     const {authenticated, setAuthenticated} = useContext(AuthenticateContext)
 
+
     const history = useHistory();
 
     const redirectTo = (link) => {
@@ -24,10 +25,9 @@ const Header = ({page}) => {
         localStorage.clear()
         setAuthenticated(false)
     }
+   
 
-    if(!authenticated){
-        return <Redirect to="/"/>
-    }
+    
 
     return (
         <HeaderDiv>

@@ -6,10 +6,12 @@ import CardGroup from "../../components/CardGroup";
 import Img from "../../assets/undraw_Account_re_o7id.png";
 import Footer from "../../components/Footer";
 import Button from "../../components/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Redirect } from "react-router";
+import { AuthenticateContext } from "../../providers/Authenticate";
 
 const SearchGroups = () => {
+  const {authenticated} = useContext(AuthenticateContext)
   const { groups, handleNext, handlePrev } = useGroups();
   const [id, setId] = useState(-1);
 
@@ -28,6 +30,10 @@ const SearchGroups = () => {
         }}
       />
     );
+  }
+
+  if(!authenticated){
+    return <Redirect to="/"/>
   }
 
   return (

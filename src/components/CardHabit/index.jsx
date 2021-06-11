@@ -1,13 +1,13 @@
 import { HabitCard } from "../CardHabit/styles";
 
-const CardHabit = () => {
+const CardHabit = ({ habit }) => {
   return (
     <HabitCard>
-      <label>Title: </label>
-      <label>Category: </label>
-      <label>Difficulty: </label>
-      <label>Frequency: </label>
-      <label>How much achieved: </label>
+      <label>Title: {habit.title}</label>
+      <label>Category: {habit.caregory}</label>
+      <label>Difficulty: {habit.difficulty}</label>
+      <label>Frequency: {habit.frequency}</label>
+      <label>How much achieved: {habit.how_much_achieved}</label>
     </HabitCard>
   );
 };

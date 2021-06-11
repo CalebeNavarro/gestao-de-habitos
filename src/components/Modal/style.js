@@ -13,6 +13,11 @@ export const ModalDiv = styled.div`
     padding: 2rem;
     background-color: var(--white);
     z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    font-size: 24px;
 
     @media screen and (min-width: 768px){
         display: ${(props) => props.isOpened ? "flex" : "none"};

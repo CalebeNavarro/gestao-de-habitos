@@ -8,7 +8,6 @@ export const Container = styled.div`
     text-align: center;
     margin-bottom: 15px;
   }
-
 `;
 
 export const ContainerCards = styled.div`
@@ -16,6 +15,11 @@ export const ContainerCards = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
+
+  @media (min-width: 768px) {
+    height: 200px;
+    overflow-y: scroll;
+  }
 `;
 
 export const Buttons = styled.div`

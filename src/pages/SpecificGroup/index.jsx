@@ -26,11 +26,12 @@ import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import CardGoal from "../../components/CardGoal";
 import CardActivitie from "../../components/CardActivitie";
+import CreateGoalForm from "../../components/CreateGoalForm";
 
 const SpecificGroup = () => {
 
     const { id } = useParams()
-    
+    console.log(id);
     const [goalsDivOpened, setGoalsDivOpened] = useState(false);
     const [activitiesDivOpened, setActivitiesDivOpened] = useState(false);
     const [isOpened, setIsOpened] = useState(true);
@@ -55,7 +56,7 @@ const SpecificGroup = () => {
     useEffect(() => {
         api.get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
-    }, [])
+    }, [id])
 
     const { goals, activities } = groupInfo;
 
@@ -113,7 +114,8 @@ const SpecificGroup = () => {
                 <ModalDiv>
                     {goalsModalOpened 
                     &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
-                            <form>goals</form>
+                            <h3>Create new Goal</h3>
+                            <CreateGoalForm id={id}/>
                         </Modal>
                     }
                     {activitiesModalOpened 

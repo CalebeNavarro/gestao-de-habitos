@@ -4,8 +4,7 @@ export const Container = styled.div`
   display: ${props => props.display === "false"? 'none' : 'block'};
   width: 90%;
   margin: 20px auto;
-  position: ${props => props.fixDiv ? 'absolute' : 'static'};
-  bottom: 0px;
+
 
 
   @media (min-width: 768px) {
@@ -14,6 +13,11 @@ export const Container = styled.div`
     gap: 30px;
     height: 35vh;
     margin: 30px auto 0 auto;
+  }
+
+  @media (min-width: 1100px) {
+    position: ${props => props.fixDiv ? 'absolute' : 'static'};
+    bottom: 0px;
   }
 `;
 

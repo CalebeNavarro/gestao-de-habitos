@@ -30,7 +30,7 @@ const SearchGroups = () => {
 
 
     return <Container>
-        <Header />
+        <Header page="searchgroups"/>
         <h2>Search Groups</h2>
         
         <div>

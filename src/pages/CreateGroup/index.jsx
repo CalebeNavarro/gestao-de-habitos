@@ -23,7 +23,7 @@ const CreateGroup = () => {
     )
 
     const schema = yup.object().shape({
-        groupname: yup.string().required('Campo obrigatório!'),
+        name: yup.string().required('Campo obrigatório!'),
         description: yup.string().required('Campo obrigatório!'),
         category: yup.string().required('Campo obrigatório!')
       })
@@ -35,14 +35,14 @@ const CreateGroup = () => {
     const onSubmitFunction= data=>{
         console.log("data",data)
 
+        
         api.post("/groups/", data, {
             headers: { 
-                "Content-Type": "application/json",
-             "Authorization": `Bearer ${token}`
+             Authorization: `Bearer ${token}`,
             }
         } ).then((resp)=>{
             console.log("token", token)
-            console.log("resp api", resp.data)
+            console.log("resp api", resp)
 
 
         }).catch((err) => {
@@ -62,10 +62,10 @@ const CreateGroup = () => {
 
         <Input 
         register={register}  
-        name='groupname' 
+        name='name' 
         label="Groupname"  
         placeholder="Groupname"  
-        error={errors.groupname?.message}
+        error={errors.name?.message}
         icon={GrGroup}/>
 
         <Input 

@@ -1,82 +1,86 @@
 import styled from "styled-components";
 
-const StyledHome= styled.div`
-
-    display: flex ;
-
-    color: var(--color-primary);
+const StyledHome = styled.div`
+  display: flex;
+  color: var(--color-primary);
+  flex-direction: column;
+  text-align: center;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  div {
+    display: flex;
+    width: 90vw;
+    justify-content: space-around;
+  }
+  h1 {
+    margin: 1rem auto;
+    font-size: 40px;
     font-family: var(--font-home);
+    margin-top: 40px;
+    padding-bottom: 20px;
+  }
 
-    flex-direction: column;
-    text-align:center;
-    height: 90vh;
+  img {
+    height: 286px;
+    margin: 1rem auto;
 
-    align-items: center;
-    justify-content: center;
-    div{
-        display: flex;
-        width: 90vw;
-        justify-content: space-around;
-
+    @keyframes floating {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
     }
-    h1{
-        margin: 1rem auto;
-        font-size: 40px;
+
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  figure {
+    height: 500px;
+  }
+
+  a {
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 30px;
+    margin-left: 1rem;
+    font-family: var(--font-home);
+  }
+
+  a:hover {
+    transition: 500ms;
+    color: var(--color-second);
+  }
+
+  a + a {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  @media only screen and (min-width: 768px) {
+    h1 {
+      margin-bottom: 10px;
+      font-size: 55px;
+      margin-top: 40px;
+      padding-bottom: 60px;
     }
 
-    img{
-        height:286px;
-        margin:1rem auto;
-
-        @keyframes floating {
-            20% {margin-top: 1.1rem}
-            30% {margin-top: 1.2rem}
-            40% {margin-top: 1.3rem}
-            50% {margin-top: 1.4rem}
-            60% {margin-top: 1.4rem}
-            70% {margin-top: 1.3rem}
-            80% {margin-top: 1.2rem}
-            90% {margin-top: 1.1rem}
-            100% {margin-top: 1rem}
-        }
-        
-        animation: floating 1.1s linear infinite;
+    a {
+      font-size: 62px;
+    }
+    img {
+      height: 380px;
     }
 
     figure {
-        height: 500px;
+      height: 600px;
     }
+  }
+`;
 
-    a{
-        color: var(--color-primary);
-        font-weight: bold;
-        font-size: 30px;
-        margin-left: 1rem;
-    }
-
-    a:hover{
-        transition: 500ms;
-        color: var(--color-second);
-    }
-
-    a+a{
-        margin-left :0 ;
-        margin-right: 1rem;
-    }
-
- @media only screen and (min-width: 768px) {
-    h1{
-        margin-bottom: 10px;
-    }
-    img{
-        height: 380px ; 
-    } 
-
-    figure {
-        height: 600px;
-    }
- }
-
-`
-
-export default StyledHome
+export default StyledHome;

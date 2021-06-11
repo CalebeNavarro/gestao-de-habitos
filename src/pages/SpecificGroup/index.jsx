@@ -4,31 +4,18 @@ import {
     SpecificGroupDiv, 
     SpecificGroupH3, 
     SpecificGroupP,
-    GoalsDiv,
-    GoalsButton, 
-    TriangleClosedDiv,
-    TriangleOpenedDiv, 
-    GoalsListDiv, 
-    ActivitiesDiv,
-    ActivitiesButton,
-    ActivitiesListDiv,
-    SpaceDiv,
     Container,
-    GoalsNameDiv,
-    ActivitiesNameDiv,
     SpecificGroupMain,
     ModalDiv
 } from "./style"
-import { IoMdPlay } from "react-icons/io";
-import Button from "../../components/Button"
 import { useContext, useEffect, useState } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import api from "../../services/api";
-import CardGoal from "../../components/CardGoal";
-import CardActivitie from "../../components/CardActivitie";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivityForm from "../../components/CreateActivityForm";
 import { AuthenticateContext } from "../../providers/Authenticate";
+import GoalsList from "../../components/GoalsList";
+import ActivitiesList from "../../components/ActivitiesList";
 
 const SpecificGroup = () => {
 
@@ -76,46 +63,18 @@ const SpecificGroup = () => {
                     <SpecificGroupP>{groupInfo.category}</SpecificGroupP>
                     <SpecificGroupP>{groupInfo.description}</SpecificGroupP>
                     <Container>
-                        <GoalsDiv>
-                            <GoalsButton onClick={() => setGoalsDivOpened(!goalsDivOpened)}> 
-                                {goalsDivOpened 
-                                ?   <TriangleOpenedDiv>
-                                        <IoMdPlay />
-                                    </TriangleOpenedDiv>
-                                :   <TriangleClosedDiv>
-                                        <IoMdPlay />
-                                    </TriangleClosedDiv>    
-                                }
-                                Goals 
-                            </GoalsButton>
-                            <GoalsNameDiv>Goals</GoalsNameDiv>
-                            <GoalsListDiv goalsDivOpened={goalsDivOpened}>
-                                {goals && goals.map((goal) => <CardGoal goal={goal} key={goal.id}/>)}
-                            </GoalsListDiv>
-                            <SpaceDiv></SpaceDiv>
-                            <Button widthMobile="300" func={() => setGoalsModalOpened(true)}> 
-                                Create new Goal 
-                            </Button>
-                        </GoalsDiv>
-                        <ActivitiesDiv>
-                            <ActivitiesButton onClick={() => setActivitiesDivOpened(!activitiesDivOpened)}>
-                                {activitiesDivOpened
-                                ?   <TriangleOpenedDiv>
-                                        <IoMdPlay />
-                                    </TriangleOpenedDiv>
-                                :   <TriangleClosedDiv>
-                                        <IoMdPlay />
-                                    </TriangleClosedDiv> 
-                                }
-                                Activities
-                            </ActivitiesButton>
-                            <ActivitiesNameDiv>Activities</ActivitiesNameDiv>
-                            <ActivitiesListDiv activitiesDivOpened={activitiesDivOpened}>
-                                {activities && activities.map((activitie) => <CardActivitie activitie={activitie} key={activitie.id}/>)}
-                            </ActivitiesListDiv>
-                            <SpaceDiv> </SpaceDiv>
-                            <Button widthMobile="300" func={() => setActivitiesModalOpened(true)}> Create new Activities </Button>
-                        </ActivitiesDiv>
+                        <GoalsList 
+                            goalsDivOpened={goalsDivOpened}
+                            setGoalsDivOpened={setGoalsDivOpened}
+                            goals={goals}
+                            setGoalsModalOpened={setGoalsModalOpened}
+                        />
+                        <ActivitiesList 
+                            activitiesDivOpened={activitiesDivOpened}
+                            setActivitiesDivOpened={setActivitiesDivOpened}
+                            activities={activities}
+                            setActivitiesModalOpened={setActivitiesModalOpened}
+                        />
                     </Container>
                 </SpecificGroupDiv>
                 <ModalDiv>

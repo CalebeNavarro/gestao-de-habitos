@@ -4,7 +4,7 @@ import {Container, StyledForm} from "./styled"
 import Img from "../../assets/img_create_group.png"
 import Input from "../../components/Input"
 import Button from "../../components/Button"
-
+import {Redirect} from "react-router-dom"
 import{GrGroup} from "react-icons/gr"
 import{MdDescription} from "react-icons/md"
 import {AiOutlineAppstoreAdd} from "react-icons/ai"
@@ -14,9 +14,11 @@ import * as yup from "yup"
 import { yupResolver } from "@hookform/resolvers/yup"
 import api from "../../services/api"
 import {toast} from 'react-toastify'
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AuthenticateContext } from "../../providers/Authenticate"
 
 const CreateGroup = () => {
+    const {authenticated} = useContext(AuthenticateContext)
 
     const [token, setToken]=useState(
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
@@ -51,6 +53,9 @@ const CreateGroup = () => {
             toast.error("Erro ao criar o grupo! ")
         })
     }
+    if(!authenticated){
+        return <Redirect to="/"/>
+      }
 
     return (
        

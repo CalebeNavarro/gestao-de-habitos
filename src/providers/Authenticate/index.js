@@ -9,6 +9,8 @@ export const AuthenticateProvider = ({ children }) => {
     const token = JSON.parse(localStorage.getItem("@habits:token"));
     if (token) {
       return setAuthenticated(true);
+    } else {
+      return setAuthenticated(false);
     }
   }, [authenticated]);
   console.log(authenticated);

@@ -5,13 +5,16 @@ import CardGroup from '../../components/CardGroup'
 import Footer from '../../components/Footer';
 import Img from '../../assets/undraw_Selecting_team_re_ndkb.png'
 import { Redirect } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import api from '../../services/api';
+import { AuthenticateContext } from '../../providers/Authenticate';
 
 const SubscribedGroups = () => {
     // const { groups, attGroups } = useSubGroups();
     const [ id, setId ] = useState(-1);
     const [ groups, setGroups ] = useState([]);
+
+    const {authenticated} = useContext(AuthenticateContext)
     
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("@habits:token")) || ''
@@ -39,6 +42,10 @@ const SubscribedGroups = () => {
         }}
         /> 
     }
+
+    if(!authenticated){
+        return <Redirect to="/"/>
+      }
 
     return (
         <Container>

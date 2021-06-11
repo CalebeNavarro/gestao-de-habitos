@@ -21,18 +21,21 @@ import {
 } from "./style"
 import { IoMdPlay } from "react-icons/io";
 import Button from "../../components/Button"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import CardGoal from "../../components/CardGoal";
 import CardActivitie from "../../components/CardActivitie";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivityForm from "../../components/CreateActivityForm";
+import {Redirect} from "react-router-dom"
+import { AuthenticateContext } from "../../providers/Authenticate";
 
 const SpecificGroup = () => {
 
     const { id } = useParams()
     console.log(id);
+    const {authenticated} = useContext(AuthenticateContext)
     const [goalsDivOpened, setGoalsDivOpened] = useState(false);
     const [activitiesDivOpened, setActivitiesDivOpened] = useState(false);
     const [isOpened, setIsOpened] = useState(true);
@@ -60,6 +63,10 @@ const SpecificGroup = () => {
     }, [id])
 
     const { goals, activities } = groupInfo;
+
+    if(!authenticated){
+        return <Redirect to="/"/>
+      }
 
     return (
         <>

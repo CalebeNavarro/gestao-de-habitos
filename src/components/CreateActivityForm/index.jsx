@@ -1,4 +1,4 @@
-import { ActivityForm } from "./style";
+import { ActivityForm, NotifyP } from "./style";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import { useState } from "react";
@@ -8,6 +8,9 @@ import Button from "../Button";
 import Input from "../../components/Input";
 import { MdSubtitles } from "react-icons/md";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { toast } from "react-toastify" ; 
+import {ImCheckboxChecked} from "react-icons/im";
+import {AiOutlineExclamationCircle} from "react-icons/ai";
 
 const CreateActivityForm = ({id}) => {
 
@@ -20,14 +23,27 @@ const CreateActivityForm = ({id}) => {
         realization_time: yup.string().required('Campo obrigatório!'),
       })
 
-    const {register, handleSubmit, formState: {errors}} = useForm({
+    const {register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(schema)
     })
 
-    const [error, setError] = useState(false);
-    // const [created, setCreated] = useState(false);
+    const notify = (string) => {
+        if (string === "success"){
+            return toast.success(<NotifyP><ImCheckboxChecked />  Goal created successful</NotifyP>, {
+                position: "top-center"
+            })
+        }
+        if (string === "fail"){
+            return toast.error(<NotifyP><AiOutlineExclamationCircle />  fails to create a new goal</NotifyP>, {
+                position: "top-center",
+                autoClose: false
+            });
+        }
+        return false
+    }
 
     const submitForm = (data) => {
+        data.realization_time = new Date();
         data.group = id;
         api.post("/activities/", data, {
             headers: {
@@ -35,12 +51,11 @@ const CreateActivityForm = ({id}) => {
                 Authorization: `Bearer ${token}`
         }})
         .then(response => {
-            // setCreated(true)
-            // setIsOpened(false)
+            notify("success")
+            reset();
         })
         .catch(error => {
-            setError(true)
-            console.log(error)
+            notify("fail");
         })
     }
 
@@ -54,17 +69,7 @@ const CreateActivityForm = ({id}) => {
                 error={errors.title?.message}
                 icon={MdSubtitles}
             />
-            <Input 
-                register={register}  
-                name="realization_time"
-                label="Realization time"  
-                placeholder="Realization time"  
-                error={errors.realization_time?.message}
-                icon={AiOutlineFieldTime}
-            />
             <Button type="submit"> Create activitie</Button>
-            {error && <p>Error creating this goal</p>}
-            {/* {created && <p>Goal created</p>} */}
         </ActivityForm>
     )
 }

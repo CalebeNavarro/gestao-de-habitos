@@ -122,3 +122,8 @@ export const Top = styled.div`
     color: white;
   }
 `;
+
+export const Form = styled.form`
+display: flex;
+flex-direction: column;
+`

@@ -5,6 +5,7 @@ import {
   Welcome,
   DesktopNone,
   Top,
+  Form,
 } from "../Dashboard/styles";  
 import CardHabit from "../../components/CardHabit";
 import Button from "../../components/Button";
@@ -18,7 +19,8 @@ import api from '../../services/api';
 import { AuthenticateContext } from "../../providers/Authenticate";
 
 import Modal from "../../components/Modal"
-
+import Input from "../../components/Input"
+import CreateHabitForm from "../../components/CreateHabitForm";
 
 const Dashboard = () => {
   const [ habits, setHabits ] = useState([]);
@@ -50,7 +52,7 @@ const Dashboard = () => {
     //     .then((group) => setGroupInfo(group.data))
     // }, [id])
 
-    const { goals, habit } = groupInfo;
+    const { habit } = groupInfo;
 //===
 
   
@@ -65,7 +67,10 @@ const Dashboard = () => {
         Authorization: `Bearer ${token}`
       }
     })
-     .then(response => setHabits(response.data))
+     .then(response =>{ 
+       console.log(response.data)
+       setHabits(response.data)
+      })
      .catch(err => console.log(err))
   }
 
@@ -109,6 +114,9 @@ const Dashboard = () => {
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
            
             <h3>Create new habit</h3>
+
+            <CreateHabitForm id={habit} />
+            
           
           </Modal> 
         }

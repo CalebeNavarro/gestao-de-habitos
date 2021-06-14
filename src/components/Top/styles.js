@@ -26,4 +26,8 @@ export const Container = styled.div`
   a:link {
     color: white;
   }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;

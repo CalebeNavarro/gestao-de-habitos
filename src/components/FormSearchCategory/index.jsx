@@ -1,6 +1,7 @@
-import { Container, Form } from "./styles";
+import { Form } from "./styles";
 import Input from "../Input";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
+import Select from "./../Select"
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,6 +13,7 @@ const FormSearchCategory = () => {
 
   const formSchema = yup.object().shape({
     category: yup.string(),
+    change: yup.string(),
   });
 
   const {
@@ -23,14 +25,25 @@ const FormSearchCategory = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmit = ({ category }) => {
-    searchGroups(category);
+  const onSubmit = (data) => {
+    if (data.change !== "-- Sugestion Groups --"){
+      searchGroups(data.change);
+    } else {
+      searchGroups(data.category);
+    }
     reset();
   };
 
   return (
-    <Container>
       <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
+
+        <Select name="change" options={['-- Sugestion Groups --', "Saúde", "Academia", "Healthy"]} 
+          register={register}
+
+        />
+
+        <span>Or</span>
+
         <Input
           icon={HiOutlineDocumentSearch}
           error={errors.category?.message}
@@ -41,7 +54,6 @@ const FormSearchCategory = () => {
 
         <button type="submit">Search</button>
       </Form>
-    </Container>
   );
 };
 

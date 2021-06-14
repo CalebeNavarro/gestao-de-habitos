@@ -5,6 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 7px;
   font-size: 1.2rem;
+  
 
   label {
     font-size: 24px;
@@ -15,9 +16,7 @@ export const Container = styled.div`
     height: 20px;
   }
 
-  @media (min-width: 768px) {
-    width: 450px;
-  }
+
 `;
 
 export const ContainerInput = styled.div`
@@ -35,6 +34,10 @@ export const ContainerInput = styled.div`
     ::placeholder {
       color: var(--color-placeholder);
     }
+
+    /* @media (min-width: 768px) {
+      max-width: 450px;
+    } */
   }
 
   svg {

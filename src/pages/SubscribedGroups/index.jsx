@@ -1,7 +1,6 @@
 import { Container, ContainerCards } from './styles';
 import Header from '../../components/Header';
 import CardGroup from '../../components/CardGroup'
-// import { useSubGroups } from '../../providers/SubGroups';
 import Footer from '../../components/Footer';
 import Img from '../../assets/undraw_Selecting_team_re_ndkb.png'
 import { Redirect } from 'react-router-dom';
@@ -10,7 +9,6 @@ import api from '../../services/api';
 import { AuthenticateContext } from '../../providers/Authenticate';
 
 const SubscribedGroups = () => {
-    // const { groups, attGroups } = useSubGroups();
     const [ id, setId ] = useState(-1);
     const [ groups, setGroups ] = useState([]);
 

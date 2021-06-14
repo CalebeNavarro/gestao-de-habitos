@@ -3,7 +3,9 @@ import {
   HabitCards,
   Welcome,
   DesktopNone,
-} from "../Dashboard/styles";
+  // Top,
+  Form,
+} from "../Dashboard/styles";  
 import CardHabit from "../../components/CardHabit";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
@@ -12,10 +14,12 @@ import image from "../../assets/undraw_To_do_re_jaef.png";
 import { Redirect } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-import Top from "../../components/Top";
+// import Top from "../../components/Top";
 import { AuthenticateContext } from "../../providers/Authenticate";
 
-import Modal from "../../components/Modal";
+import Modal from "../../components/Modal"
+import Input from "../../components/Input"
+import CreateHabitForm from "../../components/CreateHabitForm";
 
 const Dashboard = () => {
   const [habits, setHabits] = useState([]);
@@ -29,41 +33,56 @@ const Dashboard = () => {
 
   const [groupInfo, setGroupInfo] = useState([]);
 
+    useEffect(() => {
+        if (goalsModalOpened === true){
+            setIsOpened(true);
+        } else if (habitModalOpened === true) {
+            setIsOpened(true);
+        };
+        if(isOpened === false){
+            setGoalsModalOpened(false);
+            setHabitModalOpened(false);
+        }
+
+    }, [goalsModalOpened,habitModalOpened,isOpened]);
+
+    // useEffect(() => {
+    //     api.get(`/groups/${id}/`)
+    //     .then((group) => setGroupInfo(group.data))
+    // }, [id])
+
+    const { habit } = groupInfo;
+//===
+
   useEffect(() => {
-    if (goalsModalOpened === true) {
-      setIsOpened(true);
-    } else if (habitModalOpened === true) {
-      setIsOpened(true);
-    }
-    if (isOpened === false) {
-      setGoalsModalOpened(false);
-      setHabitModalOpened(false);
-    }
-  }, [goalsModalOpened, habitModalOpened, isOpened]);
-
-  // useEffect(() => {
-  //     api.get(`/groups/${id}/`)
-  //     .then((group) => setGroupInfo(group.data))
-  // }, [id])
-
-  const { goals, habit } = groupInfo;
-  //===
-
-  useEffect(() => {
-    teste();
-  }, []);
-
+    teste()
+  }, [])
+  
   const teste = () => {
-    const token = JSON.parse(localStorage.getItem("@habits:token"));
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    const token = JSON.parse(localStorage.getItem("@habits:token"))
+    api.get("/habits/personal/", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+     .then(response =>{ 
+       console.log(response.data)
+       setHabits(response.data)
       })
-      .then((response) => setHabits(response.data))
-      .catch((err) => console.log(err));
-  };
+     .catch(err => console.log(err))
+  }
+
+  // const teste = () => {
+  //   const token = JSON.parse(localStorage.getItem("@habits:token"));
+  //   api
+  //     .get("/habits/personal/", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((response) => setHabits(response.data))
+  //     .catch((err) => console.log(err));
+  // };
 
   if (isLoged() === false) {
     return <Redirect to="/" />;
@@ -82,7 +101,7 @@ const Dashboard = () => {
               somente para você.
             </p>
             <Button func={() => setHabitModalOpened(true)}>Create habit</Button>
-            <Top />
+            {/* <Top /> */}
           </DesktopNone>
         </Welcome>
 
@@ -95,15 +114,15 @@ const Dashboard = () => {
         {habitModalOpened && (
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
             <h3>Create new habit</h3>
-          </Modal>
-        )}
 
-        <Footer
-          button={
-            <Button func={() => setHabitModalOpened(true)}>Create Habit</Button>
-          }
-          img={image}
-        >
+            <CreateHabitForm id={habit} />
+            
+          
+          </Modal> 
+        )
+        }
+
+        <Footer button={<Button func={() => setHabitModalOpened(true)}>Create Habit</Button>} img={image}>
           Sua saúdo é importa, siga seus habitos frequen temente, seja paciente
           e tente criar habitos semanais, então crie seu hábito somente para
           você.

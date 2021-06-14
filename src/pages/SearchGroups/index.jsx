@@ -9,10 +9,10 @@ import Button from "../../components/Button";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
-import Top from "../../components/Top";
+// import Top from "../../components/Top";
+
 const SearchGroups = () => {
   const { isLoged } = useContext(AuthenticateContext);
-
   const { groups, handleNext, handlePrev } = useGroups();
   const [id, setId] = useState(-1);
 
@@ -21,16 +21,7 @@ const SearchGroups = () => {
   };
 
   if (id !== -1) {
-    return (
-      <Redirect
-        to={{
-          pathname: `/groups/${id}`,
-          //   search: "?utm=your+face",
-          state: { referrer: "/subscribedgroups" },
-          id: id,
-        }}
-      />
-    );
+    return <Redirect to={{pathname: `/groups/${id}`,state: { referrer: "/subscribedgroups" }, id: id,}} />;
   }
 
   if (isLoged() === false) {
@@ -39,12 +30,12 @@ const SearchGroups = () => {
 
   return (
     <Container>
+
       <Header page="searchgroups" />
+
       <h2>Search Groups</h2>
 
-      <div>
-        <FormSearchCategory />
-      </div>
+      <FormSearchCategory />
 
       <Buttons>
         <Button func={handlePrev} isHave={!groups.previous && true}>
@@ -55,7 +46,8 @@ const SearchGroups = () => {
           Next
         </Button>
       </Buttons>
-      <Top></Top>
+      
+      {/* <Top></Top> */}
 
       <ContainerCards>
         {groups.results.map((group) => (
@@ -67,10 +59,11 @@ const SearchGroups = () => {
         ))}
       </ContainerCards>
 
-      <Footer img={Img}>
+      <Footer img={Img} fixDiv>
         Os grupos sao importantes na inserção no convívio social e auxiliara
         voce a ver atividades e metas em comum.
       </Footer>
+
     </Container>
   );
 };

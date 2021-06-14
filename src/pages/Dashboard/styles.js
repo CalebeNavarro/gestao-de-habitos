@@ -99,6 +99,7 @@ export const DesktopNone = styled.div`
   }
 `;
 
+
 export const Top = styled.div`
   position: fixed;
   color: white;

@@ -1,15 +1,20 @@
 import styled from "styled-components";
 import background from "../../assets/BackgroundPopUp.png";
 
+export const BackgroundModal = styled.div`
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.9);
+`;
+
 export const ModalDiv = styled.div`
     position: fixed;
     top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 64px;
     margin: 64px auto auto;
-    /* left: 0;
-    right: 0; */
+    margin-left: 50% ;
+    transform:translate(-50%);
     width: 80%; 
     height: 80%;
    
@@ -35,17 +40,17 @@ export const ModalDiv = styled.div`
 `
 
 export const CloseDiv = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: var(--black);
-    color: white;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--black);
+  color: white;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
     &:hover {
         cursor: pointer;

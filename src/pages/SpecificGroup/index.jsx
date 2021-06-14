@@ -43,9 +43,13 @@ const SpecificGroup = () => {
 
     }, [goalsModalOpened,activitiesModalOpened,isOpened]);
 
-    useEffect(() => {
+    const getGroups = () => {
         api.get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
+    }
+
+    useEffect(() => {
+        getGroups();
     }, [id])
 
     const { goals, activities } = groupInfo;
@@ -68,12 +72,14 @@ const SpecificGroup = () => {
                             setGoalsDivOpened={setGoalsDivOpened}
                             goals={goals}
                             setGoalsModalOpened={setGoalsModalOpened}
+                            getGroups={getGroups}
                         />
                         <ActivitiesList 
                             activitiesDivOpened={activitiesDivOpened}
                             setActivitiesDivOpened={setActivitiesDivOpened}
                             activities={activities}
                             setActivitiesModalOpened={setActivitiesModalOpened}
+                            getGroups={getGroups}
                         />
                     </Container>
                 </SpecificGroupDiv>

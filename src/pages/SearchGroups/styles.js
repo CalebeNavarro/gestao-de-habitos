@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: relative;
   margin-top: 83px;
 
   h2 {

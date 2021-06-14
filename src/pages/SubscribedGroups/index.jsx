@@ -1,19 +1,17 @@
-import { Container, ContainerCards } from "./styles";
-import Header from "../../components/Header";
-import CardGroup from "../../components/CardGroup";
-// import { useSubGroups } from '../../providers/SubGroups';
-import Footer from "../../components/Footer";
-import Img from "../../assets/undraw_Selecting_team_re_ndkb.png";
-import { Redirect } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import api from "../../services/api";
-import { AuthenticateContext } from "../../providers/Authenticate";
+import { Container, ContainerCards } from './styles';
+import Header from '../../components/Header';
+import CardGroup from '../../components/CardGroup'
+import Footer from '../../components/Footer';
+import Img from '../../assets/undraw_Selecting_team_re_ndkb.png'
+import { Redirect } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import api from '../../services/api';
+import { AuthenticateContext } from '../../providers/Authenticate';
 import Top from "../../components/Top";
 
 const SubscribedGroups = () => {
-  // const { groups, attGroups } = useSubGroups();
-  const [id, setId] = useState(-1);
-  const [groups, setGroups] = useState([]);
+    const [ id, setId ] = useState(-1);
+    const [ groups, setGroups ] = useState([]);
 
   const { isLoged } = useContext(AuthenticateContext);
 

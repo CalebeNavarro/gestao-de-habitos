@@ -9,13 +9,12 @@ import Button from "../../components/Button";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
-
+import Top from "../../components/Top";
 const SearchGroups = () => {
-
-  const {isLoged} = useContext(AuthenticateContext)
+  const { isLoged } = useContext(AuthenticateContext);
 
   const { groups, handleNext, handlePrev } = useGroups();
-  const [ id, setId ] = useState(-1);
+  const [id, setId] = useState(-1);
 
   const handleCard = (id) => {
     setId(id);
@@ -34,8 +33,8 @@ const SearchGroups = () => {
     );
   }
 
-  if (isLoged() === false){
-    return <Redirect to="/"/>;
+  if (isLoged() === false) {
+    return <Redirect to="/" />;
   }
 
   return (
@@ -56,6 +55,7 @@ const SearchGroups = () => {
           Next
         </Button>
       </Buttons>
+      <Top></Top>
 
       <ContainerCards>
         {groups.results.map((group) => (

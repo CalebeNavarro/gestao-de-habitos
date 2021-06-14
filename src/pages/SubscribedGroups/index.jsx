@@ -12,69 +12,67 @@ const SubscribedGroups = () => {
     const [ id, setId ] = useState(-1);
     const [ groups, setGroups ] = useState([]);
 
-    const {isLoged} = useContext(AuthenticateContext)
-    
-    useEffect(() => {
-        const token = JSON.parse(localStorage.getItem("@habits:token")) || ''
-        api.get("/groups/subscriptions/", {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          })
-          .then(response => setGroups(response.data))
-          .catch(err => console.log(err))
-    }, [])
+  const { isLoged } = useContext(AuthenticateContext);
 
-      
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("@habits:token")) || "";
+    api
+      .get("/groups/subscriptions/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setGroups(response.data))
+      .catch((err) => console.log(err));
+  }, []);
 
-    const handleCard = id => {
-        setId(id) 
-    }
-    
-    if(id !== -1) {
-        return <Redirect
-        to={{
-            pathname: `/groups/${id}`,
-            state: { referrer: "/subscribedgroups" },
-            id: id
-        }}
-        /> 
-    }
+  const handleCard = (id) => {
+    setId(id);
+  };
 
-    if (isLoged() === false){
-        return <Redirect to="/"/>;
-    }
-
+  if (id !== -1) {
     return (
-        <Container>
-            <Header page="subscribedgroups"/>
+      <Redirect
+        to={{
+          pathname: `/groups/${id}`,
+          state: { referrer: "/subscribedgroups" },
+          id: id,
+        }}
+      />
+    );
+  }
 
-            <h2>Subscribed Groups</h2>
+  if (isLoged() === false) {
+    return <Redirect to="/" />;
+  }
 
-            <Footer 
-                type='mobile'
-            >
-                Os grupos sao importantes na inserção no convívio social e auxiliara voce a ver atividades e metas em comum.
-            </ Footer>
-            
-            <ContainerCards>
-                {groups.map(group =>
-                    <CardGroup key={group.id}
-                        group={group}
-                        onClick={() => handleCard(group.id)}
-                    />    
-                )}
-            </ContainerCards>
+  return (
+    <Container>
+      <Header page="subscribedgroups" />
 
-            <Footer 
-                img={Img}
-                fixDiv={true}
-            >
-                Os grupos sao importantes na inserção no convívio social e auxiliara voce a ver atividades e metas em comum.
-            </Footer>
+      <h2>Subscribed Groups</h2>
 
-        </Container>
-    )
-}
+      <Footer type="mobile">
+        Os grupos sao importantes na inserção no convívio social e auxiliara
+        voce a ver atividades e metas em comum.
+      </Footer>
+      <Top />
+      <ContainerCards>
+        {groups.map((group) => (
+          <CardGroup
+            key={group.id}
+            group={group}
+            onClick={() => handleCard(group.id)}
+          />
+        ))}
+      </ContainerCards>
+
+      <Footer img={Img} fixDiv={true}>
+        Os grupos sao importantes na inserção no convívio social e auxiliara
+        voce a ver atividades e metas em comum.
+      </Footer>
+    </Container>
+  );
+};
 
 export default SubscribedGroups;

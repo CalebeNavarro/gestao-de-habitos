@@ -19,12 +19,21 @@ export const Container = styled.div`
   }
 `;
 
-
-
-
 export const ContainerCards = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 300px;
   gap: 12px;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1200px;
+    overflow-y: scroll;
+    max-height: 360px;
+  }
 `;

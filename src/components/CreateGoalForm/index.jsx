@@ -1,4 +1,4 @@
-import { GoalForm } from "./style";
+import { GoalForm, NotifyP } from "./style";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import { useState } from "react";
@@ -8,6 +8,9 @@ import Button from "../Button";
 import Input from "../../components/Input";
 import { MdSubtitles } from "react-icons/md";
 import { AiFillControl, AiFillSchedule } from "react-icons/ai";
+import { toast } from "react-toastify" ; 
+import {ImCheckboxChecked} from "react-icons/im";
+import {AiOutlineExclamationCircle} from "react-icons/ai";
 
 const CreateGoalForm = ({id}) => {
 
@@ -21,12 +24,24 @@ const CreateGoalForm = ({id}) => {
         how_much_achieved: yup.string().required('Campo obrigatório!')
       })
 
-    const {register, handleSubmit, formState: {errors}} = useForm({
+    const {register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(schema)
     })
 
-    const [error, setError] = useState(false);
-    // const [created, setCreated] = useState(false);
+    const notify = (string) => {
+        if (string === "success"){
+            return toast.success(<NotifyP><ImCheckboxChecked />  Goal created successful</NotifyP>, {
+                position: "top-center"
+            })
+        }
+        if (string === "fail"){
+            return toast.error(<NotifyP><AiOutlineExclamationCircle />  fails to create a new goal</NotifyP>, {
+                position: "top-center",
+                autoClose: false
+            });
+        }
+        return false
+    }
 
     const submitForm = (data) => {
         const newData = data
@@ -37,12 +52,11 @@ const CreateGoalForm = ({id}) => {
                 Authorization: `Bearer ${token}`
         }})
         .then(response => {
-            // setCreated(true)
-            // setIsOpened(false)
+            notify("success")
+            reset();
         })
         .catch(error => {
-            setError(true)
-            console.log(error)
+            notify("fail");
         })
     }
 
@@ -73,8 +87,6 @@ const CreateGoalForm = ({id}) => {
                 icon={AiFillSchedule}
             />
             <Button type="submit"> Create goal</Button>
-            {error && <p>Error creating this goal</p>}
-            {/* {created && <p>Goal created</p>} */}
         </GoalForm>
     )
 }

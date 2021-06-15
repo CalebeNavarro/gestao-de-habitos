@@ -15,21 +15,29 @@ export const Container = styled.div`
   span {
     height: 20px;
   }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 0165eda66d7ab1c2dbf2017fb6734996ca8269e8
 `;
 
 export const ContainerInput = styled.div`
-  padding: 10px;
   background-color: var(--background-gray);
   border: 1px solid var(--black);
   border-radius: 12px;
   box-shadow: 1px 1px var(--black);
 
+  @media (min-width: 768px) {
+    width: ${(props) => props.width}px;
+  }
+
   input {
     background-color: var(--background-gray);
     border: none;
     font-size: 1.2rem;
+    height: 46px;
+    width: 85%;
 
     ::placeholder {
       color: var(--color-placeholder);
@@ -42,6 +50,7 @@ export const ContainerInput = styled.div`
 
   svg {
     transform: translateY(4px);
-    margin: 0 10px;
+    width: 10%;
+    margin-left: 5px;
   }
 `;

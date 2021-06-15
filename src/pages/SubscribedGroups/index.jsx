@@ -1,16 +1,17 @@
-import { Container, ContainerCards } from './styles';
-import Header from '../../components/Header';
-import CardGroup from '../../components/CardGroup'
-import Footer from '../../components/Footer';
-import Img from '../../assets/undraw_Selecting_team_re_ndkb.png'
-import { Redirect } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import api from '../../services/api';
-import { AuthenticateContext } from '../../providers/Authenticate';
+import { Container, ContainerCards } from "./styles";
+import Header from "../../components/Header";
+import CardGroup from "../../components/CardGroup";
+import Footer from "../../components/Footer";
+import Img from "../../assets/undraw_Selecting_team_re_ndkb.png";
+import { Redirect } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import api from "../../services/api";
+import { AuthenticateContext } from "../../providers/Authenticate";
+import Top from "../../components/Top";
 
 const SubscribedGroups = () => {
-    const [ id, setId ] = useState(-1);
-    const [ groups, setGroups ] = useState([]);
+  const [id, setId] = useState(-1);
+  const [groups, setGroups] = useState([]);
 
   const { isLoged } = useContext(AuthenticateContext);
 
@@ -53,8 +54,8 @@ const SubscribedGroups = () => {
       <h2>Subscribed Groups</h2>
 
       <Footer type="mobile">
-        Os grupos sao importantes na inserção no convívio social e auxiliara
-        voce a ver atividades e metas em comum.
+        Aqui ficam os grupos em que voce esta inscrito para que possa rastrear
+        de maneira facil seus grupos, atividades e metas.
       </Footer>
       <Top />
       <ContainerCards>
@@ -67,9 +68,9 @@ const SubscribedGroups = () => {
         ))}
       </ContainerCards>
 
-      <Footer img={Img} fixDiv={true}>
-        Os grupos sao importantes na inserção no convívio social e auxiliara
-        voce a ver atividades e metas em comum.
+      <Footer img={Img} fixDiv>
+        Aqui ficam os grupos em que voce esta inscrito para que possa rastrear
+        de maneira facil seus grupos, atividades e metas.
       </Footer>
     </Container>
   );

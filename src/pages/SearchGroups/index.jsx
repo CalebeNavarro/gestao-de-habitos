@@ -10,9 +10,9 @@ import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
 import Top from "../../components/Top";
+
 const SearchGroups = () => {
   const { isLoged } = useContext(AuthenticateContext);
-
   const { groups, handleNext, handlePrev } = useGroups();
   const [id, setId] = useState(-1);
 
@@ -25,7 +25,6 @@ const SearchGroups = () => {
       <Redirect
         to={{
           pathname: `/groups/${id}`,
-          //   search: "?utm=your+face",
           state: { referrer: "/subscribedgroups" },
           id: id,
         }}
@@ -40,11 +39,10 @@ const SearchGroups = () => {
   return (
     <Container>
       <Header page="searchgroups" />
+
       <h2>Search Groups</h2>
 
-      <div>
-        <FormSearchCategory />
-      </div>
+      <FormSearchCategory />
 
       <Buttons>
         <Button func={handlePrev} isHave={!groups.previous && true}>
@@ -55,6 +53,7 @@ const SearchGroups = () => {
           Next
         </Button>
       </Buttons>
+
       <Top></Top>
 
       <ContainerCards>
@@ -67,9 +66,10 @@ const SearchGroups = () => {
         ))}
       </ContainerCards>
 
-      <Footer img={Img}>
-        Os grupos sao importantes na inserção no convívio social e auxiliara
-        voce a ver atividades e metas em comum.
+      <Footer img={Img} fixDiv>
+        O grupo é importante na inserção no convívio social, auxiliando na
+        superação de problemas desta ordem. Aqui esta a lista de grupos que voce
+        pode se inscrever para criar novas metas e atividades.
       </Footer>
     </Container>
   );

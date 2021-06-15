@@ -3,10 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
-  width: 100vw;
-  min-height: 100vh;
 
   @media (min-width: 768px) {
   }
@@ -24,8 +22,22 @@ export const HabitCards = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     width: 1200px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 340px;
+    ::-webkit-scrollbar {
+      width: 15px;
+    }
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3f3d56;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: gray;
+    }
   }
 `;
 
@@ -36,6 +48,10 @@ export const Welcome = styled.div`
   align-items: center;
   padding-top: 40px;
   height: 400px;
+
+  h1 {
+    margin-top: 30px;
+  }
 
   p {
     width: 300px;
@@ -51,8 +67,7 @@ export const Welcome = styled.div`
     margin-top: 30px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
     height: 350px;
     width: 200px;
     text-align: center;
@@ -73,6 +88,7 @@ export const DesktopNone = styled.div`
   flex-direction: column;
   justify-content: space-around;
   height: 200px;
+
   @media (min-width: 768px) {
     display: none;
   }
@@ -86,8 +102,7 @@ export const DesktopNone = styled.div`
     margin-top: 30px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
     height: 350px;
     width: 200px;
     text-align: center;
@@ -97,4 +112,33 @@ export const DesktopNone = styled.div`
       width: 200px;
     }
   }
+`;
+
+export const Top = styled.div`
+  position: fixed;
+  color: white;
+  height: 30px;
+  width: 30px;
+  left: 10px;
+  top: 50%;
+  border-radius: 50%;
+  background-color: black;
+  text-align: center;
+
+  a {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  a:visited {
+    color: white;
+  }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
 `;

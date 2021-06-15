@@ -5,11 +5,12 @@ export const Container = styled.div`
   color: white;
   height: 30px;
   width: 30px;
-  left: 10px;
-  top: 50%;
-  border-radius: 50%;
+  right: 12px;
+  bottom: 5%;
+  border-radius: 80%;
   background-color: black;
   text-align: center;
+  opacity: 0.4;
 
   a {
     margin: 0;
@@ -25,5 +26,9 @@ export const Container = styled.div`
 
   a:link {
     color: white;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `;

@@ -3,7 +3,7 @@ import GoalsButton from "../../components/GoalsButton";
 import CardGoal from "../CardGoal";
 import Button from "../Button";
 
-const GoalsList = ({goalsDivOpened, setGoalsDivOpened, goals, setGoalsModalOpened}) => {
+const GoalsList = ({goalsDivOpened, setGoalsDivOpened, goals, setGoalsModalOpened, getGroups}) => {
     return (
         <GoalsDiv>
             <GoalsButton
@@ -12,7 +12,7 @@ const GoalsList = ({goalsDivOpened, setGoalsDivOpened, goals, setGoalsModalOpene
             /> 
             <GoalsNameDiv>Goals</GoalsNameDiv>
             <GoalsListDiv goalsDivOpened={goalsDivOpened}>
-                {goals && goals.map((goal) => <CardGoal goal={goal} key={goal.id}/>)}
+                {goals && goals.map((goal) => <CardGoal goal={goal} key={goal.id} getGroups={getGroups}/>)}
             </GoalsListDiv>
             <SpaceDiv></SpaceDiv>
             <Button widthMobile="300" func={() => setGoalsModalOpened(true)}> 

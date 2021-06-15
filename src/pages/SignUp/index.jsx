@@ -51,13 +51,13 @@ const SignUp = () => {
         <div className="inputs-container">
             <h1>Sign Up</h1>
             
-            <Input register={register} type="text" name='username' label="Name"  placeholder="Username" error={errors.username?.message} icon={AiOutlineUser}></Input>
+            <Input register={register} type="text" name='username' label="Username"  placeholder="Username" error={errors.username?.message} icon={AiOutlineUser} width={400}></Input>
 
-            <Input register={register} type="email" name='email' label="Email"  placeholder="Your best email" error={errors.email?.message} icon={AiOutlineUser}></Input>
+            <Input register={register} type="email" name='email' label="Email"  placeholder="Your best email" error={errors.email?.message} icon={AiOutlineUser}width={400}></Input>
 
-            <Input register={register} type="password" name='password' label="Password"  placeholder="Safe password" error={errors.password?.message} icon={AiOutlineLock}></Input>
+            <Input register={register} type="password" name='password' label="Password"  placeholder="Safe password" error={errors.password?.message} icon={AiOutlineLock} width={400}></Input>
 
-            <Input register={register} type="password" name='passwordConfirmation' label="Password confirmation"  placeholder="Password confirmation" error={errors.passwordConfirmation?.message} icon={AiOutlineUser}></Input>
+            <Input register={register} type="password" name='passwordConfirmation' label="Password confirmation"  placeholder="Password confirmation" error={errors.passwordConfirmation?.message} icon={AiOutlineUser} width={400}></Input>
         
             
             <div className="div-button">

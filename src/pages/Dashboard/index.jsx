@@ -16,18 +16,15 @@ import Top from "../../components/Top";
 import { AuthenticateContext } from "../../providers/Authenticate";
 
 import Modal from "../../components/Modal";
+import CreateHabitForm from "../../components/CreateHabitForm";
 
 const Dashboard = () => {
   const [habits, setHabits] = useState([]);
   const { isLoged } = useContext(AuthenticateContext);
-
-  const [goalsDivOpened, setGoalsDivOpened] = useState(false);
-  const [habitDivOpened, setHabitDivOpened] = useState(false);
+  const userName = JSON.parse(localStorage.getItem("@infoUser")) || "";
   const [isOpened, setIsOpened] = useState(true);
   const [goalsModalOpened, setGoalsModalOpened] = useState(false);
   const [habitModalOpened, setHabitModalOpened] = useState(false);
-
-  const [groupInfo, setGroupInfo] = useState([]);
 
   useEffect(() => {
     if (goalsModalOpened === true) {
@@ -41,19 +38,11 @@ const Dashboard = () => {
     }
   }, [goalsModalOpened, habitModalOpened, isOpened]);
 
-  // useEffect(() => {
-  //     api.get(`/groups/${id}/`)
-  //     .then((group) => setGroupInfo(group.data))
-  // }, [id])
-
-  const { goals, habit } = groupInfo;
-  //===
-
   useEffect(() => {
-    teste();
+    loadHabits();
   }, []);
 
-  const teste = () => {
+  const loadHabits = () => {
     const token = JSON.parse(localStorage.getItem("@habits:token"));
     api
       .get("/habits/personal/", {
@@ -61,7 +50,10 @@ const Dashboard = () => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setHabits(response.data))
+      .then((response) => {
+        console.log(response.data);
+        setHabits(response.data);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -72,15 +64,12 @@ const Dashboard = () => {
   return (
     <>
       <Header />
+
       <Container>
         <Welcome>
-          <h1>Welcome, username</h1>
+          <h1>Welcome, {userName}</h1>
+
           <DesktopNone>
-            <p>
-              Sua saúdo é importa, siga seus habitos frequen temente, seja
-              paciente e tente criar habitos semanais, então crie seu hábito
-              somente para você.
-            </p>
             <Button func={() => setHabitModalOpened(true)}>Create habit</Button>
             <Top />
           </DesktopNone>
@@ -95,18 +84,21 @@ const Dashboard = () => {
         {habitModalOpened && (
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
             <h3>Create new habit</h3>
+            <CreateHabitForm />
           </Modal>
         )}
 
         <Footer
+          fixDiv
           button={
             <Button func={() => setHabitModalOpened(true)}>Create Habit</Button>
           }
           img={image}
         >
-          Sua saúdo é importa, siga seus habitos frequen temente, seja paciente
-          e tente criar habitos semanais, então crie seu hábito somente para
-          você.
+          Os bons hábitos são aqueles que levam as pessoas a se tornarem mais
+          produtivas, pois pessoas que aplicam hábitos produtivos utilizam
+          melhor os recursos e aumentam a capacidade de gerar resultados. Crie
+          um hábito agora para seguir agora mesmo!
         </Footer>
       </Container>
     </>

@@ -10,35 +10,35 @@ import { AiFillControl, AiFillSchedule } from "react-icons/ai";
 import { toast } from "react-toastify" ; 
 import {ImCheckboxChecked} from "react-icons/im";
 import {AiOutlineExclamationCircle, AiOutlineAppstoreAdd} from "react-icons/ai";
-import {GiStairsGoal} from "react-icons/gi"
+import {GiStairsGoal} from "react-icons/gi";
 
-import {Form, NotifyP} from "./styles"
+import {Form, NotifyP} from "./styles";
 
-import jwt_decode from "jwt-decode"
+import jwt_decode from "jwt-decode";
 
-const CreateHabitForm = () => {
+const CreateHabitForm = ({ func }) => {
+    const [id, setId] = useState(0)
 
-    const [token]=useState(
+    const [token] = useState (
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
-    )
+    );
 
-    const [id, setId]= useState(0)
-    useEffect(()=>{
+    useEffect(() => {
         const decomposedToken=jwt_decode(token)
         setId(decomposedToken.user_id)
-    },[token])
+    }, [token])
 
     const schema = yup.object().shape({
-        category: yup.string().required('Campo obrigatório!'),
-        difficulty: yup.string().required('Campo obrigatório!'),
-        frequency: yup.string().required('Campo obrigatório!'),
-        // achieved: yup.string().required('Campo obrigatório!'),
-        title: yup.string().required('Campo obrigatório!')
-      })
+        category: yup.string().required('Required!'),
+        difficulty: yup.string().required('Required!'),
+        frequency: yup.string().required('Required!'),
+        how_much_achieved: yup.string().required('Required'),
+        title: yup.string().required('Required!')
+    });
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
         resolver: yupResolver(schema)
-    })
+    });
 
     const notify = (string) => {
         if (string === "success"){
@@ -53,26 +53,26 @@ const CreateHabitForm = () => {
             });
         }
         return false
-    }
+    };
 
     const submitForm = (data) => {
-        const newData = {...data, achieved:false , how_much_achieved:0 , user: id }
-        console.log("data", newData)
+        const newData = {...data, achieved:false, user: id };
 
         api.post("/habits/", newData, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
         }})
-        .then(response => {
-            console.log(response)
-            notify("success")
-            reset();
-        })
-        .catch(error => {
-            notify("fail");
-        })
-    }
+            .then(response => {
+                notify("success")
+                reset();
+                func();
+            })
+            .catch(error => {
+                notify("fail");
+            })
+
+    };
 
     return (
         <Form onSubmit={handleSubmit(submitForm)}>
@@ -109,18 +109,21 @@ const CreateHabitForm = () => {
                 error={errors.frequency?.message}
                 icon={AiFillSchedule}
             />
-            {/* <Input 
+            <Input
+                width="270"
+                type="range"
+                max='100'
                 register={register}  
-                name="achieved"
+                name="how_much_achieved"
                 label="Achieved"  
-                placeholder="Achieved"  
-                error={errors.achieved?.message}
+                placeholder="How Much Achieved"  
+                error={errors.how_much_achieved?.message}
                 icon={GiStairsGoal}
-            /> */}
+            />
 
             <Button type="submit"> Create Habit</Button>
         </Form>
     )
-}
+};
 
 export default CreateHabitForm;

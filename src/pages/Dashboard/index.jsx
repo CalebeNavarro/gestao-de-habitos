@@ -3,8 +3,6 @@ import {
   HabitCards,
   Welcome,
   DesktopNone,
-  // Top,
-  Form,
 } from "../Dashboard/styles";  
 import CardHabit from "../../components/CardHabit";
 import Button from "../../components/Button";
@@ -14,26 +12,19 @@ import image from "../../assets/undraw_To_do_re_jaef.png";
 import { Redirect } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-// import Top from "../../components/Top";
+import Top from "../../components/Top";
 import { AuthenticateContext } from "../../providers/Authenticate";
 
 import Modal from "../../components/Modal"
-import Input from "../../components/Input"
 import CreateHabitForm from "../../components/CreateHabitForm";
 
 const Dashboard = () => {
-  const [habits, setHabits] = useState([]);
+  const [ habits, setHabits ] = useState([]);
   const { isLoged } = useContext(AuthenticateContext);
   const userName = JSON.parse(localStorage.getItem("@infoUser")) || '';
-
-  const [goalsDivOpened, setGoalsDivOpened] = useState(false);
-  const [habitDivOpened, setHabitDivOpened] = useState(false);
-  const [isOpened, setIsOpened] = useState(true);
-  const [goalsModalOpened, setGoalsModalOpened] = useState(false);
-  const [habitModalOpened, setHabitModalOpened] = useState(false);
-
-
-  const [groupInfo, setGroupInfo] = useState([]);
+  const [ isOpened, setIsOpened ] = useState(true);
+  const [ goalsModalOpened, setGoalsModalOpened ] = useState(false);
+  const [ habitModalOpened, setHabitModalOpened ] = useState(false);
 
     useEffect(() => {
         if (goalsModalOpened === true){
@@ -48,19 +39,11 @@ const Dashboard = () => {
 
     }, [goalsModalOpened,habitModalOpened,isOpened]);
 
-    // useEffect(() => {
-    //     api.get(`/groups/${id}/`)
-    //     .then((group) => setGroupInfo(group.data))
-    // }, [id])
-
-    const { habit } = groupInfo;
-//===
-
   useEffect(() => {
-    teste()
+    loadHabits()
   }, [])
   
-  const teste = () => {
+  const loadHabits = () => {
     const token = JSON.parse(localStorage.getItem("@habits:token"))
     api.get("/habits/personal/", {
       headers: {
@@ -74,18 +57,6 @@ const Dashboard = () => {
      .catch(err => console.log(err))
   }
 
-  // const teste = () => {
-  //   const token = JSON.parse(localStorage.getItem("@habits:token"));
-  //   api
-  //     .get("/habits/personal/", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response) => setHabits(response.data))
-  //     .catch((err) => console.log(err));
-  // };
-
   if (isLoged() === false) {
     return <Redirect to="/" />;
   }
@@ -95,8 +66,6 @@ const Dashboard = () => {
       <Header />
 
       <Container >
-
-
         <Welcome>
           <h1>Welcome, {userName}</h1>
 
@@ -108,7 +77,7 @@ const Dashboard = () => {
             </p>
 
             <Button func={() => setHabitModalOpened(true)}>Create habit</Button>
-            {/* <Top /> */}
+            <Top />
           </DesktopNone>
         </Welcome>
 
@@ -121,6 +90,7 @@ const Dashboard = () => {
         {habitModalOpened && (
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
             <h3>Create new habit</h3>
+            <CreateHabitForm />
           </Modal>
         )}
 

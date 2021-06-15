@@ -15,6 +15,11 @@ export const Container = styled.div`
   span {
     height: 20px;
   }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 0165eda66d7ab1c2dbf2017fb6734996ca8269e8
 `;
 
 export const ContainerInput = styled.div`

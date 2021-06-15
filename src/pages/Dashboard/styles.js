@@ -24,6 +24,20 @@ export const HabitCards = styled.div`
     width: 1200px;
     overflow-y: auto;
     max-height: 340px;
+    ::-webkit-scrollbar {
+      width: 15px;
+    }
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3f3d56;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: gray;
+    }
   }
 `;
 
@@ -58,7 +72,6 @@ export const Welcome = styled.div`
     width: 200px;
     text-align: center;
 
-
     p {
       font-size: 12px;
     }
@@ -75,7 +88,7 @@ export const DesktopNone = styled.div`
   flex-direction: column;
   justify-content: space-around;
   height: 200px;
-  
+
   @media (min-width: 768px) {
     display: none;
   }
@@ -100,7 +113,6 @@ export const DesktopNone = styled.div`
     }
   }
 `;
-
 
 export const Top = styled.div`
   position: fixed;
@@ -127,6 +139,6 @@ export const Top = styled.div`
 `;
 
 export const Form = styled.form`
-display: flex;
-flex-direction: column;
-`
+  display: flex;
+  flex-direction: column;
+`;

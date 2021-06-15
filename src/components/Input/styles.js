@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 7px;
   font-size: 1.2rem;
-  
 
   label {
     font-size: 24px;
@@ -14,12 +13,9 @@ export const Container = styled.div`
 
   span {
     height: 20px;
+    font-size: 16px;
+    padding-left: 10px;
   }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0165eda66d7ab1c2dbf2017fb6734996ca8269e8
 `;
 
 export const ContainerInput = styled.div`

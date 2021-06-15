@@ -42,12 +42,12 @@ const CreateHabitForm = () => {
 
     const notify = (string) => {
         if (string === "success"){
-            return toast.success(<NotifyP><ImCheckboxChecked />  Goal created successful</NotifyP>, {
+            return toast.success(<NotifyP><ImCheckboxChecked />  Successfully created habit</NotifyP>, {
                 position: "top-center"
             })
         }
         if (string === "fail"){
-            return toast.error(<NotifyP><AiOutlineExclamationCircle />  fails to create a new goal</NotifyP>, {
+            return toast.error(<NotifyP><AiOutlineExclamationCircle />  fails to create a new habit</NotifyP>, {
                 position: "top-center",
                 autoClose: false
             });

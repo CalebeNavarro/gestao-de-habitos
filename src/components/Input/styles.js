@@ -16,11 +16,6 @@ export const Container = styled.div`
     font-size: 16px;
     padding-left: 10px;
   }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 0165eda66d7ab1c2dbf2017fb6734996ca8269e8
 `;
 
 export const ContainerInput = styled.div`

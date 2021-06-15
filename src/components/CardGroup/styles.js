@@ -12,6 +12,9 @@ export const Container = styled.div`
   background-color: var(--color-primary);
 
   p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   @media (min-width: 768px) {

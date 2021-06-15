@@ -3,10 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
-  width: 100vw;
-  min-height: 100vh;
 
   @media (min-width: 768px) {
   }
@@ -24,7 +22,7 @@ export const HabitCards = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     width: 1200px;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 340px;
   }
 `;
@@ -36,6 +34,10 @@ export const Welcome = styled.div`
   align-items: center;
   padding-top: 40px;
   height: 400px;
+
+  h1 {
+    margin-top: 30px;
+  }
 
   p {
     width: 300px;
@@ -51,11 +53,11 @@ export const Welcome = styled.div`
     margin-top: 30px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
     height: 350px;
     width: 200px;
     text-align: center;
+
 
     p {
       font-size: 12px;
@@ -73,6 +75,7 @@ export const DesktopNone = styled.div`
   flex-direction: column;
   justify-content: space-around;
   height: 200px;
+  
   @media (min-width: 768px) {
     display: none;
   }
@@ -86,8 +89,7 @@ export const DesktopNone = styled.div`
     margin-top: 30px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 0 20px;
     height: 350px;
     width: 200px;
     text-align: center;

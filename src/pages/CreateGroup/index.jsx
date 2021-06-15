@@ -74,6 +74,7 @@ const CreateGroup = () => {
           placeholder="Groupname"
           error={errors.name?.message}
           icon={GrGroup}
+          width={400}
         />
 
         <Input
@@ -83,6 +84,7 @@ const CreateGroup = () => {
           placeholder="Description"
           error={errors.description?.message}
           icon={MdDescription}
+          width={400}
         />
 
         <Input
@@ -92,9 +94,10 @@ const CreateGroup = () => {
           placeholder="Category"
           error={errors.category?.message}
           icon={AiOutlineAppstoreAdd}
+          width={400}
         />
 
-        <Button widthDesktop={450}>Criar grupo</Button>
+        <Button widthDesktop={400}>Criar grupo</Button>
       </StyledForm>
 
       <Footer img={Img} fixDiv>

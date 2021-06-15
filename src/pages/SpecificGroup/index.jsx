@@ -87,13 +87,13 @@ const SpecificGroup = () => {
                     {goalsModalOpened 
                     &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
                             <h3>Create new Goal</h3>
-                            <CreateGoalForm id={id}/>
+                            <CreateGoalForm id={id} getGroups={getGroups} />
                         </Modal>
                     }
                     {activitiesModalOpened 
                     &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
                             <h3>Create new Activitie</h3>
-                            <CreateActivityForm id={id} />
+                            <CreateActivityForm id={id} getGroups={getGroups} />
                         </Modal>
                     }
                 </ModalDiv>

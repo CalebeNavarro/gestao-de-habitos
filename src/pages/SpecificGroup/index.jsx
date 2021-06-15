@@ -12,7 +12,7 @@ import {
     SubscribeButton
 } from "./style"
 import { useContext, useEffect, useState } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivityForm from "../../components/CreateActivityForm";
@@ -20,17 +20,19 @@ import { AuthenticateContext } from "../../providers/Authenticate";
 import GoalsList from "../../components/GoalsList";
 import ActivitiesList from "../../components/ActivitiesList";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 const SpecificGroup = () => {
-
-    const {isLoged} = useContext(AuthenticateContext)
-
+    const history = useHistory();
+    const {isLoged} = useContext(AuthenticateContext);
     const { id } = useParams();
+
     const [userId] = useState(() => {
         const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
         const decoded = jwt_decode(token);
-        return decoded.user_id
+        return decoded.user_id;
     });
+
     const [goalsDivOpened, setGoalsDivOpened] = useState(false);
     const [activitiesDivOpened, setActivitiesDivOpened] = useState(false);
     const [isOpened, setIsOpened] = useState(true);
@@ -72,18 +74,21 @@ const SpecificGroup = () => {
             })}
     }, [groupInfo])
 
-    const handleSubscribe = (aa) => {
+    const handleSubscribe = () => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));
-        api.post(`/groups/${aa}/subscribe/`, {}, {
+        api.post(`/groups/${id}/subscribe/`,{}, {
             headers: {
                 Authorization: `Bearer ${token}`
-            }
+        }})
+        .then(response => {
+            toast.info("Successful to enter!")
+            getGroups();
+            return response;
         })
-            .then(response => getGroups())
-            .catch(error => console.log(error.response))
-    }
+        .catch(error => console.log(error))
+    };
 
-    const handleUnsubscribe = (id) => {
+    const handleUnsubscribe = () => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));
         api.delete(`/groups/${id}/unsubscribe/`, {
             headers: {
@@ -91,11 +96,14 @@ const SpecificGroup = () => {
             Authorization: `Bearer ${token}`
         }})
         .then(response => {
+            toast.info(`Exit successful!`)
             setSubscribed(false);
             getGroups();
+            history.push(history.location.state.referrer);
+            return response;
         })
-        .catch(error => console.log(error))
-    }
+        .catch(error => console.log(error.response))
+    };
 
     const { goals, activities } = groupInfo;
 
@@ -114,8 +122,8 @@ const SpecificGroup = () => {
                         <SpecificGroupP><span>Category: </span>{groupInfo.category}</SpecificGroupP>
                         <SpecificGroupP><span>Description: </span>{groupInfo.description}</SpecificGroupP>
                         {subscribed 
-                            ? <UnsubscribeButton onClick={() => handleUnsubscribe(id)}>unsubscribe</UnsubscribeButton>
-                            : <SubscribeButton onClick={() => handleSubscribe(id)}>subscribe</SubscribeButton>
+                            ? <UnsubscribeButton onClick={handleUnsubscribe}>unsubscribe</UnsubscribeButton>
+                            : <SubscribeButton onClick={handleSubscribe}>subscribe</SubscribeButton>
                         }
                     </SpecificGroupInfo>
                     <Container>

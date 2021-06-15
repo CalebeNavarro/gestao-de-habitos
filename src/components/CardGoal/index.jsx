@@ -35,23 +35,23 @@ const CardGoal = ({goal, getGroups}) => {
             <p><span>Achieved:</span> {goal.achieved ? "yes" : "no"}</p>
             <p><span>How much achieved</span> {goal.how_much_achieved}</p>
             <ButtonsDiv>
-            <UpdateGoalDiv>
-            <UpdateGoalButton onClick={() => setShowUpdateGoalForm(!showUpdateGoalForm)}>
-                Update goal
-            </UpdateGoalButton>
-            {showUpdateGoalForm 
-            &&  <UpdateGoalSelectDiv>
-                    <select onChange={e => setSelect(e.target.value)}>
-                        <option value="true">True</option>
-                        <option value="false">False</option>
-                    </select>
-                    <button onClick={() => handleUpdateGoal(select, goal.id)}>Update</button>
-                </UpdateGoalSelectDiv>
-            }
-            </UpdateGoalDiv>
-            <RemoveGoalButton onClick={() => handleRemoveGoal(goal.id)}>
-                Remove goal    
-            </RemoveGoalButton>
+                <UpdateGoalDiv>
+                    <UpdateGoalButton onClick={() => setShowUpdateGoalForm(!showUpdateGoalForm)}>
+                        Update goal
+                    </UpdateGoalButton>
+                    {showUpdateGoalForm 
+                    &&  <UpdateGoalSelectDiv>
+                            <select onChange={e => setSelect(e.target.value)}>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                            <button onClick={() => handleUpdateGoal(select, goal.id)}>Update</button>
+                        </UpdateGoalSelectDiv>
+                    }
+                </UpdateGoalDiv>
+                <RemoveGoalButton onClick={() => handleRemoveGoal(goal.id)}>
+                    Remove goal    
+                </RemoveGoalButton>
             </ButtonsDiv>
         </GoalDiv>
     )

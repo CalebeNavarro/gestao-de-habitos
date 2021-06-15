@@ -7,12 +7,11 @@ import api from "../../services/api";
 import Button from "../Button";
 import Input from "../../components/Input";
 import { MdSubtitles } from "react-icons/md";
-import { AiOutlineFieldTime } from "react-icons/ai";
 import { toast } from "react-toastify" ; 
 import {ImCheckboxChecked} from "react-icons/im";
 import {AiOutlineExclamationCircle} from "react-icons/ai";
 
-const CreateActivityForm = ({id}) => {
+const CreateActivityForm = ({id, getGroups}) => {
 
     const [token]=useState(
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
@@ -20,7 +19,6 @@ const CreateActivityForm = ({id}) => {
 
     const schema = yup.object().shape({
         title: yup.string().required('Campo obrigatório!'),
-        realization_time: yup.string().required('Campo obrigatório!'),
       })
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
@@ -43,9 +41,10 @@ const CreateActivityForm = ({id}) => {
     }
 
     const submitForm = (data) => {
-        data.realization_time = new Date();
-        data.group = id;
-        api.post("/activities/", data, {
+        const newData = data
+        newData.realization_time = new Date();
+        newData.group = id;
+        api.post("/activities/", newData, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
@@ -53,6 +52,7 @@ const CreateActivityForm = ({id}) => {
         .then(response => {
             notify("success")
             reset();
+            getGroups();
         })
         .catch(error => {
             notify("fail");

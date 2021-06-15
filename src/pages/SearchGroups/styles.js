@@ -23,7 +23,21 @@ export const ContainerCards = styled.div`
 
   @media (min-width: 768px) {
     height: 200px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      width: 15px;
+    }
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3f3d56;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: gray;
+    }
   }
 `;
 

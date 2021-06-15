@@ -72,14 +72,15 @@ const SpecificGroup = () => {
             })}
     }, [groupInfo])
 
-    const handleSubscribe = (id) => {
+    const handleSubscribe = (aa) => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));
-        api.post(`/groups/${id}/subscribe/`, {
+        api.post(`/groups/${aa}/subscribe/`, {}, {
             headers: {
                 Authorization: `Bearer ${token}`
-        }})
-        .then(response => getGroups())
-        .catch(error => console.log(error))
+            }
+        })
+            .then(response => getGroups())
+            .catch(error => console.log(error.response))
     }
 
     const handleUnsubscribe = (id) => {

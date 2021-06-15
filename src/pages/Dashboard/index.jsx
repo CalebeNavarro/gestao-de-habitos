@@ -24,12 +24,14 @@ import CreateHabitForm from "../../components/CreateHabitForm";
 const Dashboard = () => {
   const [habits, setHabits] = useState([]);
   const { isLoged } = useContext(AuthenticateContext);
+  const userName = JSON.parse(localStorage.getItem("@infoUser")) || '';
 
   const [goalsDivOpened, setGoalsDivOpened] = useState(false);
   const [habitDivOpened, setHabitDivOpened] = useState(false);
   const [isOpened, setIsOpened] = useState(true);
   const [goalsModalOpened, setGoalsModalOpened] = useState(false);
   const [habitModalOpened, setHabitModalOpened] = useState(false);
+
 
   const [groupInfo, setGroupInfo] = useState([]);
 
@@ -91,15 +93,20 @@ const Dashboard = () => {
   return (
     <>
       <Header />
-      <Container>
+
+      <Container >
+
+
         <Welcome>
-          <h1>Welcome, username</h1>
+          <h1>Welcome, {userName}</h1>
+
           <DesktopNone>
             <p>
-              Sua saúdo é importa, siga seus habitos frequen temente, seja
+              Sua saúde é importante, siga seus habitos frequentemente, seja
               paciente e tente criar habitos semanais, então crie seu hábito
               somente para você.
             </p>
+
             <Button func={() => setHabitModalOpened(true)}>Create habit</Button>
             {/* <Top /> */}
           </DesktopNone>
@@ -114,18 +121,19 @@ const Dashboard = () => {
         {habitModalOpened && (
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
             <h3>Create new habit</h3>
+          </Modal>
+        )}
 
-            <CreateHabitForm id={habit} />
-            
-          
-          </Modal> 
-        )
-        }
-
-        <Footer button={<Button func={() => setHabitModalOpened(true)}>Create Habit</Button>} img={image}>
-          Sua saúdo é importa, siga seus habitos frequen temente, seja paciente
-          e tente criar habitos semanais, então crie seu hábito somente para
-          você.
+        <Footer
+          fixDiv
+          button={
+            <Button func={() => setHabitModalOpened(true)}>Create Habit</Button>
+          }
+          img={image}
+        >
+          Sua saúde é importante, siga seus habitos frequentemente, seja
+          paciente e tente criar habitos semanais, então crie seu hábito
+          somente para você.
         </Footer>
       </Container>
     </>

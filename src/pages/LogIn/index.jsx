@@ -1,26 +1,24 @@
-import Input from "../../components/Input"
-import {FormContainer, LogInContainer} from "./styles"
-import LogInImage from "../../assets/undrawSingUp 1.png"
-import {useForm} from "react-hook-form"
-import * as yup from "yup"
-import { yupResolver } from "@hookform/resolvers/yup"
-import api from "../../services/api"
-import jwt_decode from "jwt-decode"
-import { useContext } from "react"
-import { UserContext } from "../../providers/user/index"
-import { useHistory, Link, Redirect } from "react-router-dom"
-import { AiOutlineUser, AiOutlineLock } from "react-icons/ai"
-import Button from "../../components/Button"
-import {toast} from 'react-toastify'
-import { AuthenticateContext } from "../../providers/Authenticate"
+import Input from "../../components/Input";
+import {FormContainer, LogInContainer} from "./styles";
+import LogInImage from "../../assets/undrawSingUp 1.png";
+import {useForm} from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import api from "../../services/api";
+import jwt_decode from "jwt-decode";
+import { useContext } from "react";
+import { UserContext } from "../../providers/user/index";
+import { useHistory, Link, Redirect } from "react-router-dom";
+import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
+import Button from "../../components/Button";
+import {toast} from 'react-toastify';
+import { AuthenticateContext } from "../../providers/Authenticate";
 
 
 
 const LogIn = () => {
-
     const { getUser } = useContext(UserContext)
     const {isLoged} = useContext(AuthenticateContext)
-    
     const history = useHistory()
 
     const schema = yup.object().shape({
@@ -32,16 +30,18 @@ const LogIn = () => {
         resolver: yupResolver(schema)
     })
 
-    const onSubmitFunction = data =>{
+    const onSubmitFunction = data => {
         api.post("/sessions/", data).then((response) => {
-            const token = response.data.access
-            const decoded = jwt_decode(token)
-            const userId = decoded.user_id
+            const token = response.data.access;
+            const decoded = jwt_decode(token);
+            const userId = decoded.user_id;
+            const user = JSON.parse(response.config.data);
              getUser(token, userId)
              localStorage.setItem("@habits:token", JSON.stringify(token))
+             localStorage.setItem("@infoUser", JSON.stringify(user.username))
              return history.push("/dashboard")
         }).catch((err) => toast.error("Email ou senha inválidos"))
-    }
+    };
 
     if(isLoged() === true){
         return <Redirect to="/dashboard"/>
@@ -70,9 +70,8 @@ const LogIn = () => {
         </LogInContainer>
         
         </>
-    )
-
-}
+    );
+};
 
 
 export default LogIn;

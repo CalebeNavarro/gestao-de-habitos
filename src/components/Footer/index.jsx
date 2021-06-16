@@ -1,12 +1,12 @@
 import { Container, Img, Text } from './styles';
 
-const Footer = ({ fixDiv=false, type, img, children, button }) => {
+const Footer = ({  type, img, children, button }) => {
   return (
     <>
     {type === "mobile" 
     ? (
       <Container
-        display="true"
+        mobile
       >
         <Text>
           <p>
@@ -17,8 +17,7 @@ const Footer = ({ fixDiv=false, type, img, children, button }) => {
     </Container>
     ) : (
       <Container
-        display="false"
-        fixDiv={fixDiv}
+        
       >
       <Img 
         img={img}

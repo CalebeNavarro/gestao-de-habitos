@@ -36,7 +36,7 @@ const Dashboard = () => {
       setGoalsModalOpened(false);
       setHabitModalOpened(false);
     }
-  }, [goalsModalOpened, habitModalOpened, isOpened]);
+  }, [ goalsModalOpened, habitModalOpened, isOpened ]);
 
   useEffect(() => {
     loadHabits();
@@ -77,14 +77,14 @@ const Dashboard = () => {
 
         <HabitCards>
           {habits.map((habit) => (
-            <CardHabit key={habit.id} habit={habit} />
+            !habit.achieved && <CardHabit key={habit.id} habit={habit} func={loadHabits}/>
           ))}
         </HabitCards>
 
         {habitModalOpened && (
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
             <h3>Create new habit</h3>
-            <CreateHabitForm />
+            <CreateHabitForm func={loadHabits} />
           </Modal>
         )}
 

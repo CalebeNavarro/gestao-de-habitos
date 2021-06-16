@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: ${props => props.display === "false"? 'none' : 'block'};
+  display: ${(props) => (props.display === "false" ? "none" : "block")};
   width: 90%;
   margin: 20px auto;
-
-
-
+  font-family: var(--font-home);
   @media (min-width: 768px) {
-    display: ${props => props.display === "true" ? 'none' : 'flex'};
+    display: ${(props) => (props.display === "true" ? "none" : "flex")};
     width: 90vw;
     gap: 30px;
     height: 35vh;
@@ -16,7 +14,7 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1100px) {
-    position: ${props => props.fixDiv ? 'absolute' : 'static'};
+    position: ${(props) => (props.fixDiv ? "absolute" : "static")};
     bottom: 0px;
   }
 `;
@@ -24,7 +22,7 @@ export const Container = styled.div`
 export const Img = styled.div`
   @media (min-width: 768px) {
     flex: 1;
-    background-image: url(${props => props.img});
+    background-image: url(${(props) => props.img});
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: contain;

@@ -1,7 +1,7 @@
 import { Form } from "./styles";
 import Input from "../Input";
 import { HiOutlineDocumentSearch } from "react-icons/hi";
-import Select from "./../Select"
+import Select from "./../Select";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -26,7 +26,7 @@ const FormSearchCategory = () => {
   });
 
   const onSubmit = (data) => {
-    if (data.change !== "-- Sugestion Groups --"){
+    if (data.change !== "-- Category suggestion --") {
       searchGroups(data.change);
     } else {
       searchGroups(data.category);
@@ -35,25 +35,34 @@ const FormSearchCategory = () => {
   };
 
   return (
-      <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
+    <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
+      <Select
+        name="change"
+        options={[
+          "-- Category suggestion --",
+          "Saúde",
+          "Academia",
+          "Healthy",
+          "Educação",
+          "Musica",
+          "Jogos",
+          "Study",
+        ]}
+        register={register}
+      />
 
-        <Select name="change" options={['-- Sugestion Groups --', "Saúde", "Academia", "Healthy"]} 
-          register={register}
+      <span>Or</span>
 
-        />
+      <Input
+        icon={HiOutlineDocumentSearch}
+        error={errors.category?.message}
+        register={register}
+        name="category"
+        placeholder="Group Category"
+      />
 
-        <span>Or</span>
-
-        <Input
-          icon={HiOutlineDocumentSearch}
-          error={errors.category?.message}
-          register={register}
-          name="category"
-          placeholder="Group Category"
-        />
-
-        <button type="submit">Search</button>
-      </Form>
+      <button type="submit">Search</button>
+    </Form>
   );
 };
 

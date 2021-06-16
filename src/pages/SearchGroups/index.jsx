@@ -1,4 +1,4 @@
-import { Container, ContainerCards, Buttons } from "./styles";
+import { Container, ContainerCards, Buttons, NextButton, PrevButton } from "./styles";
 import Header from "../../components/Header";
 import FormSearchCategory from "../../components/FormSearchCategory";
 import { useGroups } from "../../providers/Groups";
@@ -43,20 +43,13 @@ const SearchGroups = () => {
       <h2>Search Groups</h2>
 
       <FormSearchCategory />
-
-      <Buttons>
-        <Button func={handlePrev} isHave={!groups.previous && true}>
-          Prev
-        </Button>
-
-        <Button func={handleNext} isHave={!groups.next && true}>
-          Next
-        </Button>
-      </Buttons>
-
       <Top></Top>
 
       <ContainerCards>
+        <div className="ContainerButton">
+        <PrevButton onClick={()=>handlePrev()} isHave={!groups.previous && true}/>
+        </div>
+        <div className="container-cards">
         {groups.results.map((group) => (
           <CardGroup
             key={group.id}
@@ -64,6 +57,10 @@ const SearchGroups = () => {
             onClick={() => handleCard(group.id)}
           />
         ))}
+        </div>
+        <div className="ContainerButton">
+        <NextButton onClick={()=>handleNext()} isHave={!groups.next && true}/>
+        </div>
       </ContainerCards>
 
       <Footer img={Img} fixDiv>

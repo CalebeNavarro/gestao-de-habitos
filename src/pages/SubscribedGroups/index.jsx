@@ -59,6 +59,7 @@ const SubscribedGroups = () => {
       </Footer>
       <Top />
       <ContainerCards>
+        <div className="container-cards">
         {groups.map((group) => (
           <CardGroup
             key={group.id}
@@ -66,6 +67,8 @@ const SubscribedGroups = () => {
             onClick={() => handleCard(group.id)}
           />
         ))}
+        </div>
+        
       </ContainerCards>
 
       <Footer img={Img} fixDiv>

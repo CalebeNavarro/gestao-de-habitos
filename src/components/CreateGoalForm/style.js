@@ -15,7 +15,7 @@ export const NotifyP = styled.p`
 export const SelectDiv = styled.div`
     display: flex;
     align-items: center;
-    width: 550px;
+    width: 280px;
     height: 30px;
     background-color: var(--background-gray);
     font-size: 1.2rem;
@@ -24,6 +24,10 @@ export const SelectDiv = styled.div`
     border-radius: 12px;
     box-shadow: 1px 1px var(--black);
     margin-bottom: 20px;
+
+    @media screen and (min-width: 768px){
+        width: 400px;
+    }
 `
 
 export const IconDiv = styled.div`

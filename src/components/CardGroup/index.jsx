@@ -19,6 +19,9 @@ const CardGroup = ({ group, ...rest }) => {
     if(category.includes("book") || category.includes("leitura")){
       setBackground("https://edsurge.imgix.net/uploads/post/image/13231/reading-1585538079.jpg?auto=compress%2Cformat&w=1024&h=512&fit=crop")
     }
+    if(category.includes("musica") || category.includes("music")){
+      setBackground("https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/s3/field/field_image_main/Sheet%20Music%20-%20Luke%20Lewis.jpg?itok=-JlFk72h")
+    }
 
     if(background === ""){
       setBackground("https://i.pinimg.com/originals/d7/c3/41/d7c3412d99205b3a27faf60a713c3aa6.jpg")
@@ -31,11 +34,13 @@ const CardGroup = ({ group, ...rest }) => {
   
   return (
     <Container background={background} {...rest}>
-      <p>Name: {group.name}</p>
+      <div >
+      <p>Name: <span>{group.name}</span></p>
 
-      <p>Category: {group.category}</p>      
+      <p>Category: <span>{group.category}</span></p>      
 
-      <p>Description: {group.description}</p>
+      <p>Description: <span>{group.description}</span></p>
+      </div>
     </Container>
   )
 };

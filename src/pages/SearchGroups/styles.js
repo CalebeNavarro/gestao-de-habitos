@@ -22,8 +22,6 @@ export const ContainerCards = styled.div`
   gap: 12px;
 
   @media (min-width: 768px) {
-    height: 200px;
-    overflow-y: auto;
     ::-webkit-scrollbar {
       width: 15px;
     }

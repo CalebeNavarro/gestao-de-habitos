@@ -55,6 +55,7 @@ const CreateActivityForm = ({id, getGroups}) => {
             getGroups();
         })
         .catch(error => {
+            console.log(error);
             notify("fail");
         })
     }

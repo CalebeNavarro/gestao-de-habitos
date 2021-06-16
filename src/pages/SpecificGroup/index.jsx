@@ -17,6 +17,7 @@ import { useParams, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import CreateGoalForm from "../../components/CreateGoalForm";
 import CreateActivityForm from "../../components/CreateActivityForm";
+import EditGroupForm from "../../components/EditGroupForm";
 import { AuthenticateContext } from "../../providers/Authenticate";
 import GoalsList from "../../components/GoalsList";
 import ActivitiesList from "../../components/ActivitiesList";
@@ -176,8 +177,10 @@ const SpecificGroup = () => {
                     }
                     {editModalOpened
                     && <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
-                            <h3>Edit group</h3>
-                            <form></form>
+                            <EditGroupForm 
+                                id={id}
+                                getGroups={getGroups}
+                            />
                         </Modal>
                     }
                 </ModalDiv>

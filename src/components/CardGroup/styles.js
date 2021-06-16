@@ -10,8 +10,8 @@ export const Container = styled.div`
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: all 0.5s;
-  /* background: radial-gradient(#76b2fe, #b69efe); */
   background-image: url(${(props) => props.background});
+  background-position: 50% 50%;
 
   &:hover {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);

@@ -13,6 +13,7 @@ export const Container = styled.div`
 export const HabitCards = styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   min-height: 300px;
@@ -21,9 +22,9 @@ export const HabitCards = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 1200px;
+    max-width: 1200px;
     overflow-y: auto;
-    max-height: 340px;
+    max-height: 410px;
     ::-webkit-scrollbar {
       width: 15px;
     }

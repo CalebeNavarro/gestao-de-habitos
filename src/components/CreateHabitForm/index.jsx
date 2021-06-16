@@ -11,6 +11,7 @@ import { toast } from "react-toastify" ;
 import {ImCheckboxChecked} from "react-icons/im";
 import {AiOutlineExclamationCircle, AiOutlineAppstoreAdd} from "react-icons/ai";
 import {GiStairsGoal} from "react-icons/gi";
+import Select from './../Select';
 
 import {Form, NotifyP} from "./styles";
 
@@ -76,7 +77,15 @@ const CreateHabitForm = ({ func }) => {
 
     return (
         <Form onSubmit={handleSubmit(submitForm)}>
-            
+            <Select
+                name="difficulty"
+                options={[
+                "Easy",
+                "Medium",
+                "Hard",
+                ]}
+                register={register}
+            />
             <Input 
                 register={register}  
                 name="title" 
@@ -93,14 +102,14 @@ const CreateHabitForm = ({ func }) => {
                 error={errors.category?.message}
                 icon={AiOutlineAppstoreAdd}
             />
-            <Input 
+            {/* <Input 
                 register={register}  
                 name="difficulty"
                 label="Difficulty"  
                 placeholder="Difficulty"  
                 error={errors.difficulty?.message}
                 icon={AiFillControl}
-            />
+            /> */}
             <Input 
                 register={register}  
                 name="frequency"

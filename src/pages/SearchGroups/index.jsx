@@ -68,7 +68,7 @@ const SearchGroups = () => {
 
       <Footer img={Img} fixDiv>
         O grupo é importante na inserção no convívio social, auxiliando na
-        superação de problemas desta ordem. Aqui esta a lista de grupos que voce
+        superação de problemas desta ordem. Aqui está a lista de grupos que você
         pode se inscrever para criar novas metas e atividades.
       </Footer>
     </Container>

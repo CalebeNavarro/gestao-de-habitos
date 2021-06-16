@@ -42,9 +42,10 @@ export const SpecificGroupP = styled.p`
 
     @media screen and (min-width: 768px) {
         font-size: 1.5rem;
-        width: 70vw;
+        width: 55vw;
     }
 `
+
 
 export const UnsubscribeButton = styled.button`
     position: absolute;
@@ -72,6 +73,17 @@ export const SubscribeButton = styled(UnsubscribeButton)`
 export const EditGroupButton = styled(UnsubscribeButton)`
     background-color: red;
 `
+
+export const MembersButton = styled(UnsubscribeButton)`
+    background-color: blue;
+    left: 5px;
+
+    @media screen and (min-width: 768px){
+        left: initial;
+        right: 150px;
+    }
+`
+
 
 export const Container = styled.div`
     display: flex;

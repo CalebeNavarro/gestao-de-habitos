@@ -79,6 +79,7 @@ const CreateGoalForm = ({id, getGroups}) => {
                 placeholder="Title"  
                 error={errors.title?.message}
                 icon={MdSubtitles}
+                width={400}
             />
             <DifficultyP>Difficulty</DifficultyP>
             <SelectDiv>

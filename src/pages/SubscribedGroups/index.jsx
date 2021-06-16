@@ -54,8 +54,8 @@ const SubscribedGroups = () => {
       <h2>Subscribed Groups</h2>
 
       <Footer type="mobile">
-        Aqui ficam os grupos em que voce esta inscrito para que possa rastrear
-        de maneira facil seus grupos, atividades e metas.
+        Aqui ficam os grupos em que você está inscrito para que possa rastrear
+        de maneira fácil seus grupos, atividades e metas.
       </Footer>
       <Top />
       <ContainerCards>
@@ -69,8 +69,8 @@ const SubscribedGroups = () => {
       </ContainerCards>
 
       <Footer img={Img} fixDiv>
-        Aqui ficam os grupos em que voce esta inscrito para que possa rastrear
-        de maneira facil seus grupos, atividades e metas.
+        Aqui ficam os grupos em que você está inscrito para que possa rastrear
+        de maneira fácil seus grupos, atividades e metas.
       </Footer>
     </Container>
   );

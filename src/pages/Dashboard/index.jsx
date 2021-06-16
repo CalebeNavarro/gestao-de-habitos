@@ -36,7 +36,7 @@ const Dashboard = () => {
       setGoalsModalOpened(false);
       setHabitModalOpened(false);
     }
-  }, [ goalsModalOpened, habitModalOpened, isOpened ]);
+  }, [goalsModalOpened, habitModalOpened, isOpened]);
 
   useEffect(() => {
     loadHabits();
@@ -76,9 +76,12 @@ const Dashboard = () => {
         </Welcome>
 
         <HabitCards>
-          {habits.map((habit) => (
-            !habit.achieved && <CardHabit key={habit.id} habit={habit} func={loadHabits}/>
-          ))}
+          {habits.map(
+            (habit) =>
+              !habit.achieved && (
+                <CardHabit key={habit.id} habit={habit} func={loadHabits} />
+              )
+          )}
         </HabitCards>
 
         {habitModalOpened && (
@@ -98,7 +101,7 @@ const Dashboard = () => {
           Os bons hábitos são aqueles que levam as pessoas a se tornarem mais
           produtivas, pois pessoas que aplicam hábitos produtivos utilizam
           melhor os recursos e aumentam a capacidade de gerar resultados. Crie
-          um hábito agora para seguir agora mesmo!
+          um hábito para seguir agora mesmo!
         </Footer>
       </Container>
     </>

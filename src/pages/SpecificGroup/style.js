@@ -69,6 +69,10 @@ export const SubscribeButton = styled(UnsubscribeButton)`
     background-color: var(--color-primary);
 `
 
+export const EditGroupButton = styled(UnsubscribeButton)`
+    background-color: red;
+`
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;

@@ -9,7 +9,8 @@ import {
     ModalDiv,
     SpecificGroupInfo,
     UnsubscribeButton,
-    SubscribeButton
+    SubscribeButton,
+    EditGroupButton
 } from "./style"
 import { useContext, useEffect, useState } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
@@ -19,19 +20,19 @@ import CreateActivityForm from "../../components/CreateActivityForm";
 import { AuthenticateContext } from "../../providers/Authenticate";
 import GoalsList from "../../components/GoalsList";
 import ActivitiesList from "../../components/ActivitiesList";
-import jwt_decode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 
 const SpecificGroup = () => {
-    const history = useHistory();
-    const {isLoged} = useContext(AuthenticateContext);
-    const { id } = useParams();
+  const history = useHistory();
+  const { isLoged } = useContext(AuthenticateContext);
+  const { id } = useParams();
 
-    const [userId] = useState(() => {
-        const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
-        const decoded = jwt_decode(token);
-        return decoded.user_id;
-    });
+  const [userId] = useState(() => {
+    const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
+    const decoded = jwt_decode(token);
+    return decoded.user_id;
+  });
 
     const [goalsDivOpened, setGoalsDivOpened] = useState(false);
     const [activitiesDivOpened, setActivitiesDivOpened] = useState(false);
@@ -39,40 +40,56 @@ const SpecificGroup = () => {
     const [goalsModalOpened, setGoalsModalOpened] = useState(false);
     const [activitiesModalOpened, setActivitiesModalOpened] = useState(false);
     const [subscribed, setSubscribed] = useState(false);
+    const [unsubscribed, setUnsubscribed] = useState(false);
+    const [creator, setCreator] = useState(false);
+    const [editModalOpened, setEditModalOpened] = useState(false);
 
     const [groupInfo, setGroupInfo] = useState([]);
 
     useEffect(() => {
         if (goalsModalOpened === true){
             setIsOpened(true);
-        } else if (activitiesModalOpened === true) {
+        } else if (activitiesModalOpened === true){
+            setIsOpened(true);
+        } else if (editModalOpened === true){
             setIsOpened(true);
         };
         if(isOpened === false){
             setGoalsModalOpened(false);
             setActivitiesModalOpened(false);
-        }
-
-    }, [goalsModalOpened,activitiesModalOpened,isOpened]);
+            setEditModalOpened(false);
+        };
+    }, [isOpened]);
 
     const getGroups = () => {
-        api.get(`/groups/${id}/`)
+        api
+        .get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
-        .catch(error => console.log(error))
-    }
+        .catch((error) => console.log(error));
+    };
 
     useEffect(() => {
         getGroups();
-    }, [id])
+    }, [id]);
 
     useEffect(() => {
-        if(groupInfo.users_on_group){
-            groupInfo.users_on_group.map((member) => {
-                if(member.id === userId){
-                    return setSubscribed(true);
+        if(groupInfo.creator){
+            if(groupInfo.creator.id === userId){
+                return setCreator(true);
+            } else if (groupInfo.users_on_group){
+                const memberType = groupInfo.users_on_group.find((member) => {
+                    return member.id === userId
+                });
+                if(memberType === undefined){
+                    setSubscribed(false);
+                    setUnsubscribed(true);
+                } else {
+                    setUnsubscribed(false);
+                    setSubscribed(true);
                 }
-            })}
-    }, [groupInfo])
+            };
+        }; 
+    }, [groupInfo]);
 
     const handleSubscribe = () => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));
@@ -90,25 +107,27 @@ const SpecificGroup = () => {
 
     const handleUnsubscribe = () => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));
-        api.delete(`/groups/${id}/unsubscribe/`, {
+        api
+        .delete(`/groups/${id}/unsubscribe/`, {
             headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        }})
-        .then(response => {
-            toast.info(`Exit successful!`)
+            Authorization: `Bearer ${token}`,
+            },
+        })
+        .then((response) => {
+            toast.info(`Exit successful!`);
             setSubscribed(false);
             getGroups();
             history.push(history.location.state.referrer);
             return response;
         })
-        .catch(error => console.log(error.response))
+        .catch((error) => console.log(error.response));
     };
 
     const { goals, activities } = groupInfo;
 
-    if (isLoged() === false){
-        return <Redirect to="/"/>;
+    if (isLoged() === false) {
+        return <Redirect to="/" />;
     }
 
     return (
@@ -121,10 +140,9 @@ const SpecificGroup = () => {
                         <SpecificGroupP><span>Creator: </span>{groupInfo.creator?.username}</SpecificGroupP>
                         <SpecificGroupP><span>Category: </span>{groupInfo.category}</SpecificGroupP>
                         <SpecificGroupP><span>Description: </span>{groupInfo.description}</SpecificGroupP>
-                        {subscribed 
-                            ? <UnsubscribeButton onClick={handleUnsubscribe}>unsubscribe</UnsubscribeButton>
-                            : <SubscribeButton onClick={handleSubscribe}>subscribe</SubscribeButton>
-                        }
+                        {subscribed && <UnsubscribeButton onClick={handleUnsubscribe}>Unsubscribe</UnsubscribeButton>}
+                        {unsubscribed && <SubscribeButton onClick={handleSubscribe}>Subscribe</SubscribeButton>}
+                        {creator && <EditGroupButton onClick={() => setEditModalOpened(true)}>Edit group</EditGroupButton>}
                     </SpecificGroupInfo>
                     <Container>
                         <GoalsList 
@@ -154,6 +172,12 @@ const SpecificGroup = () => {
                     &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
                             <h3>Create new Activitie</h3>
                             <CreateActivityForm id={id} getGroups={getGroups} />
+                        </Modal>
+                    }
+                    {editModalOpened
+                    && <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
+                            <h3>Edit group</h3>
+                            <form></form>
                         </Modal>
                     }
                 </ModalDiv>

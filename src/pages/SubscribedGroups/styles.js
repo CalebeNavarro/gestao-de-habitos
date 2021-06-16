@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* text-align: center; */
 
   h2 {
     margin-top: 82px;
@@ -26,7 +25,7 @@ export const ContainerCards = styled.div`
   gap: 12px;
 
   @media (min-width: 768px) {
-    max-height: 360px;
+    height: 360px;
     overflow-y: auto;
     margin-top: 20px;
     ::-webkit-scrollbar {

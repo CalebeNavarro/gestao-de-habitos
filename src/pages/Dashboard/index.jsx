@@ -92,7 +92,6 @@ const Dashboard = () => {
         )}
 
         <Footer
-          fixDiv
           button={
             <Button func={() => setHabitModalOpened(true)}>Create Habit</Button>
           }

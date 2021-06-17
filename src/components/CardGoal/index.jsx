@@ -6,20 +6,22 @@ import {
     UpdateAchievedButton
 } from "./style";
 import api from "../../services/api";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const CardGoal = ({goal, getGroups}) => {
     const [ value, setValue ] = useState(goal.how_much_achieved)
     const [token] = useState(JSON.parse(localStorage.getItem("@habits:token")));
     const [showUpdateGoalDiv, setShowUpdateGoalDiv] = useState(false);
+    const { groupId } = useContext(GroupIdContext);
 
     const handleRemoveGoal = (id) => {
         api.delete(`/goals/${id}/`,{
             headers: {
                 Authorization: `Bearer ${token}`
         }})
-        .then(response => getGroups())
+        .then(response => getGroups(groupId))
         .catch(error => console.log(error));
     };
 
@@ -39,7 +41,7 @@ const CardGoal = ({goal, getGroups}) => {
                 Authorization: `Bearer ${token}`
         }})
         .then(response => {
-            getGroups();
+            getGroups(groupId);
             toast.success(`Congratulations, Your ${goal.title} is done!`);
         })
         .catch(error => console.log(error.response))

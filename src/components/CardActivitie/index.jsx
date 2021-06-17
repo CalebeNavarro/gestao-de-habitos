@@ -8,10 +8,13 @@ import {
     ButtonsDiv,
     UpdateActivityTitleDiv
 } from "./style";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import api from "../../services/api";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const CardActivitie = ({activitie, getGroups}) => {
+
+    const { groupId } = useContext(GroupIdContext);
 
     const [token] = useState(JSON.parse(localStorage.getItem("@habits:token")));
 
@@ -25,7 +28,7 @@ const CardActivitie = ({activitie, getGroups}) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
         }})
-        .then(response => getGroups())
+        .then(response => getGroups(groupId))
         .catch(error => console.log(error))
     }
 
@@ -34,7 +37,7 @@ const CardActivitie = ({activitie, getGroups}) => {
             headers: {
                 Authorization: `Bearer ${token}`
         }})
-        .then(response => getGroups())
+        .then(response => getGroups(groupId))
         .catch(error => console.log(error))
     }
 

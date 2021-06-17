@@ -37,11 +37,21 @@ const CardActivitie = ({activitie, getGroups}) => {
         .then(response => getGroups())
         .catch(error => console.log(error))
     }
+
+    const realizationTime = () => {
+        const time = activitie.realization_time.substr(0, 10);
+        const myRe = new RegExp("([0-9]{4})[-]([0-9]{2})[-]([0-9]{2})");
+        const arrayRe = myRe.exec(time);
+        const paragrapf = `${arrayRe[2]}/${arrayRe[3]}/${arrayRe[1]}`;
+        return <p>
+            <span>Realization time: </span>{paragrapf}
+        </p>
+    }
     
     return (
         <ActivitieDiv>
             <p><span>Title:</span> {activitie.title}</p>
-            <p><span>Realization time:</span>{activitie.realization_time}</p>
+            {realizationTime()}
             <ButtonsDiv>
                 <UpdateTitleDiv>
                     <UpdateTitleButton onClick={() => setShowTitleInput(!showTitleInput)}> Update title </UpdateTitleButton>

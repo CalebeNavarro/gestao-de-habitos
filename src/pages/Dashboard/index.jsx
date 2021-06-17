@@ -3,7 +3,8 @@ import {
   HabitCards,
   Welcome,
   DesktopNone,
-  SecondFooter
+  SecondFooter,
+  ButtonFooter
 } from "../Dashboard/styles";
 import CardHabit from "../../components/CardHabit";
 import Button from "../../components/Button";
@@ -67,11 +68,12 @@ const Dashboard = () => {
 
       <Container>
         <Welcome>
-          Welcome
+          Welcome, {userName}!
         </Welcome>
 
         {habits.length > 0 && <Footer
           type='mobile'
+          button={<ButtonFooter onClick={() => setHabitModalOpened(true)}>Create new Habit</ButtonFooter>}
           >
             Good habits are those that bring people to become more productive. Make a habit to follow right now!
         </Footer>}

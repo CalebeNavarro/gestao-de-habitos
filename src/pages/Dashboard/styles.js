@@ -32,6 +32,19 @@ export const Container = styled.div`
   }
 `;
 
+export const ButtonFooter = styled.button`
+  padding: 8px 0px;
+  color: white;
+  border-radius: 7px;
+  margin: 10px 0;
+  font-size: 1rem;
+  width: 200px;
+  background-color: var(--black);
+  border-radius: 15px;
+  border: 1px solid var(--black);
+  height: 42px;
+`
+
 export const HabitCards = styled.div`
   display: flex;
   flex-direction: column;

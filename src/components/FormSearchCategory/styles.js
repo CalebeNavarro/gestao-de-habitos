@@ -11,7 +11,6 @@ export const Form = styled.form`
   gap: 10px;
 
   button {
-    margin-left: 10px;
     margin-bottom: 18px;
     height: 52px;
     width: 90px;
@@ -19,7 +18,6 @@ export const Form = styled.form`
     color: var(--white);
     font-size: 18px;
     border-radius: 15px;
-    margin-left: 20px;
     width: 200px;
     border: 1px solid black;
     :hover {

@@ -22,6 +22,16 @@ const CardGroup = ({ group, ...rest }) => {
     if(category.includes("musica") || category.includes("music")){
       setBackground("https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/s3/field/field_image_main/Sheet%20Music%20-%20Luke%20Lewis.jpg?itok=-JlFk72h")
     }
+    if(category.includes("educação") || category.includes("education")){
+      setBackground("https://blog.portabilis.com.br/wp-content/uploads/2016/12/a-educacao-publica-tem-jeito-descubra-por-que-sim.jpeg")
+    }
+    if(category.includes("jogos") || category.includes("games")){
+      setBackground("https://cdn.cgn.inf.br/cgn-cdn/fotos-cgn/2020/08/27161304/S%C3%A9rie-GDLK.jpg")
+    }
+    if(category.includes("study") || category.includes("estudos")){
+      setBackground("https://images.collegexpress.com/article/make-studying-more-fun.jpg")
+    }
+
 
     if(background === ""){
       setBackground("https://i.pinimg.com/originals/d7/c3/41/d7c3412d99205b3a27faf60a713c3aa6.jpg")

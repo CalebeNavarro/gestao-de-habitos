@@ -7,7 +7,7 @@ export const Container = styled.div`
   width: 310px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 1s;
   background-image: url(${(props) => props.background});
 
   div {
@@ -22,7 +22,7 @@ export const Container = styled.div`
   &:hover {
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
     background-position: 50% 50%;
-    transform: scale(1.01);
+    transform: scale(1.02);
   }
   p {
     overflow: hidden;

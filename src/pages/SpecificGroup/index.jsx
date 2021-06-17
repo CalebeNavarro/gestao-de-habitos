@@ -65,9 +65,9 @@ const SpecificGroup = () => {
             setEditModalOpened(false);
             setMembersModalOpened(false);
         };
-    }, [isOpened]);
+    }, [isOpened, goalsModalOpened, activitiesModalOpened, editModalOpened, membersModalOpened]);
 
-    const getGroups = () => {
+    const getGroups = (id) => {
         api
         .get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
@@ -75,7 +75,7 @@ const SpecificGroup = () => {
     };
 
     useEffect(() => {
-        getGroups();
+        getGroups(id);
     }, [id]);
 
     useEffect(() => {
@@ -95,7 +95,7 @@ const SpecificGroup = () => {
                 }
             };
         }; 
-    }, [groupInfo]);
+    }, [groupInfo, userId]);
 
     const handleSubscribe = () => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));

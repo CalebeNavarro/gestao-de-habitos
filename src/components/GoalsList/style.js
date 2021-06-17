@@ -46,6 +46,28 @@ export const GoalsListDiv = styled.div`
     }
 `
 
+export const ButtonsDivs = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 30px;
+    margin: 10px 0;
+
+    button {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    @media (min-width: 768px) {
+        button {
+            padding: 20px 30px;
+            font-size: 20px;
+        }
+    }
+`;
+
 export const SpaceDiv = styled.div`
     height: 10px;
 `

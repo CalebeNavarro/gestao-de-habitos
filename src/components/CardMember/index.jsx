@@ -6,7 +6,7 @@ const CardMember = ({ member }) => {
       <MemberP>
         <span>Username: </span>
         {member.username}
-      </MemberP>
+        </MemberP>
 
       <MemberP>
         <span>E-mail: </span>

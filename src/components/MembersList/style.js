@@ -6,7 +6,16 @@ export const MembersListDiv = styled.div`
   align-content: center;
   align-items: center;
   text-align: center;
-  width: 80%;
   margin: 0 auto;
   height: 100%;
+  overflow-y: auto;
+`;
+
+export const Title = styled.h1`
+  font-size: 2.4rem;
+  margin-bottom: 30px;
+
+  @media (min-width: 768px) {
+    font-size: 4rem;
+  }
 `;

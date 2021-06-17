@@ -6,11 +6,12 @@ export const ActivitieDiv = styled.div`
     font-size: 24px;
     align-items: space-evenly;
     border: 1px solid black;
+    background-color: #ffffff40;
     border-radius: 10px;
     padding: 15px;
     width: 90%;
     margin: 10px;
-    color: var(--white);
+    color: black;
 
     p {
         margin: 5px;
@@ -49,6 +50,8 @@ export const UpdateButton = styled.button`
     border: 1px solid black;
     border-left: none;
     border-radius: 0 5px 5px 0;
+    background: radial-gradient(#DA22FF,#8E54E9);
+    color: var(--white);
 `
 
 export const ButtonsDiv = styled.div`
@@ -57,16 +60,20 @@ export const ButtonsDiv = styled.div`
 `
 
 export const UpdateTitleButton = styled.button`
-    background-color: var(--white);
+    background: radial-gradient(#DA22FF,#8E54E9);
     width: 100%;
     padding: 5px;
     height: 30px;
     border: 1px solid black;
     border-radius: 5px;
+    color: var(--white);
+
+    &:hover {
+        filter: brightness(0.8);
+    }
 `
 
 export const RemoveActivityButton = styled(UpdateTitleButton)`
     width: 40%;
-    background-color: var(--black);
-    color: var(--white);
+    background: var(--black);
 `

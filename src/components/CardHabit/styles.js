@@ -1,18 +1,103 @@
 import styled from "styled-components";
 
 export const HabitCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 200px;
-  height: 150px;
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+  min-height: 200px;
+  display: grid;
+  grid-template-rows: 20px 50px 1fr 50px;
   border-radius: 10px;
-  background-color: var(--color-primary);
-  color: var(--black);
-  font-size: 13px;
-  margin: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.5s;
+  background: radial-gradient(${props => props.objColor.first},${props => props.objColor.second});
+
+  span, h2 {
+    font-size: 1rem;
+  }
+
+  :hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+    transform: scale(1.01);
+  }
+
+  & > div {
+    grid-row: 2/3;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & p {
+    grid-row: 1/2;
+    justify-self: end;
+    transition: 1s;
+
+    & :hover {
+      color: tomato;
+      transition: 1s;
+    }
+  }
+
+
+  & h2 {
+    grid-row: 3/4;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  & section {
+    display: flex;
+    grid-row: 4/5;
+    align-self: center;
+    text-align: center;
+    align-items: center;
+
+    & button {
+      border: 1px solid pink;
+    }
+
+    & button:hover {
+      border: 1px solid lightcoral;
+    }
+  }
+    & section input {
+      width: 80%;
+    }
+    & section button {
+      width: 20%;
+      background-color: pink;
+      color: rgba(10, 10, 10, 0.9);
+      padding: 10px 0;
+      border-radius: 7px;
+
+      & hover {
+        
+      }
+    }
+
+  a::after {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    content: "";
+    width: 0%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all 0.5s;
+  }
+
+  a:hover::after {
+    width: 100%;
+  }
 
   @media (min-width: 768px) {
+    width: 500px;
+
+    span, h2 {
+      font-size: 1.4rem;
+    }
+
   }
 `;

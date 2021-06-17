@@ -1,48 +1,69 @@
-import { Container, Form } from './styles';
-import Input from '../Input';
-import { HiOutlineDocumentSearch } from 'react-icons/hi';
+import { Form } from "./styles";
+import Input from "../Input";
+import { HiOutlineDocumentSearch } from "react-icons/hi";
+import Select from "./../Select";
 
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { useGroups } from '../../providers/Groups';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import { useGroups } from "../../providers/Groups";
 
 const FormSearchCategory = () => {
   const { searchGroups } = useGroups();
 
   const formSchema = yup.object().shape({
-    category: yup.string()
-  })
-
-  const { handleSubmit, formState : errors, reset, register } = useForm({
-    resolver: yupResolver(formSchema)
+    category: yup.string(),
+    change: yup.string(),
   });
 
-  const onSubmit = ({category}) => {
-    searchGroups(category);
+  const {
+    handleSubmit,
+    formState: errors,
+    reset,
+    register,
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
+  const onSubmit = (data) => {
+    if (data.change !== "-- Category suggestion --") {
+      searchGroups(data.change);
+    } else {
+      searchGroups(data.category);
+    }
     reset();
-  }
+  };
 
   return (
-    <Container>
-      <Form onSubmit={handleSubmit(data => onSubmit(data))}>
-        <Input 
-          icon={HiOutlineDocumentSearch}
-          error={errors.category?.message}
-          register={register}
-          name="category"
-          label="category"
-          placeholder="Group Category"
-        />
+    <Form onSubmit={handleSubmit((data) => onSubmit(data))}>
+      <Select
+        name="change"
+        options={[
+          "-- Category suggestion --",
+          "Saúde",
+          "Academia",
+          "Healthy",
+          "Educação",
+          "Musica",
+          "Jogos",
+          "Study",
+        ]}
+        register={register}
+      />
 
-        <button type='submit'>
-          Search
-        </button>
-      </Form>
+      <span>Or</span>
 
+      <Input
+        icon={HiOutlineDocumentSearch}
+        error={errors.category?.message}
+        register={register}
+        name="category"
+        placeholder="Group Category"
+      />
 
-  </Container>
-  )
+      <button type="submit">Search</button>
+    </Form>
+  );
 };
 
 export default FormSearchCategory;

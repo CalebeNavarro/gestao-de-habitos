@@ -1,17 +1,16 @@
 import { HeaderDiv, MenuDiv, MenuButton, LogoImg } from "./style";
 import Logo from "../../assets/Logo.png";
-import { useState, useContext } from "react";
-import { Redirect, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { HiOutlineMenu } from "react-icons/hi";
 import { IconContext } from "react-icons";
-import { AuthenticateContext } from "../../providers/Authenticate";
+
+
 
 
 const Header = ({page}) => {
 
     const [menuOpened, setMenuOpened] = useState(false);
-
-    const {authenticated, setAuthenticated} = useContext(AuthenticateContext)
 
     const history = useHistory();
 
@@ -21,11 +20,7 @@ const Header = ({page}) => {
 
     const logOut = () => {
         localStorage.clear()
-        setAuthenticated(false)
-    }
-
-    if(!authenticated){
-        return <Redirect to="/"/>
+        history.push("/")
     }
 
     return (

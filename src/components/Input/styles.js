@@ -13,32 +13,40 @@ export const Container = styled.div`
 
   span {
     height: 20px;
-  }
-
-  @media (min-width: 768px) {
-    width: 450px;
+    font-size: 16px;
+    padding-left: 10px;
   }
 `;
 
 export const ContainerInput = styled.div`
-  padding: 10px;
   background-color: var(--background-gray);
   border: 1px solid var(--black);
   border-radius: 12px;
   box-shadow: 1px 1px var(--black);
 
+  @media (min-width: 768px) {
+    width: ${(props) => props.width}px;
+  }
+
   input {
     background-color: var(--background-gray);
     border: none;
     font-size: 1.2rem;
+    height: 46px;
+    width: 85%;
 
     ::placeholder {
       color: var(--color-placeholder);
     }
+
+    /* @media (min-width: 768px) {
+      max-width: 450px;
+    } */
   }
 
   svg {
     transform: translateY(4px);
-    margin: 0 10px;
+    width: 10%;
+    margin-left: 5px;
   }
 `;

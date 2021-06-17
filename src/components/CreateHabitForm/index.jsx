@@ -6,11 +6,10 @@ import api from "../../services/api";
 import Button from "../Button";
 import Input from "../../components/Input";
 import { MdSubtitles } from "react-icons/md";
-import { AiFillControl, AiFillSchedule } from "react-icons/ai";
+import { AiFillSchedule } from "react-icons/ai";
 import { toast } from "react-toastify" ; 
 import {ImCheckboxChecked} from "react-icons/im";
 import {AiOutlineExclamationCircle, AiOutlineAppstoreAdd} from "react-icons/ai";
-import {GiStairsGoal} from "react-icons/gi";
 import Select from './../Select';
 
 import {Form, NotifyP} from "./styles";
@@ -33,7 +32,6 @@ const CreateHabitForm = ({ func }) => {
         category: yup.string().required('Required!'),
         difficulty: yup.string().required('Required!'),
         frequency: yup.string().required('Required!'),
-        how_much_achieved: yup.string().required('Required'),
         title: yup.string().required('Required!')
     });
 
@@ -57,7 +55,7 @@ const CreateHabitForm = ({ func }) => {
     };
 
     const submitForm = (data) => {
-        const newData = {...data, achieved:false, user: id };
+        const newData = {...data, achieved:false, user: id, how_much_achieved: 0 };
 
         api.post("/habits/", newData, {
             headers: {
@@ -109,17 +107,6 @@ const CreateHabitForm = ({ func }) => {
                 placeholder="Frequency"  
                 error={errors.frequency?.message}
                 icon={AiFillSchedule}
-            />
-            <Input
-                width="270"
-                type="range"
-                max='100'
-                register={register}  
-                name="how_much_achieved"
-                label="Achieved"  
-                placeholder="How Much Achieved"  
-                error={errors.how_much_achieved?.message}
-                icon={GiStairsGoal}
             />
 
             <Button type="submit"> Create Habit</Button>

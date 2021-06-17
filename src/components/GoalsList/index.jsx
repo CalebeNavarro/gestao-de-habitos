@@ -18,7 +18,7 @@ const GoalsList = ({goalsDivOpened, setGoalsDivOpened, goals, setGoalsModalOpene
             </GoalsNameDiv>
 
             <GoalsListDiv goalsDivOpened={goalsDivOpened}>
-                <ButtonsDivs>
+                <ButtonsDivs whoButton={whoButton}>
                     <button onClick={() => UseWhoButton(true)} >Done</button>
                     <button onClick={() => UseWhoButton(false)} >To Do</button>
                 </ButtonsDivs>

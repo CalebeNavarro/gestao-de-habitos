@@ -55,55 +55,55 @@ export const ContainerCards = styled.div`
   }
 `;
 
-export const Buttons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding: 0 30px;
-  height: 100px;
+// export const Buttons = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 0 30px;
+//   height: 100px;
 
-  > button {
-    margin: 20px 0;
-    width: 120px;
-  }
+//   > button {
+//     margin: 20px 0;
+//     width: 120px;
+//   }
 
-  button:first-child {
-    position: absolute;
-    left: 30px;
-  }
+//   button:first-child {
+//     position: absolute;
+//     left: 30px;
+//   }
 
-  button:last-child {
-    position: absolute;
-    right: 30px;
-  }
+//   button:last-child {
+//     position: absolute;
+//     right: 30px;
+//   }
 
-  @media (min-width: 768px) {
-    padding: 0 100px;
+//   @media (min-width: 768px) {
+//     padding: 0 100px;
 
-    > button {
-      width: 320px;
-    }
-  }
+//     > button {
+//       width: 320px;
+//     }
+//   }
 
-  @media (min-width: 1100px) {
-    button:first-child {
-      left: 130px;
-    }
+//   @media (min-width: 1100px) {
+//     button:first-child {
+//       left: 130px;
+//     }
 
-    button:last-child {
-      right: 130px;
-    }
-  }
-`;
+//     button:last-child {
+//       right: 130px;
+//     }
+//   }
+// `;
 
 export const NextButton = styled.button`
   cursor: pointer;
   position: absolute;
   display: ${(props) => (props.isHave ? "none" : "block")};
-  right: 35px;
-  top: 50%;
+  right: 10px;
+  top: 55%;
   transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border: solid 1px #999;
   border-radius: 100%;
   background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
@@ -142,16 +142,25 @@ export const NextButton = styled.button`
       background: #111;
     }
   }
+  @media (min-width: 411px) {
+    right: 30px;
+    top: 48%;
+  }
+
+  @media (min-width: 768px) {
+    right: 35px;
+    top: 50%;
+  }
 `;
 export const PrevButton = styled.button`
   cursor: pointer;
   position: absolute;
   display: ${(props) => (props.isHave ? "none" : "block")};
-  left: 35px;
-  top: 50%;
+  left: 10px;
+  top: 55%;
   transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border: solid 1px #999;
   border-radius: 100%;
   background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
@@ -189,5 +198,13 @@ export const PrevButton = styled.button`
     &:before {
       background: #111;
     }
+  }
+  @media (min-width: 411px) {
+    left: 30px;
+    top: 48%;
+  }
+  @media (min-width: 768px) {
+    left: 35px;
+    top: 50%;
   }
 `;

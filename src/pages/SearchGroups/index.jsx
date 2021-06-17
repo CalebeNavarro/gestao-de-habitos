@@ -74,9 +74,7 @@ const SearchGroups = () => {
       </ContainerCards>
 
       <Footer img={Img} fixDiv>
-        O grupo é importante na inserção no convívio social, auxiliando na
-        superação de problemas desta ordem. Aqui está a lista de grupos que você
-        pode se inscrever para criar novas metas e atividades.
+      The group is important in social interaction, helping to overcome problems of this nature. Here is the list of groups you can join to create new goals and activities.
       </Footer>
     </Container>
   );

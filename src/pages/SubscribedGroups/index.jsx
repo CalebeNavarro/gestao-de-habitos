@@ -50,10 +50,8 @@ const SubscribedGroups = () => {
       <Header page="subscribedgroups" />
       <h2>Subscribed Groups</h2>
       <Text>
-        Aqui ficam os grupos em que você está inscrito para que possa rastrear
-        de maneira fácil seus grupos, atividades e metas. Caso não esteja
-        inscrito em nenhum grupo,
-        <Link to="/groups"> procure um para se inscrever.</Link>
+      Here are the groups you are subscribed to so you can easily track your groups, activities and goals. If you are not subscribed to any group, 
+        <Link to="/groups"> look for one to register.</Link>
       </Text>
       <Top />
       {groups.length > 0 ? null : <Image src={Img} alt="pic" />}

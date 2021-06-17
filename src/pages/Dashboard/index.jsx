@@ -2,7 +2,6 @@ import {
   Container,
   HabitCards,
   Welcome,
-  DesktopNone,
   SecondFooter,
   ButtonFooter
 } from "../Dashboard/styles";
@@ -14,7 +13,6 @@ import image from "../../assets/undraw_To_do_re_jaef.png";
 import { Redirect } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-import Top from "../../components/Top";
 import { AuthenticateContext } from "../../providers/Authenticate";
 import Modal from "../../components/Modal";
 import CreateHabitForm from "../../components/CreateHabitForm";

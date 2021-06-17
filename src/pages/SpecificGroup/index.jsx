@@ -27,15 +27,15 @@ import { toast } from "react-toastify";
 import MembersList from "../../components/MembersList";
 
 const SpecificGroup = () => {
-  const history = useHistory();
-  const { isLoged } = useContext(AuthenticateContext);
-  const { id } = useParams();
+    const history = useHistory();
+    const { isLoged } = useContext(AuthenticateContext);
+    const { id } = useParams();
 
-  const [userId] = useState(() => {
-    const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
-    const decoded = jwt_decode(token);
-    return decoded.user_id;
-  });
+    const [userId] = useState(() => {
+        const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
+        const decoded = jwt_decode(token);
+        return decoded.user_id;
+    });
 
     const [goalsDivOpened, setGoalsDivOpened] = useState(false);
     const [activitiesDivOpened, setActivitiesDivOpened] = useState(false);

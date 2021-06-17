@@ -50,14 +50,14 @@ const CardHabit = ({ habit, func }) => {
 
   return (
     <HabitCard objColor={objColor}>
-      <div class="card__icon">
+      <div className="card__icon">
         <span>Title: {habit.title.length > 10 ? habit.title.substr(0, 13) + '...' : habit.title}</span>
         <span>Category: {habit.category.length > 10 ? habit.category.substr(0, 13) + '...' : habit.category}</span>
       </div>
 
-      <p class="card__exit"><AiOutlineClose /></p>
+      <p className="card__exit"><AiOutlineClose /></p>
 
-      <h2 class="card__title">
+      <h2 className="card__title">
         
         Frequency: {habit.frequency.length > 10 ? habit.frequency.substr(0, 13) + '...' : habit.frequency}
       </h2>

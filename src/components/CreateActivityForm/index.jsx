@@ -18,7 +18,7 @@ const CreateActivityForm = ({id, getGroups}) => {
     )
 
     const schema = yup.object().shape({
-        title: yup.string().required('Campo obrigatório!'),
+        title: yup.string().required('required!'),
       })
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({

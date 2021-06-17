@@ -56,13 +56,25 @@ export const ButtonsDivs = styled.div`
     button {
         background-color: black;
         color: white;
-        padding: 10px 20px;
+        padding: 5px 20px;
         border-radius: 5px;
+    }
+
+    button:hover {
+        filter: brightness(0.8);
+    }
+
+    & :first-child {
+        background-color: ${props => props.whoButton && "var(--color-primary)"};
+    }
+
+    & :last-child {
+        background-color: ${props => props.whoButton === false && "var(--color-primary)"};
     }
 
     @media (min-width: 768px) {
         button {
-            padding: 20px 30px;
+            padding:10px 30px;
             font-size: 20px;
         }
     }

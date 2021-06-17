@@ -59,6 +59,12 @@ const EditGroupForm = ({id, getGroups}) => {
     }
 
     const submitForm = (data) => {
+        for(const info in data){
+            if(data[info] === ""){
+                delete data[info]
+            }
+        }
+        
         api.patch(`/groups/${id}/`, data, {
             headers: {
                 Authorization: `Bearer ${token}`

@@ -15,10 +15,11 @@ export const SpecificGroupDiv = styled.div`
 export const SpecificGroupInfo = styled.div`
     background-color: var(--white);
     width: 90vw;
+    min-width: 300px;
     min-height: 180px;
     margin-bottom: 10px;
     border: 1px solid black;
-    padding: 0 10px;
+    padding: 0 10px 40px;
     position: relative;
 `
 

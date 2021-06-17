@@ -34,7 +34,7 @@ const GoalsList = ({goalsDivOpened, setGoalsDivOpened, goals, setGoalsModalOpene
             </GoalsListDiv>
             <SpaceDiv></SpaceDiv>
             <Button widthMobile="300" func={() => setGoalsModalOpened(true)}> 
-                Create new Goal 
+                Create Goal 
             </Button>
         </GoalsDiv>
     )

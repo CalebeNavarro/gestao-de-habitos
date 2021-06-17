@@ -82,11 +82,9 @@ const CardHabit = ({ habit, func, dp=false }) => {
         ): (<>
           <input type='range' value={value}
           onChange={(evt) => setValue(evt.currentTarget.value)}/>
-          <button onClick={handleChange}>Enviar</button>
+          <button onClick={handleChange}>{value}</button>
           </>
         )}
-        
-
       </section>
     </HabitCard>
   );

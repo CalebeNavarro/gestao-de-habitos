@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { BsFillLightningFill } from 'react-icons/bs';
 import { AiOutlineArrowRight, AiOutlineClose } from 'react-icons/ai';
 
-const CardHabit = ({ habit, func }) => {
+const CardHabit = ({ habit, func, dp=false }) => {
   const [ value, setValue ] = useState(habit.how_much_achieved);
   const token = JSON.parse(localStorage.getItem("@habits:token")) || '';
   let objColor = {};
@@ -48,25 +48,45 @@ const CardHabit = ({ habit, func }) => {
       .catch(err => console.log(err, err.response))
   }
 
+  const handleDelete = () => {
+    api.delete(`/habits/${habit.id}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        func()
+        toast.info(`Habit ${habit.title} excluded!`)
+      })
+      .catch(err => console.log(err.response))
+  }
+
   return (
-    <HabitCard objColor={objColor}>
-      <div className="card__icon">
+    <HabitCard objColor={objColor} dp={dp}>
+      <div>
         <span>Title: {habit.title.length > 10 ? habit.title.substr(0, 13) + '...' : habit.title}</span>
         <span>Category: {habit.category.length > 10 ? habit.category.substr(0, 13) + '...' : habit.category}</span>
       </div>
 
-      <p className="card__exit"><AiOutlineClose /></p>
+      <p onClick={handleDelete}>
+        <AiOutlineClose />
+      </p>
 
-      <h2 className="card__title">
-        
+      <h2>
         Frequency: {habit.frequency.length > 10 ? habit.frequency.substr(0, 13) + '...' : habit.frequency}
       </h2>
 
       <section>
-        <input type='range' value={value}
-          onChange={(evt) => setValue(evt.currentTarget.value)}
-        /> 
-        <button onClick={handleChange}>Enviar</button>
+        {dp ? (
+          `Habit ${habit.title} alredy completed`
+        ): (<>
+          <input type='range' value={value}
+          onChange={(evt) => setValue(evt.currentTarget.value)}/>
+          <button onClick={handleChange}>Enviar</button>
+          </>
+        )}
+        
+
       </section>
     </HabitCard>
   );

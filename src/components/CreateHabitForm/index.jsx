@@ -102,14 +102,6 @@ const CreateHabitForm = ({ func }) => {
                 error={errors.category?.message}
                 icon={AiOutlineAppstoreAdd}
             />
-            {/* <Input 
-                register={register}  
-                name="difficulty"
-                label="Difficulty"  
-                placeholder="Difficulty"  
-                error={errors.difficulty?.message}
-                icon={AiFillControl}
-            /> */}
             <Input 
                 register={register}  
                 name="frequency"

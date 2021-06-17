@@ -10,34 +10,35 @@ import SpecificGroup from "../pages/SpecificGroup";
 import NotFound from "../pages/NotFound";
 
 const Routes = () => {
+
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <Home/>
       </Route>
       <Route path="/signup">
-        <SignUp />
+        <SignUp/>
       </Route>
       <Route path="/login">
-        <LogIn />
+        <LogIn/>
       </Route>
       <Route path="/dashboard">
-        <Dashboard />
+        <Dashboard/>
       </Route>
       <Route path="/subscribedgroups">
-        <SubscribedGroups />
-      </Route>
-      <Route path="/searchgroups">
-        <SearchGroups />
+        <SubscribedGroups/>
       </Route>
       <Route path="/creategroup">
-        <CreateGroup />
+        <CreateGroup/>
       </Route>
-      <Route path="/specificgroup">
-        <SpecificGroup />
+      <Route exact path="/groups">
+        <SearchGroups/>
+      </Route>
+      <Route path="/groups/:id">
+        <SpecificGroup/>
       </Route>
       <Route>
-        <NotFound />
+        <NotFound/>
       </Route>
     </Switch>
   );

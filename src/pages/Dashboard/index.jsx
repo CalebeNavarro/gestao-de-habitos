@@ -2,7 +2,8 @@ import {
   Container,
   HabitCards,
   Welcome,
-  DesktopNone,
+  SecondFooter,
+  ButtonFooter
 } from "../Dashboard/styles";
 import CardHabit from "../../components/CardHabit";
 import Button from "../../components/Button";
@@ -12,9 +13,7 @@ import image from "../../assets/undraw_To_do_re_jaef.png";
 import { Redirect } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import api from "../../services/api";
-import Top from "../../components/Top";
 import { AuthenticateContext } from "../../providers/Authenticate";
-
 import Modal from "../../components/Modal";
 import CreateHabitForm from "../../components/CreateHabitForm";
 
@@ -67,30 +66,54 @@ const Dashboard = () => {
 
       <Container>
         <Welcome>
-          <h1>Welcome, {userName}</h1>
-
-          <DesktopNone>
-            <Button func={() => setHabitModalOpened(true)}>Create habit</Button>
-            <Top />
-          </DesktopNone>
+          Welcome, {userName}!
         </Welcome>
 
-        <Button func={() => UseWhoButton(!whoButton)}>{whoButton ? "To Do" : "Done"}</Button>
+        {habits.length > 0 && <Footer
+          type='mobile'
+          button={<ButtonFooter onClick={() => setHabitModalOpened(true)}>Create new Habit</ButtonFooter>}
+          >
+            Good habits are those that bring people to become more productive. Make a habit to follow right now!
+        </Footer>}
+        
 
-        <HabitCards>
+        {habits.length > 0 ? (<>
+          <Button func={() => UseWhoButton(!whoButton)}>{whoButton ? "To Do" : "Done"}</Button>
 
-          {!whoButton && habits.map(habit =>
-              !habit.achieved && (
-                <CardHabit key={habit.id} habit={habit} func={loadHabits} />
-              )
-          )}
+            <HabitCards>
+              {!whoButton && habits.map(habit =>
+                  !habit.achieved && (
+                    <CardHabit key={habit.id} habit={habit} func={loadHabits} />
+                  )
+              )}
 
-          {whoButton && habits.map(habit =>
-              habit.achieved && (
-                <CardHabit key={habit.id} habit={habit} func={loadHabits} dp/>
-              )
-          )}
-        </HabitCards>
+              {whoButton && habits.map(habit =>
+                  habit.achieved && (
+                    <CardHabit key={habit.id} habit={habit} func={loadHabits} dp/>
+                  )
+              )}
+          </HabitCards>
+
+          <Footer
+            button={
+              <Button func={() => setHabitModalOpened(true)}>Create Habit</Button>
+            }
+            img={image}
+          >
+            Good habits are those that bring people to become more productive, people that use habits products,
+            use resources and increase their ability to generate results. Make a habit to follow right now!
+          </Footer>
+          </>
+        ):(<>
+          <blockquote cite="https://www.briantracy.com/">Make your life a masterpiece! Imagine no limitations on what you can be, have or do.</blockquote>
+
+          <Button func={() => setHabitModalOpened(true)}>Create your habit now!</Button>
+
+          <SecondFooter>
+
+          </SecondFooter>
+          </>
+        )}
 
         {habitModalOpened && (
           <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
@@ -99,17 +122,6 @@ const Dashboard = () => {
           </Modal>
         )}
 
-        <Footer
-          button={
-            <Button func={() => setHabitModalOpened(true)}>Create Habit</Button>
-          }
-          img={image}
-        >
-          Os bons hábitos são aqueles que levam as pessoas a se tornarem mais
-          produtivas, pois pessoas que aplicam hábitos produtivos utilizam
-          melhor os recursos e aumentam a capacidade de gerar resultados. Crie
-          um hábito para seguir agora mesmo!
-        </Footer>
       </Container>
     </>
   );

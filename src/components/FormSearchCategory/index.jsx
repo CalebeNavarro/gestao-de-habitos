@@ -60,7 +60,6 @@ const FormSearchCategory = () => {
         name="category"
         placeholder="Group Category"
       />
-
       <button type="submit">Search</button>
     </Form>
   );

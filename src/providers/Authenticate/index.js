@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { createContext } from "react";
 
 export const AuthenticateContext = createContext();
 

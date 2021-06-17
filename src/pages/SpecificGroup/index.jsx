@@ -25,17 +25,19 @@ import ActivitiesList from "../../components/ActivitiesList";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 import MembersList from "../../components/MembersList";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const SpecificGroup = () => {
-  const history = useHistory();
-  const { isLoged } = useContext(AuthenticateContext);
-  const { id } = useParams();
+    const history = useHistory();
+    const { isLoged } = useContext(AuthenticateContext);
+    const { setGroupId } = useContext(GroupIdContext);
+    const { id } = useParams();
 
-  const [userId] = useState(() => {
-    const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
-    const decoded = jwt_decode(token);
-    return decoded.user_id;
-  });
+    const [userId] = useState(() => {
+        const token = JSON.parse(localStorage.getItem("@habits:token")) || null;
+        const decoded = jwt_decode(token);
+        return decoded.user_id;
+    });
 
     const [goalsDivOpened, setGoalsDivOpened] = useState(false);
     const [activitiesDivOpened, setActivitiesDivOpened] = useState(false);
@@ -65,9 +67,9 @@ const SpecificGroup = () => {
             setEditModalOpened(false);
             setMembersModalOpened(false);
         };
-    }, [isOpened]);
+    }, [isOpened, goalsModalOpened, activitiesModalOpened, editModalOpened, membersModalOpened]);
 
-    const getGroups = () => {
+    const getGroups = (id) => {
         api
         .get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
@@ -75,8 +77,9 @@ const SpecificGroup = () => {
     };
 
     useEffect(() => {
-        getGroups();
-    }, [id]);
+        setGroupId(id);
+        getGroups(id);
+    }, [id, setGroupId]);
 
     useEffect(() => {
         if(groupInfo.creator){
@@ -95,7 +98,7 @@ const SpecificGroup = () => {
                 }
             };
         }; 
-    }, [groupInfo]);
+    }, [groupInfo, userId]);
 
     const handleSubscribe = () => {
         const token = JSON.parse(localStorage.getItem("@habits:token"));
@@ -105,7 +108,7 @@ const SpecificGroup = () => {
         }})
         .then(response => {
             toast.info("Successful to enter!")
-            getGroups();
+            getGroups(id);
             return response;
         })
         .catch(error => console.log(error))
@@ -123,7 +126,7 @@ const SpecificGroup = () => {
         .then((response) => {
             toast.info(`Exit successful!`);
             setSubscribed(false);
-            getGroups();
+            getGroups(id);
             history.push(history.location.state.referrer);
             return response;
         })

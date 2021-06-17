@@ -1,9 +1,11 @@
 import { UserProvider } from "./user"
 import { GroupsProvider } from "./Groups"
 import { AuthenticateProvider } from "./Authenticate"
+import { GroupIdProvider } from "./GroupId"
 
 const Providers = ({children}) => {
     return (
+        <GroupIdProvider>
         <AuthenticateProvider>
         <UserProvider>
         <GroupsProvider>
@@ -11,6 +13,7 @@ const Providers = ({children}) => {
         </GroupsProvider>
         </UserProvider>
         </AuthenticateProvider>
+        </GroupIdProvider>
 )
 }
 

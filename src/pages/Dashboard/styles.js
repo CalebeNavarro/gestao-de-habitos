@@ -1,22 +1,49 @@
 import styled from "styled-components";
+import Img from './../../assets/habit.svg';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 
   > button {
-    margin-bottom: 20px;
+    margin: 10px 0;
+    font-size: 1rem;
   }
 
   h1 {
     font-size: 50px;
   }
 
+  blockquote {
+    margin-top: 20px;
+    max-width: 310px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: var(--font-home);
+  }
+
   @media (min-width: 768px) {
-    
+    > button {
+    font-size: 1.5rem;
+    }
+
   }
 `;
+
+export const ButtonFooter = styled.button`
+  padding: 8px 0px;
+  color: white;
+  border-radius: 7px;
+  margin: 10px 0;
+  font-size: 1rem;
+  width: 200px;
+  background-color: var(--black);
+  border-radius: 15px;
+  border: 1px solid var(--black);
+  height: 42px;
+`
 
 export const HabitCards = styled.div`
   display: flex;
@@ -52,46 +79,9 @@ export const HabitCards = styled.div`
   }
 `;
 
-export const Welcome = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+export const Welcome = styled.h1`
   align-items: center;
-  padding-top: 40px;
-  height: 400px;
-
-  h1 {
-    margin-top: 30px;
-  }
-
-  p {
-    width: 300px;
-    font-size: 13px;
-  }
-
-  @media (max-width: 350px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    align-content: center;
-    margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 0 20px;
-    height: 350px;
-    width: 200px;
-    text-align: center;
-
-    p {
-      font-size: 12px;
-    }
-  }
-
-  @media (min-width: 768px) {
-    height: 180px;
-    margin: 0 auto;
-  }
+  margin-top: 83px;
 `;
 
 export const DesktopNone = styled.div`
@@ -152,4 +142,13 @@ export const Top = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+`;
+
+export const SecondFooter = styled.footer`
+  width: 80vw;
+  height: 50vh;
+  background-image: url(${Img});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 `;

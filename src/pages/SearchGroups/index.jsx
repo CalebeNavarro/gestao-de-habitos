@@ -1,15 +1,17 @@
-import { Container, ContainerCards, Buttons, NextButton, PrevButton } from "./styles";
+import { Container, ContainerCards, NextButton, PrevButton } from "./styles";
 import Header from "../../components/Header";
 import FormSearchCategory from "../../components/FormSearchCategory";
 import { useGroups } from "../../providers/Groups";
 import CardGroup from "../../components/CardGroup";
 import Img from "../../assets/undraw_Account_re_o7id.png";
 import Footer from "../../components/Footer";
-import Button from "../../components/Button";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
+import ImgEmpt from "../../assets/undraw_Selecting_team_re_ndkb.png"
 import Top from "../../components/Top";
+import { Image } from "../SubscribedGroups/styles";
+
 
 const SearchGroups = () => {
   const { isLoged } = useContext(AuthenticateContext);
@@ -43,12 +45,16 @@ const SearchGroups = () => {
       <h2>Search Groups</h2>
 
       <FormSearchCategory />
+    
       <Top></Top>
-
+     
       <ContainerCards>
-        <div className="ContainerButton">
-        <PrevButton onClick={()=>handlePrev()} isHave={!groups.previous && true}/>
-        </div>
+      {groups.results <= 0 && 
+      <div>
+        <h1 style={{textAlign: "center"}}>Click in search to find groups</h1>
+      <Image src={ImgEmpt} alt="pic" />
+      </div>
+      }
         <div className="container-cards">
         {groups.results.map((group) => (
           <CardGroup
@@ -58,15 +64,17 @@ const SearchGroups = () => {
           />
         ))}
         </div>
-        <div className="ContainerButton">
+        <div className="container-button">
+        <PrevButton onClick={()=>handlePrev()} isHave={!groups.previous && true}/>
         <NextButton onClick={()=>handleNext()} isHave={!groups.next && true}/>
-        </div>
+      </div>
+        
+        
+       
       </ContainerCards>
 
       <Footer img={Img} fixDiv>
-        O grupo é importante na inserção no convívio social, auxiliando na
-        superação de problemas desta ordem. Aqui está a lista de grupos que você
-        pode se inscrever para criar novas metas e atividades.
+      The group is important in social interaction, helping to overcome problems of this nature. Here is the list of groups you can join to create new goals and activities.
       </Footer>
     </Container>
   );

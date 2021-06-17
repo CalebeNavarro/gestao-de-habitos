@@ -8,7 +8,7 @@ import {
 } from "./style";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import Button from "../Button";
@@ -18,8 +18,11 @@ import { AiFillControl } from "react-icons/ai";
 import { toast } from "react-toastify" ; 
 import {ImCheckboxChecked} from "react-icons/im";
 import {AiOutlineExclamationCircle} from "react-icons/ai";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const CreateGoalForm = ({id, getGroups}) => {
+
+    const { groupId } = useContext(GroupIdContext);
 
     const [selectValue, setSelectValue] = useState("easy");
 
@@ -28,7 +31,7 @@ const CreateGoalForm = ({id, getGroups}) => {
     )
 
     const schema = yup.object().shape({
-        title: yup.string().required('Campo obrigatório!'),
+        title: yup.string().required('required!'),
       })
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm({
@@ -63,7 +66,7 @@ const CreateGoalForm = ({id, getGroups}) => {
         .then(response => {
             notify("success")
             reset();
-            getGroups();
+            getGroups(groupId);
         })
         .catch(error => {
             notify("fail");

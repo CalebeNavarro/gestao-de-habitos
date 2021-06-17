@@ -9,16 +9,17 @@ export const GoalDiv = styled.div`
     padding: 15px;
     width: 90%;
     margin: 10px;
+    background: #ffffff40;
 
-    > p {
+    p {
         margin: 5px;
     }
     
     & p:last-of-type {
-        display: ${props => props.display ? 'none' : 'line'};
+        display: ${props => props.display === "true" ? 'none' : 'line'};
     }
 
-    > span {
+    span {
         font-weight: bold;
     }
 
@@ -30,7 +31,7 @@ export const ButtonsDiv = styled.div`
 `
 
 export const RemoveGoalButton = styled.button`
-    width: 40%;
+    width: 38%;
     padding: 5px;
     height: 20%;
     color: var(--white);
@@ -42,21 +43,33 @@ export const RemoveGoalButton = styled.button`
     }
 `
 
-export const UpdateGoalDiv = styled.div`
-    display: ${props => props.display ? 'none' : 'flex'};
+export const UpdateAchievedDiv = styled.div`
+    display: ${props => props.display === "true" ? 'none' : 'flex'};
     align-items: center;
+    justify-content: center;
+    width: 100%;
     margin: 10px 0;
+
+    input {
+        width: 70%;
+        max-width: 250px;
+    }
+
     > button {
         background-color: black;
         color: white;
         padding: 2.5px 15px;
         border-radius: 5px;
     }
+
+    button:hover {
+        filter: brightness(0.8);
+    }
 `
 
-export const UpdateGoalButton = styled(RemoveGoalButton)`
-    background-color: var(--color-primary);
-    width: 92.5%;
+export const UpdateAchievedButton = styled(RemoveGoalButton)`
+    background: radial-gradient(#DA22FF,#8E54E9);
+    width: 45%;
     height: initial;
 `
 

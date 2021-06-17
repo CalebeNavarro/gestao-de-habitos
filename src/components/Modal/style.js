@@ -11,40 +11,40 @@ export const BackgroundModal = styled.div`
 `;
 
 export const ModalDiv = styled.div`
-    position: fixed;
-    top: 20px;
-    margin: 64px auto auto;
-    margin-left: 50% ;
-    transform:translate(-50%);
-    min-width: 320px;
-    width: 80%; 
-    min-height: 500px;
-    max-height: 700px;
-    height: 80%;
-    overflow: auto;
-    padding: 2rem;
-    background-image: url(${background});
-    background-size:1000px 100%;
-    z-index: 100;
-    display: flex;
+  position: fixed;
+  top: 20px;
+  margin: 64px auto auto;
+  margin-left: 50%;
+  transform: translate(-50%);
+  min-width: 320px;
+  width: 80%;
+  min-height: 500px;
+  max-height: 700px;
+  height: 80%;
+  overflow: auto;
+  padding: 2rem;
+  background-image: url(${background});
+  background-size: 1000px 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-top: auto;
+  margin-bottom: auto;
+  top: 0;
+  bottom: 0;
+
+  @media screen and (min-width: 768px) {
+    display: ${(props) => (props.isOpened ? "flex" : "none")};
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
-    font-size: 24px;
-    margin-top: auto;
-    margin-bottom: auto;
-    top: 0;
-    bottom: 0;
-
-    @media screen and (min-width: 768px){
-        display: ${(props) => props.isOpened ? "flex" : "none"};
-        flex-direction: column;
-        align-items: center;
-        background-size: 100% 100%;
-        width: 65vw;
-        height: 50vw;
-    }
-`
+    background-size: 100% 100%;
+    width: 65vw;
+    height: 50vw;
+  }
+`;
 
 export const CloseDiv = styled.div`
   position: absolute;
@@ -59,8 +59,8 @@ export const CloseDiv = styled.div`
   justify-content: center;
   align-items: center;
 
-    &:hover {
-        cursor: pointer;
-        filter: brightness(0.6);
-    }
-`
+  &:hover {
+    cursor: pointer;
+    filter: brightness(0.6);
+  }
+`;

@@ -22,7 +22,7 @@ const ActivitiesList = ({activitiesDivOpened, setActivitiesDivOpened, activities
                 }
             </ActivitiesListDiv>
             <SpaceDiv> </SpaceDiv>
-            <Button widthMobile="300" func={() => setActivitiesModalOpened(true)}> Create new Activities </Button>
+            <Button widthMobile="300" func={() => setActivitiesModalOpened(true)}> Create Activities </Button>
         </ActivitiesDiv>
     )
 }

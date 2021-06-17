@@ -13,12 +13,14 @@ export const SpecificGroupDiv = styled.div`
 `
 
 export const SpecificGroupInfo = styled.div`
-    background-color: var(--white);
+    background: radial-gradient(#1fe4f5,#3fbafe);
     width: 90vw;
+    min-width: 300px;
     min-height: 180px;
     margin-bottom: 10px;
     border: 1px solid black;
-    padding: 0 10px;
+    border-radius: 5px;
+    padding: 0 10px 40px;
     position: relative;
 `
 
@@ -56,6 +58,8 @@ export const UnsubscribeButton = styled.button`
     font-size: 18px;
     padding: 5px;
     border-radius: 5px;
+    padding-left:10px;
+    padding-right: 10px;
 
     &:hover {
         filter: brightness(0.8)
@@ -71,16 +75,17 @@ export const SubscribeButton = styled(UnsubscribeButton)`
 `
 
 export const EditGroupButton = styled(UnsubscribeButton)`
-    background-color: red;
+    background: radial-gradient(#DA22FF,#8E54E9);
 `
 
 export const MembersButton = styled(UnsubscribeButton)`
-    background-color: blue;
+    background: radial-gradient(#1488CC,#2B32B2);
     left: 5px;
+    
 
     @media screen and (min-width: 768px){
         left: initial;
-        right: 150px;
+        right: 170px;
     }
 `
 

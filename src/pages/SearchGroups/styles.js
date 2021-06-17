@@ -6,6 +6,7 @@ export const Container = styled.div`
 
   h2 {
     text-align: center;
+    font-size: 2rem;
     margin-bottom: 15px;
   }
 
@@ -19,7 +20,9 @@ export const Container = styled.div`
 export const ContainerCards = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   min-height: 40%;
 
   .container-cards {
@@ -31,74 +34,25 @@ export const ContainerCards = styled.div`
     gap: 12px;
   }
 
-  @media (min-width: 768px) {
-    .ContainerButton {
-      position: relative;
-      width: 6%;
-    }
+  .container-button {
+    width: 88%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 25px;
+  }
 
+  @media (min-width: 768px) {
     margin-top: 50px;
-    ::-webkit-scrollbar {
-      width: 15px;
-    }
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #3f3d56;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: gray;
-    }
   }
 `;
 
-// export const Buttons = styled.div`
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 0 30px;
-//   height: 100px;
-
-//   > button {
-//     margin: 20px 0;
-//     width: 120px;
-//   }
-
-//   button:first-child {
-//     position: absolute;
-//     left: 30px;
-//   }
-
-//   button:last-child {
-//     position: absolute;
-//     right: 30px;
-//   }
-
-//   @media (min-width: 768px) {
-//     padding: 0 100px;
-
-//     > button {
-//       width: 320px;
-//     }
-//   }
-
-//   @media (min-width: 1100px) {
-//     button:first-child {
-//       left: 130px;
-//     }
-
-//     button:last-child {
-//       right: 130px;
-//     }
-//   }
-// `;
-
 export const NextButton = styled.button`
   cursor: pointer;
-  position: absolute;
   display: ${(props) => (props.isHave ? "none" : "block")};
+  margin-top: 50px;
   right: 10px;
   top: 55%;
   transform: translateY(-50%);
@@ -106,7 +60,7 @@ export const NextButton = styled.button`
   height: 50px;
   border: solid 1px #999;
   border-radius: 100%;
-  background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
+  background-color: #111;
   z-index: 1;
   transition: all 0.2s linear;
   &:before,
@@ -117,7 +71,7 @@ export const NextButton = styled.button`
     height: 10%;
     top: 41%;
     left: 55%;
-    background: #999;
+    background: #fff;
     z-index: 2;
     transform: translate(-50%, -50%) rotate(45deg);
     transition: all 0.2s linear;
@@ -128,13 +82,12 @@ export const NextButton = styled.button`
     left: 55%;
     transform: translate(-50%, -50%) rotate(-45deg);
   }
+
   &:hover {
-    border: solid 8px #251941;
-    &:after,
-    &:before {
-      background: #251941;
-    }
+    height: 60px;
+    width: 60px;
   }
+
   &:active {
     border: solid 8px #111;
     &:after,
@@ -154,8 +107,8 @@ export const NextButton = styled.button`
 `;
 export const PrevButton = styled.button`
   cursor: pointer;
-  position: absolute;
   display: ${(props) => (props.isHave ? "none" : "block")};
+  margin-top: 50px;
   left: 10px;
   top: 55%;
   transform: translateY(-50%);
@@ -163,7 +116,7 @@ export const PrevButton = styled.button`
   height: 50px;
   border: solid 1px #999;
   border-radius: 100%;
-  background-image: linear-gradient(315deg, #5de6de 0%, #b58ecc 74%);
+  background-color: #111;
   z-index: 1;
   transition: all 0.2s linear;
   &:before,
@@ -174,7 +127,7 @@ export const PrevButton = styled.button`
     height: 10%;
     top: 41%;
     left: 45%;
-    background: #999;
+    background: #fff;
     z-index: 2;
     transform: translate(-50%, -50%) rotate(135deg);
     transition: all 0.2s linear;
@@ -186,11 +139,8 @@ export const PrevButton = styled.button`
     transform: translate(-50%, -50%) rotate(-135deg);
   }
   &:hover {
-    border: solid 8px #251941;
-    &:after,
-    &:before {
-      background: #251941;
-    }
+    height: 60px;
+    width: 60px;
   }
   &:active {
     border: solid 8px #111;

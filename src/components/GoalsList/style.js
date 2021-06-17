@@ -9,12 +9,14 @@ export const GoalsDiv = styled.div`
 
 export const GoalsNameDiv = styled.div`
    display: none;
+   border-radius: 10px 10px 0 0;
 
     @media screen and (min-width: 768px) {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: var(--white);
+        background: radial-gradient(#1488CC,#2B32B2);
+        color: #dedede;
         font-size: 3rem;
         min-width: 300px;
         max-width: 700px;
@@ -28,8 +30,9 @@ export const GoalsListDiv = styled.div`
     display: ${(props) => props.goalsDivOpened ? "flex" : "none" };
     flex-direction: column;
     align-items: center;
-    background-color: var(--white);
+    background: radial-gradient(#1488CC,#2B32B2);
     border: 2px solid black;
+    border-radius: 0 0 10px 10px;
     border-top: none;
     max-width: 700px;
     width: 80vw;
@@ -56,13 +59,25 @@ export const ButtonsDivs = styled.div`
     button {
         background-color: black;
         color: white;
-        padding: 10px 20px;
+        padding: 5px 20px;
         border-radius: 5px;
+    }
+
+    button:hover {
+        filter: brightness(0.8);
+    }
+
+    & :first-child {
+        background: ${props => props.whoButton === false && "radial-gradient(#DA22FF,#8E54E9)"};
+    }
+
+    & :last-child {
+        background: ${props => props.whoButton && "radial-gradient(#DA22FF,#8E54E9)"};
     }
 
     @media (min-width: 768px) {
         button {
-            padding: 20px 30px;
+            padding:10px 30px;
             font-size: 20px;
         }
     }

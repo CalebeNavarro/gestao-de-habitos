@@ -8,7 +8,10 @@ import Footer from "../../components/Footer";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
+import ImgEmpt from "../../assets/undraw_Selecting_team_re_ndkb.png"
 import Top from "../../components/Top";
+import { Image } from "../SubscribedGroups/styles";
+
 
 const SearchGroups = () => {
   const { isLoged } = useContext(AuthenticateContext);
@@ -42,10 +45,16 @@ const SearchGroups = () => {
       <h2>Search Groups</h2>
 
       <FormSearchCategory />
-     
+    
       <Top></Top>
-
+     
       <ContainerCards>
+      {groups.results <= 0 && 
+      <div>
+        <h1 style={{textAlign: "center"}}>Click in search to find groups</h1>
+      <Image src={ImgEmpt} alt="pic" />
+      </div>
+      }
         <div className="container-cards">
         {groups.results.map((group) => (
           <CardGroup

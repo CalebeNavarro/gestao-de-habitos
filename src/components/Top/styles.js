@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: black;
   text-align: center;
   opacity: 0.4;
+  z-index: 999;
 
   a {
     margin: 0;

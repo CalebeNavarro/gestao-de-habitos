@@ -4,11 +4,14 @@ export const Container = styled.div`
   display: flex;
   gap: 7px;
   border-radius: 10px;
-  width: 310px;
+  width: 280px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: all 1s;
   background-image: url(${(props) => props.background});
+  @media (min-width: 360px) {
+    width: 310px;
+  }
 
   div {
     width: 100%;

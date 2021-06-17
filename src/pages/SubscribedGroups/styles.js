@@ -19,28 +19,21 @@ export const Container = styled.div`
 `;
 
 export const ContainerCards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-
+  .container-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
   @media (min-width: 768px) {
-    height: 360px;
-    overflow-y: auto;
-    margin-top: 20px;
-    ::-webkit-scrollbar {
-      width: 15px;
-    }
-    ::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 5px grey;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #3f3d56;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: gray;
+    min-height: 55vh;
+    .container-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1300px;
+      gap: 12px;
+      margin-top: 20px;
     }
   }
 `;

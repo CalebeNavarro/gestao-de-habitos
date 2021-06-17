@@ -10,7 +10,8 @@ import {
     SpecificGroupInfo,
     UnsubscribeButton,
     SubscribeButton,
-    EditGroupButton
+    EditGroupButton,
+    MembersButton
 } from "./style"
 import { useContext, useEffect, useState } from "react";
 import { useParams, Redirect, useHistory } from "react-router-dom";
@@ -23,6 +24,7 @@ import GoalsList from "../../components/GoalsList";
 import ActivitiesList from "../../components/ActivitiesList";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
+import MembersList from "../../components/MembersList";
 
 const SpecificGroup = () => {
   const history = useHistory();
@@ -44,7 +46,7 @@ const SpecificGroup = () => {
     const [unsubscribed, setUnsubscribed] = useState(false);
     const [creator, setCreator] = useState(false);
     const [editModalOpened, setEditModalOpened] = useState(false);
-
+    const [membersModalOpened, setMembersModalOpened] = useState(false);
     const [groupInfo, setGroupInfo] = useState([]);
 
     useEffect(() => {
@@ -54,11 +56,14 @@ const SpecificGroup = () => {
             setIsOpened(true);
         } else if (editModalOpened === true){
             setIsOpened(true);
+        } else if (membersModalOpened === true){
+            setIsOpened(true);
         };
         if(isOpened === false){
             setGoalsModalOpened(false);
             setActivitiesModalOpened(false);
             setEditModalOpened(false);
+            setMembersModalOpened(false);
         };
     }, [isOpened]);
 
@@ -141,6 +146,7 @@ const SpecificGroup = () => {
                         <SpecificGroupP><span>Creator: </span>{groupInfo.creator?.username}</SpecificGroupP>
                         <SpecificGroupP><span>Category: </span>{groupInfo.category}</SpecificGroupP>
                         <SpecificGroupP><span>Description: </span>{groupInfo.description}</SpecificGroupP>
+                        <MembersButton onClick={() => setMembersModalOpened(true)}>Members</MembersButton>
                         {subscribed && <UnsubscribeButton onClick={handleUnsubscribe}>Unsubscribe</UnsubscribeButton>}
                         {unsubscribed && <SubscribeButton onClick={handleSubscribe}>Subscribe</SubscribeButton>}
                         {creator && <EditGroupButton onClick={() => setEditModalOpened(true)}>Edit group</EditGroupButton>}
@@ -176,11 +182,16 @@ const SpecificGroup = () => {
                         </Modal>
                     }
                     {editModalOpened
-                    && <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
+                    &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
                             <EditGroupForm 
                                 id={id}
                                 getGroups={getGroups}
                             />
+                        </Modal>
+                    }
+                    {membersModalOpened
+                    &&  <Modal isOpened={isOpened} setIsOpened={setIsOpened}>
+                            <MembersList members={groupInfo.users_on_group}/>
                         </Modal>
                     }
                 </ModalDiv>

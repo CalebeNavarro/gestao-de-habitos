@@ -1,4 +1,4 @@
-import { Container, ContainerCards, Buttons, NextButton, PrevButton } from "./styles";
+import { Container, ContainerCards, NextButton, PrevButton } from "./styles";
 import Header from "../../components/Header";
 import FormSearchCategory from "../../components/FormSearchCategory";
 import { useGroups } from "../../providers/Groups";

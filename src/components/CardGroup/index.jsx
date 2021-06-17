@@ -5,11 +5,8 @@ const CardGroup = ({ group, ...rest }) => {
   const category = group.category.toLowerCase()
 
   const [background,setBackground] = useState("")
-  const [gradiente, setGradiente] = useState({
-    color1: "#74ebd5",
-    color2: "#ACB6E5"
-  })
-  const addBackgroundImg = () => {
+
+  const addBackgroundImg = (background, category) => {
     if(category.includes("health") || category.includes("saúde")){
       setBackground("https://ssir.org/images/articles/FullPage_Color-592.jpg")
     }
@@ -39,8 +36,10 @@ const CardGroup = ({ group, ...rest }) => {
    
   }
  useEffect(()=>{
-   addBackgroundImg()
- }, [background])
+    if(category){
+      addBackgroundImg(background, category)
+    }
+ }, [background, category])
   
   return (
     <Container background={background} {...rest}>

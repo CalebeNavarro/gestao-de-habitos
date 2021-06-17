@@ -2,8 +2,7 @@ import { HabitCard } from "../CardHabit/styles";
 import api from "../../services/api";
 import { useState } from "react";
 import { toast } from 'react-toastify';
-import { BsFillLightningFill } from 'react-icons/bs';
-import { AiOutlineArrowRight, AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const CardHabit = ({ habit, func, dp=false }) => {
   const [ value, setValue ] = useState(habit.how_much_achieved);

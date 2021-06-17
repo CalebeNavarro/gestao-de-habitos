@@ -101,8 +101,8 @@ const CreateGroup = () => {
       </StyledForm>
 
       <Footer img={Img} fixDiv>
-        Em um grupo é possível unir forças para vencer dificuldades que pareciam
-        impossíveis. Crie um grupo e chame seus colegas para participarem!
+        In a group, it is possible to join forces to overcome difficulties that seemed to
+        impossible. Create a group and invite your colleagues to join!
       </Footer>
     </Container>
   );

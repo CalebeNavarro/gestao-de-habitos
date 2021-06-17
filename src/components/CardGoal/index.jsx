@@ -1,4 +1,10 @@
-import { GoalDiv, ButtonsDiv,RemoveGoalButton, UpdateGoalDiv} from "./style";
+import { 
+    GoalDiv, 
+    ButtonsDiv,
+    RemoveGoalButton, 
+    UpdateAchievedDiv, 
+    UpdateAchievedButton
+} from "./style";
 import api from "../../services/api";
 import { useState } from "react";
 import { toast } from "react-toastify";
@@ -6,8 +12,7 @@ import { toast } from "react-toastify";
 const CardGoal = ({goal, getGroups}) => {
     const [ value, setValue ] = useState(goal.how_much_achieved)
     const [token] = useState(JSON.parse(localStorage.getItem("@habits:token")));
-    const [showUpdateGoalForm, setShowUpdateGoalForm] = useState(false);
-    const [select, setSelect] = useState("true");
+    const [showUpdateGoalDiv, setShowUpdateGoalDiv] = useState(false);
 
     const handleRemoveGoal = (id) => {
         api.delete(`/goals/${id}/`,{
@@ -37,21 +42,29 @@ const CardGoal = ({goal, getGroups}) => {
         })
         .catch(error => console.log(error.response))
     }
+
     return (
-        <GoalDiv display={goal.achieved}>
+        <GoalDiv display={goal.achieved.toString()}>
             <p><span>Title:</span> {goal.title}</p>
             <p><span>Difficulty:</span> {goal.difficulty}</p>
             <p><span>Achieved:</span> {goal.achieved ? "yes" : "no"}</p>
-            <UpdateGoalDiv display={goal.achieved}>
-                <input type='range' value={value} onChange={(evt) => setValue(evt.currentTarget.value)}/> 
-                <button onClick={handleUpdateGoal}>Enviar</button>
-            </UpdateGoalDiv>
-
+            <p><span>How much Achieved: </span>{goal.how_much_achieved}%</p>
             <ButtonsDiv>
+                {goal.achieved === false 
+                && <UpdateAchievedButton onClick={() => setShowUpdateGoalDiv(!showUpdateGoalDiv)}>
+                        Update achieved
+                    </UpdateAchievedButton>
+                }
                 <RemoveGoalButton onClick={() => handleRemoveGoal(goal.id)}>
                     Remove goal    
                 </RemoveGoalButton>
             </ButtonsDiv>
+            {showUpdateGoalDiv 
+            &&  <UpdateAchievedDiv display={goal.achieved.toString()}>
+                    <input type='range' value={value} onChange={(evt) => setValue(evt.currentTarget.value)}/> 
+                    <button onClick={handleUpdateGoal}>{value}%</button>
+                </UpdateAchievedDiv>
+            }
         </GoalDiv>
     )
 }

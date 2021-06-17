@@ -4,7 +4,7 @@ import { MembersListDiv } from "./style";
 const MembersList = ({members}) => {
     return (
         <MembersListDiv>
-            {members && members.map((member) => <CardMember member={member}/>)}
+            {members.map((member) => <CardMember key={member.id} member={member}/>)}
         </MembersListDiv>
     )
 }

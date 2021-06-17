@@ -3,10 +3,18 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   align-items: center;
 
+  > button {
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
   @media (min-width: 768px) {
+    
   }
 `;
 
@@ -17,6 +25,7 @@ export const HabitCards = styled.div`
   justify-content: space-around;
   align-items: center;
   min-height: 300px;
+  padding-top: 50px;
 
   @media (min-width: 768px) {
     display: flex;
@@ -24,7 +33,8 @@ export const HabitCards = styled.div`
     flex-wrap: wrap;
     max-width: 1200px;
     overflow-y: auto;
-    max-height: 410px;
+    height: 480px;
+
     ::-webkit-scrollbar {
       width: 15px;
     }

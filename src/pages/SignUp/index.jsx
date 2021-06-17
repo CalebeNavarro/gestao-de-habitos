@@ -34,7 +34,7 @@ const SignUp = () => {
         api.post("/users/", user).then((_) => {
             toast.success('account created')
              return history.push("/login")
-        }).catch((err) => toast.error("Error creating account try another email"))
+        }).catch((err) => toast.error("Error creating account try another username"))
     }
 
     if(isLoged() === true){

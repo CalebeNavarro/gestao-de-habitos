@@ -10,11 +10,15 @@ export const GoalDiv = styled.div`
     width: 90%;
     margin: 10px;
 
-    p {
+    > p {
         margin: 5px;
     }
     
-    span {
+    & p:last-of-type {
+        display: ${props => props.display ? 'none' : 'line'};
+    }
+
+    > span {
         font-weight: bold;
     }
 
@@ -39,10 +43,15 @@ export const RemoveGoalButton = styled.button`
 `
 
 export const UpdateGoalDiv = styled.div`
-    display: flex;
-    flex-direction: column;
+    display: ${props => props.display ? 'none' : 'flex'};
     align-items: center;
-    width: 40%;
+    margin: 10px 0;
+    > button {
+        background-color: black;
+        color: white;
+        padding: 2.5px 15px;
+        border-radius: 5px;
+    }
 `
 
 export const UpdateGoalButton = styled(RemoveGoalButton)`
@@ -56,6 +65,7 @@ export const UpdateGoalSelectDiv = styled.div`
     align-items: center;
     justify-content:space-evenly;
     width: 92.5%;
+    
     select {
         width: 50%;
     }

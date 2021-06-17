@@ -9,8 +9,9 @@ export const GoalDiv = styled.div`
     padding: 15px;
     width: 90%;
     margin: 10px;
+    background: #ffffff40;
 
-    > p {
+    p {
         margin: 5px;
     }
     
@@ -18,7 +19,7 @@ export const GoalDiv = styled.div`
         display: ${props => props.display === "true" ? 'none' : 'line'};
     }
 
-    > span {
+    span {
         font-weight: bold;
     }
 
@@ -67,7 +68,7 @@ export const UpdateAchievedDiv = styled.div`
 `
 
 export const UpdateAchievedButton = styled(RemoveGoalButton)`
-    background-color: var(--color-primary);
+    background: radial-gradient(#DA22FF,#8E54E9);
     width: 45%;
     height: initial;
 `

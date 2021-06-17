@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-primary);
+    background: radial-gradient(#1488CC,#2B32B2);
     color: var(--white);
     margin-top: 20px;
     width: 80vw;

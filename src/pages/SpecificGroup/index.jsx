@@ -67,7 +67,7 @@ const SpecificGroup = () => {
         };
     }, [isOpened, goalsModalOpened, activitiesModalOpened, editModalOpened, membersModalOpened]);
 
-    const getGroups = (id) => {
+    const getGroups = () => {
         api
         .get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
@@ -75,7 +75,7 @@ const SpecificGroup = () => {
     };
 
     useEffect(() => {
-        getGroups(id);
+        getGroups();
     }, [id]);
 
     useEffect(() => {

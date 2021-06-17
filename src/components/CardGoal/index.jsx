@@ -23,15 +23,17 @@ const CardGoal = ({goal, getGroups}) => {
         .catch(error => console.log(error));
     };
 
-    const handleUpdateGoal = () => {
-        let data = {};
+    const handleUpdateGoal = (id) => {
+        const data = {};
         if (value === "100") {
-            data = {how_much_achieved: value, achieved: true}
-        }  else {
-            data = {how_much_achieved: value}
+            data.how_much_achieved = value;
+            data.achieved = true;
+        } else {
+            data.how_much_achieved = value;
+            data.achieved = false;
         }
 
-        api.patch(`/goals/${goal.id}/`, data , {
+        api.patch(`/goals/${id}/`, data , {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
@@ -62,7 +64,7 @@ const CardGoal = ({goal, getGroups}) => {
             {showUpdateGoalDiv 
             &&  <UpdateAchievedDiv display={goal.achieved.toString()}>
                     <input type='range' value={value} onChange={(evt) => setValue(evt.currentTarget.value)}/> 
-                    <button onClick={handleUpdateGoal}>{value}%</button>
+                    <button onClick={() => handleUpdateGoal(goal.id)}>{value}%</button>
                 </UpdateAchievedDiv>
             }
         </GoalDiv>

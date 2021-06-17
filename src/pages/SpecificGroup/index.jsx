@@ -79,7 +79,7 @@ const SpecificGroup = () => {
     useEffect(() => {
         setGroupId(id);
         getGroups(id);
-    }, [id]);
+    }, [id, setGroupId]);
 
     useEffect(() => {
         if(groupInfo.creator){

@@ -10,7 +10,6 @@ export const HabitCard = styled.div`
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.5s;
-  /* background: radial-gradient(#1fe4f5, #3fbafe); */
   background: radial-gradient(${props => props.objColor.first},${props => props.objColor.second});
 
   span, h2 {
@@ -26,14 +25,21 @@ export const HabitCard = styled.div`
     grid-row: 2/3;
     font-size: 30px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
   }
 
   & p {
     grid-row: 1/2;
     justify-self: end;
+    transition: 1s;
+
+    & :hover {
+      color: tomato;
+      transition: 1s;
+    }
   }
+
 
   & h2 {
     grid-row: 3/4;
@@ -42,9 +48,11 @@ export const HabitCard = styled.div`
   }
 
   & section {
+    display: flex;
     grid-row: 4/5;
     align-self: center;
     text-align: center;
+    align-items: center;
 
     & button {
       border: 1px solid pink;

@@ -5,7 +5,6 @@ import { useGroups } from "../../providers/Groups";
 import CardGroup from "../../components/CardGroup";
 import Img from "../../assets/undraw_Account_re_o7id.png";
 import Footer from "../../components/Footer";
-import Button from "../../components/Button";
 import { useContext, useState } from "react";
 import { Redirect } from "react-router";
 import { AuthenticateContext } from "../../providers/Authenticate";
@@ -43,12 +42,10 @@ const SearchGroups = () => {
       <h2>Search Groups</h2>
 
       <FormSearchCategory />
+     
       <Top></Top>
 
       <ContainerCards>
-        <div className="ContainerButton">
-        <PrevButton onClick={()=>handlePrev()} isHave={!groups.previous && true}/>
-        </div>
         <div className="container-cards">
         {groups.results.map((group) => (
           <CardGroup
@@ -58,9 +55,13 @@ const SearchGroups = () => {
           />
         ))}
         </div>
-        <div className="ContainerButton">
+        <div className="container-button">
+        <PrevButton onClick={()=>handlePrev()} isHave={!groups.previous && true}/>
         <NextButton onClick={()=>handleNext()} isHave={!groups.next && true}/>
-        </div>
+      </div>
+        
+        
+       
       </ContainerCards>
 
       <Footer img={Img} fixDiv>

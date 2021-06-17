@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useGroups } from "../../providers/Groups";
+import { NextButton, PrevButton } from "../../pages/SearchGroups/styles";
 
 const FormSearchCategory = () => {
   const { searchGroups } = useGroups();
@@ -60,7 +61,6 @@ const FormSearchCategory = () => {
         name="category"
         placeholder="Group Category"
       />
-
       <button type="submit">Search</button>
     </Form>
   );

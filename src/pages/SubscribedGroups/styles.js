@@ -37,3 +37,23 @@ export const ContainerCards = styled.div`
     }
   }
 `;
+
+export const Text = styled.p`
+  width: 80vw;
+  font-family: var(--font-home);
+  text-align: center;
+  margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    width: 50vw;
+  }
+`;
+
+export const Image = styled.img`
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    margin-top: 20px;
+  }
+`;

@@ -19,6 +19,7 @@ import Modal from "../../components/Modal";
 import CreateHabitForm from "../../components/CreateHabitForm";
 
 const Dashboard = () => {
+  const [ whoButton, UseWhoButton ] = useState(false);
   const [habits, setHabits] = useState([]);
   const { isLoged } = useContext(AuthenticateContext);
   const userName = JSON.parse(localStorage.getItem("@infoUser")) || "";
@@ -51,7 +52,6 @@ const Dashboard = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setHabits(response.data);
       })
       .catch((err) => console.log(err));
@@ -75,11 +75,19 @@ const Dashboard = () => {
           </DesktopNone>
         </Welcome>
 
+        <Button func={() => UseWhoButton(!whoButton)}>{whoButton ? "To Do" : "Done"}</Button>
+
         <HabitCards>
-          {habits.map(
-            (habit) =>
+
+          {!whoButton && habits.map(habit =>
               !habit.achieved && (
                 <CardHabit key={habit.id} habit={habit} func={loadHabits} />
+              )
+          )}
+
+          {whoButton && habits.map(habit =>
+              habit.achieved && (
+                <CardHabit key={habit.id} habit={habit} func={loadHabits} dp/>
               )
           )}
         </HabitCards>

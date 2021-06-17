@@ -5,6 +5,19 @@ export const Form = styled.form`
     flex-direction: column;
     align-items: center;
 
+    & :nth-child(5) {
+        width: 100%;
+
+        & > div {
+            display: flex;
+            align-items: center
+        }
+    
+        @media (min-width: 768px) {
+            width: 280px;
+        }
+    }
+
     select {
         margin: 20px 0;
 

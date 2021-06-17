@@ -21,9 +21,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const EditGroupForm = ({id, getGroups}) => {
+
+    const { groupId } = useContext(GroupIdContext);
 
     const [token]=useState(
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
@@ -72,7 +75,7 @@ const EditGroupForm = ({id, getGroups}) => {
         .then(response => {
             notify("success");
             reset();
-            getGroups();
+            getGroups(groupId);
         })
         .catch(error => {
             console.log(error)

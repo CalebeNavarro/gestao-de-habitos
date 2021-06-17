@@ -25,10 +25,12 @@ import ActivitiesList from "../../components/ActivitiesList";
 import jwt_decode from "jwt-decode";
 import { toast } from "react-toastify";
 import MembersList from "../../components/MembersList";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const SpecificGroup = () => {
     const history = useHistory();
     const { isLoged } = useContext(AuthenticateContext);
+    const { setGroupId } = useContext(GroupIdContext);
     const { id } = useParams();
 
     const [userId] = useState(() => {
@@ -67,7 +69,7 @@ const SpecificGroup = () => {
         };
     }, [isOpened, goalsModalOpened, activitiesModalOpened, editModalOpened, membersModalOpened]);
 
-    const getGroups = () => {
+    const getGroups = (id) => {
         api
         .get(`/groups/${id}/`)
         .then((group) => setGroupInfo(group.data))
@@ -75,7 +77,8 @@ const SpecificGroup = () => {
     };
 
     useEffect(() => {
-        getGroups();
+        setGroupId(id);
+        getGroups(id);
     }, [id]);
 
     useEffect(() => {
@@ -105,7 +108,7 @@ const SpecificGroup = () => {
         }})
         .then(response => {
             toast.info("Successful to enter!")
-            getGroups();
+            getGroups(id);
             return response;
         })
         .catch(error => console.log(error))
@@ -123,7 +126,7 @@ const SpecificGroup = () => {
         .then((response) => {
             toast.info(`Exit successful!`);
             setSubscribed(false);
-            getGroups();
+            getGroups(id);
             history.push(history.location.state.referrer);
             return response;
         })

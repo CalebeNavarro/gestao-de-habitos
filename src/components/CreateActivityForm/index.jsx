@@ -1,7 +1,7 @@
 import { ActivityForm, NotifyP } from "./style";
 import * as yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import Button from "../Button";
@@ -10,8 +10,11 @@ import { MdSubtitles } from "react-icons/md";
 import { toast } from "react-toastify" ; 
 import {ImCheckboxChecked} from "react-icons/im";
 import {AiOutlineExclamationCircle} from "react-icons/ai";
+import { GroupIdContext } from "../../providers/GroupId";
 
 const CreateActivityForm = ({id, getGroups}) => {
+
+    const { groupId } = useContext(GroupIdContext);
 
     const [token]=useState(
         JSON.parse(localStorage.getItem("@habits:token")) || [] 
@@ -52,7 +55,7 @@ const CreateActivityForm = ({id, getGroups}) => {
         .then(response => {
             notify("success")
             reset();
-            getGroups();
+            getGroups(groupId);
         })
         .catch(error => {
             console.log(error);

@@ -105,7 +105,7 @@ const Dashboard = () => {
           </Footer>
           </>
         ):(<>
-          <blockquote cite="https://www.briantracy.com/">Make your life a masterpiece; imagine no limitations on what you can be, have or do.</blockquote>
+          <blockquote cite="https://www.briantracy.com/">Make your life a masterpiece! Imagine no limitations on what you can be, have or do.</blockquote>
 
           <Button func={() => setHabitModalOpened(true)}>Create your habit now!</Button>
 

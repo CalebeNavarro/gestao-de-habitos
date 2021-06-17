@@ -97,7 +97,7 @@ const CreateGroup = () => {
           width={400}
         />
 
-        <Button widthDesktop={400}>Criar grupo</Button>
+        <Button widthDesktop={400}>Create Group</Button>
       </StyledForm>
 
       <Footer img={Img} fixDiv>
